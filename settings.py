@@ -82,4 +82,12 @@ INSTALLED_APPS = (
     'django.contrib.sites',
     'django.contrib.admin',
     'django.contrib.admindocs',
+    'django.contrib.comments',
+    'django.contrib.markup',
+    
+    # basic apps http://github.com/nathanborror/django-basic-apps/tree/master
+    'basic.*',
+    
+    # tagging http://code.google.com/p/django-tagging/
+    'tagging',
 )
