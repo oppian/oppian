@@ -1,0 +1,3 @@
+[submodule "lib/django"]
+	path = lib/django
+	url = git@github.com:oppian/django.git
