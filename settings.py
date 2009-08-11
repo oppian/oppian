@@ -40,6 +40,9 @@ USE_I18N = True
 # Example: "/home/media/media.lawrence.com/"
 MEDIA_ROOT = os.path.join(PROJECT_ROOT, 'media/')
 
+
+SHORTENER_REQUIRES_LOGIN = True
+
 # URL that handles the media served from MEDIA_ROOT. Make sure to use a
 # trailing slash if there is a path component (optional in other cases).
 # Examples: "http://media.lawrence.com", "http://example.com/media/"
@@ -87,6 +90,9 @@ INSTALLED_APPS = (
     
     # basic apps http://github.com/nathanborror/django-basic-apps/tree/master
     'basic.*',
+    
+    # url shortener
+    'url_shortener',
     
     # tagging http://code.google.com/p/django-tagging/
     'tagging',
