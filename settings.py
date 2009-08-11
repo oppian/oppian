@@ -64,6 +64,7 @@ MIDDLEWARE_CLASSES = (
     'django.middleware.common.CommonMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
+    'django.contrib.flatpages.middleware.FlatpageFallbackMiddleware',   # put at end
 )
 
 ROOT_URLCONF = 'urls'
@@ -84,6 +85,7 @@ INSTALLED_APPS = (
     'django.contrib.admindocs',
     'django.contrib.comments',
     'django.contrib.markup',
+    'django.contrib.flatpages',
     
     # basic apps http://github.com/nathanborror/django-basic-apps/tree/master
     'basic.*',
