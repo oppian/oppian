@@ -90,4 +90,7 @@ INSTALLED_APPS = (
     
     # tagging http://code.google.com/p/django-tagging/
     'tagging',
+    
+    # django command extensions http://github.com/django-extensions
+    'django_extensions',
 )
