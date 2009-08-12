@@ -16,7 +16,7 @@ __test__ = {"doctest": """
 >>> r.status_code # /
 200
 >>> r.template[0].name
-'shortener/index.html'
+'index.html'
 
 # Turn off logged-in requirement and set base URL
 >>> from django.conf import settings
@@ -28,7 +28,7 @@ __test__ = {"doctest": """
 >>> r.status_code # /submit/
 200
 >>> r.template[0].name # /submit/
-'shortener/submit_failed.html'
+'submit_failed.html'
 
 # Submit a URL
 >>> url = 'http://www.google.com/'
@@ -36,7 +36,7 @@ __test__ = {"doctest": """
 >>> r.status_code # /submit/u?=http%3A%2F%2Fwww.google.com%2F
 200
 >>> r.template[0].name
-'shortener/submit_success.html'
+submit_success.html'
 >>> link = r.context[0]['link']
 >>> link.to_base62()
 'B'
@@ -66,7 +66,7 @@ __test__ = {"doctest": """
 >>> r.status_code # /
 200
 >>> r.template[0].name
-'shortener/index.html'
+'index.html'
 >>> context = r.context[0]
 >>> len(context['recent_links'])
 1
@@ -78,7 +78,7 @@ __test__ = {"doctest": """
 >>> r.status_code # info
 200
 >>> r.template[0].name
-'shortener/link_info.html'
+'link_info.html'
 >>> link = r.context[0]['link']
 >>> link.url
 u'http://www.google.com/'

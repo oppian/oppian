@@ -1,8 +1,8 @@
-{% extends "base.html" %}
+{% extends "shortener_base.html" %}
 
 {% block title %}URL shortened{% endblock %}
 
-{% block content %}
+{% block body %}
 The following URL:<br/>
 <pre>
 {{ link.url }}
@@ -17,9 +17,9 @@ Score: {{ link.usage_count }}
 (<a href="{% url shortener_info link.to_base62 %}">Info</a>)
 <br/>
 <br/>
-{% endblock %}
 
-{% block extra_body %}
+{{ block.super }}
+
 <script>
 $(document).ready(
   function() {
