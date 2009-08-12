@@ -4,8 +4,8 @@
 <html>
 	<head>
 		<title>{% block title %}Oppian Systems Ltd{% endblock %}</title>
-		<!-- http://developer.yahoo.com/yui/grids/ -->
-		<link rel="stylesheet" type="text/css" href="http://yui.yahooapis.com/2.7.0/build/reset-fonts-grids/reset-fonts-grids.css"/>
+		<!-- Combo-handled YUI CSS files: --> 
+		<link rel="stylesheet" type="text/css" href="http://yui.yahooapis.com/combo?2.7.0/build/reset-fonts-grids/reset-fonts-grids.css&2.7.0/build/base/base-min.css">
 		<script type="text/javascript"
             src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js">
         </script>
@@ -30,7 +30,7 @@
 							<a href="{% url about %}">About</a>
 						</td>
 						<td>
-							<a href="{% url about %}">Clients</a>
+							<a href="{% url clients %}">Clients</a>
 						</td>
 						<td>
 							<a href="{% url blog_index %}">Blog</a>
@@ -52,7 +52,7 @@
 				{% block footer %}
 				<div class="twitter">
 				    {% if tweet %}
-				        <p>Latest tweet from {{ tweet.date|naturalday }}: {{ tweet.text }}<p>
+				    Latest tweet from {{ tweet.date|naturalday }}: {{ tweet.text }}
 				    {% endif %}
 				</div>
 				&copy; 2009 Oppian Systems Ltd.
