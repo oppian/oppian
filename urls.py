@@ -4,6 +4,9 @@ from django.conf.urls.defaults import *
 from django.contrib import admin
 admin.autodiscover()
 
+# settings for static files
+from django.conf import settings
+
 urlpatterns = patterns('',
     # Example:
     # (r'^oppian/', include('oppian.foo.urls')),
@@ -20,4 +23,15 @@ urlpatterns = patterns('',
     
     # blog
     (r'^blog/', include('basic.blog.urls')),
+    
+    # static files
+    (r'^%s(?P<path>.*)$' % settings.MEDIA_URL[1:], 'django.views.static.serve',
+        {'document_root': settings.MEDIA_ROOT}),
 )
+
+if settings.DEBUG:
+    urlpatterns += patterns('',
+        # static files
+        (r'^%s(?P<path>.*)$' % settings.MEDIA_URL[1:], 'django.views.static.serve', {'document_root': settings.MEDIA_ROOT}),
+    )
+    
