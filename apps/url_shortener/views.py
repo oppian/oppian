@@ -49,7 +49,7 @@ def info(request, base62_id):
     values = default_values(request)
     values['link'] = link
     return render_to_response(
-        'link_info.html',
+        'url_shortener_link_info.html',
         values,
         context_instance=RequestContext(request))
 
@@ -80,12 +80,12 @@ def submit(request):
         values = default_values(request)
         values['link'] = link
         return render_to_response(
-            'submit_success.html',
+            'url_shortener_submit_success.html',
             values,
             context_instance=RequestContext(request))
     values = default_values(request, link_form=link_form)
     return render_to_response(
-        'submit_failed.html',
+        'url_shortener_submit_failed.html',
         values,
         context_instance=RequestContext(request))
 
@@ -97,7 +97,7 @@ def index(request):
     values['recent_links'] = Link.objects.all().order_by('-date_submitted')[0:10]
     values['most_popular_links'] = Link.objects.all().order_by('-usage_count')[0:10]
     return render_to_response(
-        'index.html',
+        'url_shortener.html',
         values,
         context_instance=RequestContext(request))
 
