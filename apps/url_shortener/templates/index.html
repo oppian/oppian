@@ -1,5 +1,6 @@
-{% extends "shortener/base.html" %}
-{% block content %}
+{% extends "shortener_base.html" %}
+
+{% block body %}
 <h2>Recent Links</h2>
 <ul>
 {% for link in recent_links %}
@@ -15,9 +16,9 @@
 (<a href="{% url shortener_info link.to_base62 %}">Info</a>)</li>
 {% endfor %}
 </ul>
-{% endblock %}
 
-{% block extra_body %}
+{{ block.super }}
+
 <script>
 $(document).ready(
   function() {
