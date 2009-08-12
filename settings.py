@@ -1,6 +1,8 @@
 # Django settings for oppian project.
 
 import os
+from django.conf.global_settings import TEMPLATE_CONTEXT_PROCESSORS
+
 PROJECT_ROOT = os.path.abspath(os.path.dirname(__file__))
 
 DEBUG = True
@@ -42,6 +44,20 @@ MEDIA_ROOT = os.path.join(PROJECT_ROOT, 'media/')
 
 # if SHORTENER_REQUIRES_LOGIN is True, then only logged in users can submit new URLs
 SHORTENER_REQUIRES_LOGIN = True
+
+# add the template context processor for the latest tweet
+TEMPLATE_CONTEXT_PROCESSORS = TEMPLATE_CONTEXT_PROCESSORS + (
+    "twitterapp.context_processors.latest_tweet",
+)
+
+# the twitter email account of the site 
+TWITTER_EMAIL = "twitter@oppian.com"
+# the password for the account referenced by the twitter email address above
+TWITTER_PASSWORD = "deteenee52"
+# the name of the agent making the requests
+TWITTER_AGENT_STR = "www.oppian.com"
+# how often to check the tweet status
+TWITTER_TIMEOUT = 3600
 
 # URL that handles the media served from MEDIA_ROOT. Make sure to use a
 # trailing slash if there is a path component (optional in other cases).
@@ -89,6 +105,7 @@ INSTALLED_APPS = (
     'django.contrib.comments',
     'django.contrib.markup',
     'django.contrib.flatpages',
+    'django.contrib.humanize',
     
     # basic apps http://github.com/nathanborror/django-basic-apps/tree/master
     'basic.*',

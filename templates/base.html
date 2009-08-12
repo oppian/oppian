@@ -1,3 +1,5 @@
+{% load humanize %}
+
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
 <html>
 	<head>
@@ -34,6 +36,11 @@
 			<div id="ft" role="contentinfo">
 				<!-- footer -->
 				{% block footer %}
+				<div class="twitter">
+				    {% if tweet %}
+				        <p>Latest tweet from {{ tweet.date|naturalday }}: {{ tweet.text }}<p>
+				    {% endif %}
+				</div>
 				&copy; 2009 Oppian Systems Ltd.
 				{% endblock %}
 			</div>
