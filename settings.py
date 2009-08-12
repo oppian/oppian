@@ -46,12 +46,12 @@ SHORTENER_REQUIRES_LOGIN = True
 # URL that handles the media served from MEDIA_ROOT. Make sure to use a
 # trailing slash if there is a path component (optional in other cases).
 # Examples: "http://media.lawrence.com", "http://example.com/media/"
-MEDIA_URL = '/media/'
+MEDIA_URL = '/m/'
 
 # URL prefix for admin media -- CSS, JavaScript and images. Make sure to use a
 # trailing slash.
 # Examples: "http://foo.com/media/", "/media/".
-ADMIN_MEDIA_PREFIX = '/admin-media/'
+ADMIN_MEDIA_PREFIX = '/media/'
 
 # Make this unique, and don't share it with anybody.
 SECRET_KEY = '4tt(s*od&lp(6wrd#iwq=vmot%#9nfl%00k=q5$eplz3lkgr0z'
@@ -67,7 +67,6 @@ MIDDLEWARE_CLASSES = (
     'django.middleware.common.CommonMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
-    'django.contrib.flatpages.middleware.FlatpageFallbackMiddleware',   # put at end
 )
 
 ROOT_URLCONF = 'urls'
@@ -88,7 +87,6 @@ INSTALLED_APPS = (
     'django.contrib.admindocs',
     'django.contrib.comments',
     'django.contrib.markup',
-    'django.contrib.flatpages',
     
     # basic apps http://github.com/nathanborror/django-basic-apps/tree/master
     'basic.*',

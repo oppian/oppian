@@ -11,10 +11,22 @@
 			<div id="hd" role="banner">
 				<!-- header -->
 				{% block header %}
-				<table cellspacing="0" cellpadding="0" border="0">
+				<table>
 					<tr>
 						<td>
-							<a href="/"><img src="{{ MEDIA_URL }}images/logo.png" alt="Oppian"/></a>
+							<a href="{% url home %}"><img src="{{ MEDIA_URL }}images/logo.png" alt="Oppian"/></a>
+						</td>
+						<td>
+							<a href="{% url home %}">Home</a>
+						</td>
+						<td>
+							<a href="{% url services %}">Services</a>
+						</td>
+						<td>
+							<a href="{% url about %}">About</a>
+						</td>
+						<td>
+							<a href="{% url about %}">Clients</a>
 						</td>
 						<td>
 							<a href="{% url blog_index %}">Blog</a>
@@ -24,6 +36,8 @@
 				{% endblock %}
 			</div>
 			<div id="bd" role="main">
+				<!-- body title -->
+				<h1>{% block body_title %}{% endblock %}</h1>
 				<!-- body -->
 				{% block body %}
 				BODY Nam ut augue vitae velit blandit scelerisque. Fusce nunc elit, pulvinar at feugiat in, iaculis vel nunc. Nulla ac orci libero. Mauris ut ante metus, a interdum est. Nunc elementum, ante ac euismod ultricies, nulla nunc condimentum ligula, id iaculis purus nisi in risus. In pulvinar condimentum ligula nec suscipit. Cras neque magna, condimentum quis aliquet et, pharetra nec nisl. Pellentesque a orci orci, nec vehicula odio. Curabitur orci velit, gravida at euismod feugiat, varius ultricies neque. Nulla ut eros dolor, eu vulputate orci. Morbi nisl ipsum, imperdiet eu porttitor sit amet, eleifend ut velit. Cras vel mi vitae nisl ultricies convallis. Integer ac erat leo. Morbi consequat lorem vitae odio facilisis at malesuada dui vehicula.
