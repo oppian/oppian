@@ -1,4 +1,5 @@
 from django.conf.urls.defaults import *
+from django.conf import settings
 
 # Uncomment the next two lines to enable the admin:
 from django.contrib import admin
@@ -24,14 +25,13 @@ urlpatterns = patterns('',
     # blog
     (r'^blog/', include('basic.blog.urls')),
     
-    # static files
-    (r'^%s(?P<path>.*)$' % settings.MEDIA_URL[1:], 'django.views.static.serve',
-        {'document_root': settings.MEDIA_ROOT}),
+    # link shortener
+    (r'^o/', include('url_shortener.urls')),
 )
 
 if settings.DEBUG:
     urlpatterns += patterns('',
-        # static files
+        # static files, note: use of settings for DRY
         (r'^%s(?P<path>.*)$' % settings.MEDIA_URL[1:], 'django.views.static.serve', {'document_root': settings.MEDIA_ROOT}),
     )
     
