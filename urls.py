@@ -5,6 +5,9 @@ from django.conf import settings
 from django.contrib import admin
 admin.autodiscover()
 
+# settings for static files
+from django.conf import settings
+
 urlpatterns = patterns('',
     # Example:
     # (r'^oppian/', include('oppian.foo.urls')),
@@ -25,3 +28,10 @@ urlpatterns = patterns('',
     # link shortener
     (r'^o/', include('url_shortener.urls')),
 )
+
+if settings.DEBUG:
+    urlpatterns += patterns('',
+        # static files, note: use of settings for DRY
+        (r'^%s(?P<path>.*)$' % settings.MEDIA_URL[1:], 'django.views.static.serve', {'document_root': settings.MEDIA_ROOT}),
+    )
+    
