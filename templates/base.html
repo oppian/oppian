@@ -6,7 +6,7 @@
 		<link rel="stylesheet" type="text/css" href="http://yui.yahooapis.com/2.7.0/build/reset-fonts-grids/reset-fonts-grids.css">
 		
 	</head>
-	<body>
+	<body id="{% block body_id %}{% endblock %}">
 		<div id="doc4">
 			<div id="hd" role="banner">
 				<!-- header -->
@@ -15,6 +15,9 @@
 					<tr>
 						<td>
 							<a href="/"><img src="{{ MEDIA_URL }}images/logo.png" alt="Oppian"/></a>
+						</td>
+						<td>
+							<a href="{% url blog_index %}">Blog</a>
 						</td>
 					</tr>
 				</table>
