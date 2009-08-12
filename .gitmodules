@@ -1,8 +1,8 @@
 [submodule "lib/django"]
 	path = lib/django
 	url = git@github.com:oppian/django.git
-[submodule "apps/basic"]
-	path = apps/basic
+[submodule "lib/django-basic-apps"]
+	path = lib/django-basic-apps
 	url = git://github.com/nathanborror/django-basic-apps.git
 [submodule "lib/url-shortener"]
 	path = lib/url-shortener
