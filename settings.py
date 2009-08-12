@@ -40,7 +40,7 @@ USE_I18N = True
 # Example: "/home/media/media.lawrence.com/"
 MEDIA_ROOT = os.path.join(PROJECT_ROOT, 'media/')
 
-
+# if SHORTENER_REQUIRES_LOGIN is True, then only logged in users can submit new URLs
 SHORTENER_REQUIRES_LOGIN = True
 
 # URL that handles the media served from MEDIA_ROOT. Make sure to use a
@@ -93,7 +93,7 @@ INSTALLED_APPS = (
     # basic apps http://github.com/nathanborror/django-basic-apps/tree/master
     'basic.*',
     
-    # url shortener
+    # url shortener git://github.com/nileshk/url-shortener.git 
     'url_shortener',
     
     # tagging http://code.google.com/p/django-tagging/

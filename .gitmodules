@@ -4,3 +4,6 @@
 [submodule "lib/django-basic-apps"]
 	path = lib/django-basic-apps
 	url = git://github.com/nathanborror/django-basic-apps.git
+[submodule "lib/url-shortener"]
+	path = lib/url-shortener
+	url = git://github.com/nileshk/url-shortener.git
