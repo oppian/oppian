@@ -33,5 +33,8 @@ if settings.DEBUG:
     urlpatterns += patterns('',
         # static files, note: use of settings for DRY
         (r'^%s(?P<path>.*)$' % settings.MEDIA_URL[1:], 'django.views.static.serve', {'document_root': settings.MEDIA_ROOT}),
+        (r'^(?P<path>favicon.ico)$', 'django.views.static.serve', {
+            'document_root': '%s/images/' % settings.MEDIA_ROOT,
+        }),
     )
     
