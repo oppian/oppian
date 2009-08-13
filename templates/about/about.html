@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block title %}About{% endblock %}
+{% block body_title %}About Oppian{% endblock %}
+
+{% block subnav %}
+<table cellspacing="0" cellpadding="0" border="0">
+	<tr>
+		<td><a href="{% url about_people %}">People</a></td>
+		<td><a href="{% url about_jobs %}">Jobs</a></td>
+		<td><a href="{% url about_contactus %}">Contact Us</a></td>
+	</tr>
+</table>
+{% endblock %}
+
+{% block body %}
+Established in 2009.
+{% endblock %}

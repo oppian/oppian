@@ -1,24 +1,23 @@
-{% load humanize %}
-
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
 <html>
 	<head>
-		<title>{% block title %}Oppian Systems Ltd{% endblock %}</title>
-		<!-- http://developer.yahoo.com/yui/grids/ -->
-		<link rel="stylesheet" type="text/css" href="http://yui.yahooapis.com/2.7.0/build/reset-fonts-grids/reset-fonts-grids.css"/>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<title>{% block title %}{% endblock %} - Oppian</title>
+		<!-- Combo-handled YUI CSS files: --> 
+		<link rel="stylesheet" type="text/css" href="http://yui.yahooapis.com/combo?2.7.0/build/reset-fonts-grids/reset-fonts-grids.css&2.7.0/build/base/base-min.css">
 		<script type="text/javascript"
             src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js">
         </script>
 	</head>
-	<body id="{% block body_id %}{% endblock %}">
+	<body id="{% block body_id %}base{% endblock %}">
 		<div id="doc4">
 			<div id="hd" role="banner">
 				<!-- header -->
 				{% block header %}
-				<table>
+				<table cellspacing="0" cellpadding="0" border="0">
 					<tr>
 						<td>
-							<a href="{% url home %}"><img src="{{ MEDIA_URL }}images/logo.png" alt="Oppian"/></a>
+							<a href="{% url home %}"><img src="{{ MEDIA_URL }}images/logo.png" alt="Oppian"></a>
 						</td>
 						<td>
 							<a href="{% url home %}">Home</a>
@@ -27,10 +26,10 @@
 							<a href="{% url services %}">Services</a>
 						</td>
 						<td>
-							<a href="{% url about %}">About</a>
+							<a href="{% url clients %}">Clients</a>
 						</td>
 						<td>
-							<a href="{% url about %}">Clients</a>
+							<a href="{% url about %}">About</a>
 						</td>
 						<td>
 							<a href="{% url blog_index %}">Blog</a>
@@ -40,6 +39,8 @@
 				{% endblock %}
 			</div>
 			<div id="bd" role="main">
+				<!-- subnav -->
+				{% block subnav %}{% endblock %}
 				<!-- body title -->
 				<h1>{% block body_title %}{% endblock %}</h1>
 				<!-- body -->
@@ -50,12 +51,16 @@
 			<div id="ft" role="contentinfo">
 				<!-- footer -->
 				{% block footer %}
-				<div class="twitter">
-				    {% if tweet %}
-				        <p>Latest tweet from {{ tweet.date|naturalday }}: {{ tweet.text }}<p>
-				    {% endif %}
-				</div>
-				&copy; 2009 Oppian Systems Ltd.
+				<hr>
+				<center>
+					<div class="twitter">
+						{% load humanize %}
+					    {% if tweet %}
+					    Latest tweet from {{ tweet.date|naturalday }}: {{ tweet.text }}
+					    {% endif %}
+					</div>
+					&copy; 2009 Oppian Systems Ltd.
+				</center>
 				{% endblock %}
 			</div>
 		</div>
