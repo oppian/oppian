@@ -19,10 +19,9 @@
         {% block bookmarklet %}
         <br/>
         Bookmarklet (drag this to your bookmarks bar):<br/>
-        <a href="javascript:(function(){var a=window,b=document,c=encodeURIComponent;d=a.open(&#39;{% url shortener_submit %}?u=&#39;+c(b.location));})();">Shorten with Oppian</a>
+        <a href="javascript:(function(){var a=window,b=document,c=encodeURIComponent;d=a.open(&#39;http://{{current_site.domain}}{% url shortener_submit %}?u=&#39;+c(b.location));})();">Shorten with Oppian</a>
         {% endblock %}
         {% endif %}
       </div>
-      {% block extra_body %}{% endblock %}
     </div>
 {% endblock %}
