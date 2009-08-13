@@ -83,6 +83,7 @@ MIDDLEWARE_CLASSES = (
     'django.middleware.common.CommonMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
+    'build.middleware.BuildMiddleware', # insert build version into headers
 )
 
 ROOT_URLCONF = 'urls'
@@ -119,4 +120,16 @@ INSTALLED_APPS = (
     
     # about (static pages)
     'about',
+    
+    # build tools
+    'build',
 )
+
+# AWS
+AWS_ACCESS_KEY_ID = '1EZPW78HVZMFXZXJXAR2'
+AWS_SECRET_ACCESS_KEY = 'ZXslmLM93TYrGA33GFyzIozSSN4VH1wrNXzyjXIt'
+
+# build
+AWS_BUILD_BUCKET_NAME = 'oppian-website-releases'
+BUILD_VERSION = ('0', '1')
+BUILD_APPNAME = 'oppian'

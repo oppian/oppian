@@ -1,0 +1,59 @@
+K 25
+svn:wc:ra_dav:version-url
+V 35
+/svn/!svn/ver/1073/trunk/boto/pyami
+END
+helloworld.py
+K 25
+svn:wc:ra_dav:version-url
+V 48
+/svn/!svn/ver/492/trunk/boto/pyami/helloworld.py
+END
+bootstrap.py
+K 25
+svn:wc:ra_dav:version-url
+V 47
+/svn/!svn/ver/630/trunk/boto/pyami/bootstrap.py
+END
+__init__.py
+K 25
+svn:wc:ra_dav:version-url
+V 46
+/svn/!svn/ver/315/trunk/boto/pyami/__init__.py
+END
+scriptbase.py
+K 25
+svn:wc:ra_dav:version-url
+V 48
+/svn/!svn/ver/914/trunk/boto/pyami/scriptbase.py
+END
+copybot.py
+K 25
+svn:wc:ra_dav:version-url
+V 46
+/svn/!svn/ver/1026/trunk/boto/pyami/copybot.py
+END
+launch_ami.py
+K 25
+svn:wc:ra_dav:version-url
+V 48
+/svn/!svn/ver/349/trunk/boto/pyami/launch_ami.py
+END
+startup.py
+K 25
+svn:wc:ra_dav:version-url
+V 45
+/svn/!svn/ver/630/trunk/boto/pyami/startup.py
+END
+config.py
+K 25
+svn:wc:ra_dav:version-url
+V 45
+/svn/!svn/ver/1040/trunk/boto/pyami/config.py
+END
+copybot.cfg
+K 25
+svn:wc:ra_dav:version-url
+V 46
+/svn/!svn/ver/955/trunk/boto/pyami/copybot.cfg
+END

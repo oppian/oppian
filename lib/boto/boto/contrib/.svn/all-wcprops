@@ -1,0 +1,23 @@
+K 25
+svn:wc:ra_dav:version-url
+V 36
+/svn/!svn/ver/387/trunk/boto/contrib
+END
+__init__.py
+K 25
+svn:wc:ra_dav:version-url
+V 48
+/svn/!svn/ver/287/trunk/boto/contrib/__init__.py
+END
+m2helpers.py
+K 25
+svn:wc:ra_dav:version-url
+V 49
+/svn/!svn/ver/287/trunk/boto/contrib/m2helpers.py
+END
+ymlmessage.py
+K 25
+svn:wc:ra_dav:version-url
+V 50
+/svn/!svn/ver/387/trunk/boto/contrib/ymlmessage.py
+END

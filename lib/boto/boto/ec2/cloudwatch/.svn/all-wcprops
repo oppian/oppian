@@ -1,0 +1,23 @@
+K 25
+svn:wc:ra_dav:version-url
+V 44
+/svn/!svn/ver/1183/trunk/boto/ec2/cloudwatch
+END
+__init__.py
+K 25
+svn:wc:ra_dav:version-url
+V 56
+/svn/!svn/ver/1183/trunk/boto/ec2/cloudwatch/__init__.py
+END
+datapoint.py
+K 25
+svn:wc:ra_dav:version-url
+V 57
+/svn/!svn/ver/1141/trunk/boto/ec2/cloudwatch/datapoint.py
+END
+metric.py
+K 25
+svn:wc:ra_dav:version-url
+V 54
+/svn/!svn/ver/1141/trunk/boto/ec2/cloudwatch/metric.py
+END

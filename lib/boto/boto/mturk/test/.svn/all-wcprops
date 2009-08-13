@@ -1,0 +1,65 @@
+K 25
+svn:wc:ra_dav:version-url
+V 39
+/svn/!svn/ver/926/trunk/boto/mturk/test
+END
+create_hit_binary.doctest
+K 25
+svn:wc:ra_dav:version-url
+V 65
+/svn/!svn/ver/771/trunk/boto/mturk/test/create_hit_binary.doctest
+END
+cleanup_tests.py
+K 25
+svn:wc:ra_dav:version-url
+V 56
+/svn/!svn/ver/771/trunk/boto/mturk/test/cleanup_tests.py
+END
+reviewable_hits.doctest
+K 25
+svn:wc:ra_dav:version-url
+V 63
+/svn/!svn/ver/771/trunk/boto/mturk/test/reviewable_hits.doctest
+END
+search_hits.doctest
+K 25
+svn:wc:ra_dav:version-url
+V 59
+/svn/!svn/ver/771/trunk/boto/mturk/test/search_hits.doctest
+END
+create_hit_external.py
+K 25
+svn:wc:ra_dav:version-url
+V 62
+/svn/!svn/ver/925/trunk/boto/mturk/test/create_hit_external.py
+END
+all_tests.py
+K 25
+svn:wc:ra_dav:version-url
+V 52
+/svn/!svn/ver/771/trunk/boto/mturk/test/all_tests.py
+END
+create_hit_from_hit_type.doctest
+K 25
+svn:wc:ra_dav:version-url
+V 72
+/svn/!svn/ver/771/trunk/boto/mturk/test/create_hit_from_hit_type.doctest
+END
+create_hit_with_qualifications.py
+K 25
+svn:wc:ra_dav:version-url
+V 73
+/svn/!svn/ver/926/trunk/boto/mturk/test/create_hit_with_qualifications.py
+END
+create_hit.doctest
+K 25
+svn:wc:ra_dav:version-url
+V 58
+/svn/!svn/ver/771/trunk/boto/mturk/test/create_hit.doctest
+END
+create_free_text_question_regex.doctest
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/svn/!svn/ver/771/trunk/boto/mturk/test/create_free_text_question_regex.doctest
+END

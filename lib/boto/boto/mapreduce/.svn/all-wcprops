@@ -1,0 +1,53 @@
+K 25
+svn:wc:ra_dav:version-url
+V 38
+/svn/!svn/ver/748/trunk/boto/mapreduce
+END
+pdb_describe
+K 25
+svn:wc:ra_dav:version-url
+V 51
+/svn/!svn/ver/748/trunk/boto/mapreduce/pdb_describe
+END
+__init__.py
+K 25
+svn:wc:ra_dav:version-url
+V 50
+/svn/!svn/ver/746/trunk/boto/mapreduce/__init__.py
+END
+lqs.py
+K 25
+svn:wc:ra_dav:version-url
+V 45
+/svn/!svn/ver/746/trunk/boto/mapreduce/lqs.py
+END
+partitiondb.py
+K 25
+svn:wc:ra_dav:version-url
+V 53
+/svn/!svn/ver/748/trunk/boto/mapreduce/partitiondb.py
+END
+pdb_delete
+K 25
+svn:wc:ra_dav:version-url
+V 49
+/svn/!svn/ver/747/trunk/boto/mapreduce/pdb_delete
+END
+pdb_upload
+K 25
+svn:wc:ra_dav:version-url
+V 49
+/svn/!svn/ver/747/trunk/boto/mapreduce/pdb_upload
+END
+pdb_revert
+K 25
+svn:wc:ra_dav:version-url
+V 49
+/svn/!svn/ver/746/trunk/boto/mapreduce/pdb_revert
+END
+queuetools.py
+K 25
+svn:wc:ra_dav:version-url
+V 52
+/svn/!svn/ver/746/trunk/boto/mapreduce/queuetools.py
+END

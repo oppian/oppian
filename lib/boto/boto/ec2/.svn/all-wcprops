@@ -1,0 +1,95 @@
+K 25
+svn:wc:ra_dav:version-url
+V 33
+/svn/!svn/ver/1192/trunk/boto/ec2
+END
+regioninfo.py
+K 25
+svn:wc:ra_dav:version-url
+V 46
+/svn/!svn/ver/978/trunk/boto/ec2/regioninfo.py
+END
+snapshot.py
+K 25
+svn:wc:ra_dav:version-url
+V 45
+/svn/!svn/ver/1177/trunk/boto/ec2/snapshot.py
+END
+connection.py
+K 25
+svn:wc:ra_dav:version-url
+V 47
+/svn/!svn/ver/1187/trunk/boto/ec2/connection.py
+END
+__init__.py
+K 25
+svn:wc:ra_dav:version-url
+V 45
+/svn/!svn/ver/1166/trunk/boto/ec2/__init__.py
+END
+ec2object.py
+K 25
+svn:wc:ra_dav:version-url
+V 46
+/svn/!svn/ver/1005/trunk/boto/ec2/ec2object.py
+END
+reservedinstance.py
+K 25
+svn:wc:ra_dav:version-url
+V 53
+/svn/!svn/ver/1099/trunk/boto/ec2/reservedinstance.py
+END
+keypair.py
+K 25
+svn:wc:ra_dav:version-url
+V 43
+/svn/!svn/ver/984/trunk/boto/ec2/keypair.py
+END
+instance.py
+K 25
+svn:wc:ra_dav:version-url
+V 45
+/svn/!svn/ver/1177/trunk/boto/ec2/instance.py
+END
+volume.py
+K 25
+svn:wc:ra_dav:version-url
+V 43
+/svn/!svn/ver/1177/trunk/boto/ec2/volume.py
+END
+zone.py
+K 25
+svn:wc:ra_dav:version-url
+V 40
+/svn/!svn/ver/978/trunk/boto/ec2/zone.py
+END
+instanceinfo.py
+K 25
+svn:wc:ra_dav:version-url
+V 49
+/svn/!svn/ver/1156/trunk/boto/ec2/instanceinfo.py
+END
+buyreservation.py
+K 25
+svn:wc:ra_dav:version-url
+V 51
+/svn/!svn/ver/1094/trunk/boto/ec2/buyreservation.py
+END
+image.py
+K 25
+svn:wc:ra_dav:version-url
+V 42
+/svn/!svn/ver/1177/trunk/boto/ec2/image.py
+END
+securitygroup.py
+K 25
+svn:wc:ra_dav:version-url
+V 50
+/svn/!svn/ver/1017/trunk/boto/ec2/securitygroup.py
+END
+address.py
+K 25
+svn:wc:ra_dav:version-url
+V 43
+/svn/!svn/ver/978/trunk/boto/ec2/address.py
+END

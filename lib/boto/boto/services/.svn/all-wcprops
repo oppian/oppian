@@ -1,0 +1,59 @@
+K 25
+svn:wc:ra_dav:version-url
+V 38
+/svn/!svn/ver/1221/trunk/boto/services
+END
+sonofmmm.py
+K 25
+svn:wc:ra_dav:version-url
+V 49
+/svn/!svn/ver/695/trunk/boto/services/sonofmmm.py
+END
+result.py
+K 25
+svn:wc:ra_dav:version-url
+V 47
+/svn/!svn/ver/774/trunk/boto/services/result.py
+END
+__init__.py
+K 25
+svn:wc:ra_dav:version-url
+V 49
+/svn/!svn/ver/287/trunk/boto/services/__init__.py
+END
+servicedef.py
+K 25
+svn:wc:ra_dav:version-url
+V 51
+/svn/!svn/ver/705/trunk/boto/services/servicedef.py
+END
+service.py
+K 25
+svn:wc:ra_dav:version-url
+V 49
+/svn/!svn/ver/1210/trunk/boto/services/service.py
+END
+sonofmmm.cfg
+K 25
+svn:wc:ra_dav:version-url
+V 50
+/svn/!svn/ver/695/trunk/boto/services/sonofmmm.cfg
+END
+submit.py
+K 25
+svn:wc:ra_dav:version-url
+V 47
+/svn/!svn/ver/672/trunk/boto/services/submit.py
+END
+message.py
+K 25
+svn:wc:ra_dav:version-url
+V 48
+/svn/!svn/ver/646/trunk/boto/services/message.py
+END
+bs.py
+K 25
+svn:wc:ra_dav:version-url
+V 44
+/svn/!svn/ver/1221/trunk/boto/services/bs.py
+END

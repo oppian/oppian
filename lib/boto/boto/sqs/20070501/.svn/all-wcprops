@@ -1,0 +1,41 @@
+K 25
+svn:wc:ra_dav:version-url
+V 42
+/svn/!svn/ver/1062/trunk/boto/sqs/20070501
+END
+connection.py
+K 25
+svn:wc:ra_dav:version-url
+V 55
+/svn/!svn/ver/591/trunk/boto/sqs/20070501/connection.py
+END
+__init__.py
+K 25
+svn:wc:ra_dav:version-url
+V 53
+/svn/!svn/ver/591/trunk/boto/sqs/20070501/__init__.py
+END
+message.py
+K 25
+svn:wc:ra_dav:version-url
+V 52
+/svn/!svn/ver/591/trunk/boto/sqs/20070501/message.py
+END
+queue.py
+K 25
+svn:wc:ra_dav:version-url
+V 51
+/svn/!svn/ver/1062/trunk/boto/sqs/20070501/queue.py
+END
+readme.txt
+K 25
+svn:wc:ra_dav:version-url
+V 52
+/svn/!svn/ver/594/trunk/boto/sqs/20070501/readme.txt
+END
+attributes.py
+K 25
+svn:wc:ra_dav:version-url
+V 55
+/svn/!svn/ver/591/trunk/boto/sqs/20070501/attributes.py
+END
