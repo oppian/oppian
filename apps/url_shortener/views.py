@@ -10,6 +10,7 @@ from django.template import RequestContext
 from django.views.decorators.http import require_POST
 from django.db import transaction
 from django.conf import settings
+from django.contrib.sites.models import Site
 
 #from urlweb.shortener.baseconv import base62
 from baseconv import base62
@@ -35,9 +36,11 @@ def default_values(request, link_form=None):
     if not link_form:
         link_form = LinkSubmitForm()
     allowed_to_submit = is_allowed_to_submit(request)
+    current_site = Site.objects.get_current()
     return { 'show_bookmarklet': allowed_to_submit,
              'show_url_form': allowed_to_submit,
              'link_form': link_form,
+             'current_site': current_site,
              }
 
 def info(request, base62_id):

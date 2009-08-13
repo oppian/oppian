@@ -5,7 +5,7 @@ from django.conf import settings
 from django import forms
 from django.core.urlresolvers import reverse
 from django.contrib.sites.models import Site
-
+from django.conf import settings
 
 #from urlweb.shortener.baseconv import base62
 from baseconv import base62
@@ -57,6 +57,6 @@ class Link(models.Model):
         return self.to_base62() + ' : ' + self.url
 
 class LinkSubmitForm(forms.Form):
-    u = forms.URLField(verify_exists=True,
+    u = forms.URLField(verify_exists=not settings.DEBUG,
                        label='URL to be shortened:',
                        )
