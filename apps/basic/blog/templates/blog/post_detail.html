@@ -1,5 +1,5 @@
 {% extends "blog/base_blog.html" %}
-
+{% load inlines %}
 
 {% block title %}{{ object.title }}{% endblock %}
 {% block body_title %}{{ object.title }}{% endblock %}
@@ -21,7 +21,7 @@
   <p class="date">{{ object.publish|date:"j F Y" }}</p>
   
   <div class="body">
-    {{ object.body|render_inlines|markdown:"safe" }}
+    {{ object.body|markdown|render_inlines }}
   </div>
   
   {% tags_for_object object as tag_list %}

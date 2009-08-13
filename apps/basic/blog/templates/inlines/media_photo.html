@@ -1,0 +1,7 @@
+{% if object %}
+<img src="{{ object.photo.url }}" alt="object.photo.title">
+{% else %}
+  {% for object in object_list %}
+<img src="{{ object.photo.url }}" alt="object.photo.title">
+  {% endfor %}
+{% endif %}
