@@ -116,4 +116,7 @@ INSTALLED_APPS = (
     
     # django command extensions http://github.com/django-extensions
     'django_extensions',
+    
+    # about (static pages)
+    'about',
 )

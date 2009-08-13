@@ -3,26 +3,27 @@
 {% block title %}URLs{% endblock %}
 
 {% block body %}
-      <hr/>
+      
+      {% if show_url_form %}
       <div>
-        {% if show_url_form %}
+      	<hr/>
         {% block url_form %}
         <form name="url_form" action="{% url shortener_submit %}" method="get">
           {{ link_form.as_p }}
           <input type="submit" value="Submit" />
         </form>
         {% endblock %}
-        {% endif %}
       </div>
+      {% endif %}
+      
+      {% if show_bookmarklet %}
       <div>
-        {% if show_bookmarklet %}
         {% block bookmarklet %}
         <br/>
         Bookmarklet (drag this to your bookmarks bar):<br/>
         <a href="javascript:(function(){var a=window,b=document,c=encodeURIComponent;d=a.open(&#39;{% url shortener_submit %}?u=&#39;+c(b.location));})();">Shorten with Oppian</a>
         {% endblock %}
-        {% endif %}
       </div>
+      {% endif %}
       {% block extra_body %}{% endblock %}
-    </div>
 {% endblock %}

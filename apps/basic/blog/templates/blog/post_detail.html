@@ -2,13 +2,13 @@
 
 
 {% block title %}{{ object.title }}{% endblock %}
+{% block body_title %}{{ object.title }}{% endblock %}
+
 {% block body_class %}{{ block.super }} post_detail{% endblock %}
 {% block body_id %}post_{{ object.id }}{% endblock %}
 
 {% block body %}
   {% load blog markup comments tagging_tags inlines %}
-
-  <h2>{{ object.title }}</h2>
   <p class="other_posts">
     {% if object.get_previous_by_publish %}
     <a class="previous" href="{{ object.get_previous_post.get_absolute_url }}">&laquo; {{ object.get_previous_post }}</a>
