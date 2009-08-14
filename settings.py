@@ -125,6 +125,9 @@ INSTALLED_APPS = (
     
     # build tools
     'build',
+    
+    # oppian web-site specific code
+    'oppianapp',
 )
 
 # AWS
