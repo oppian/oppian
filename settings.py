@@ -11,6 +11,7 @@ TEMPLATE_DEBUG = DEBUG
 ADMINS = (
     ('Matthew Jacobi', 'matt@oppian.com'),
     ('Steve Hartley', 'steve@oppian.com'),
+    ('Lighthouse', 'ticket+oppian.24019-zcj7zsja@lighthouseapp.com'),
 )
 
 MANAGERS = ADMINS
