@@ -114,7 +114,11 @@ class PostAdmin(admin.ModelAdmin):
                 current_site = Site.objects.get_current()
                 url = "http://%s%s" %(current_site, obj.get_absolute_url())
                 from url_shortener.models import Link
-                link = Link.objects.get(url=url)
+                link = None
+                try:
+                    link = Link.objects.get(url=url)
+                except:
+                    pass
                 if not link:
                     link = Link.objects.create(url=url)
                 short_url = link.short_url()
