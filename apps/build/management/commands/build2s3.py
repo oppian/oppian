@@ -24,7 +24,7 @@ except ImportError:
     raise ImportError, "The boto Python library is not installed."
 
 def get_base_dir():
-    return os.path.split(get_project_root())[0]
+    return get_project_root()
 
 def list_files(dir, file_list):
     """Loops through all files ignore dot and pyc files."""
