@@ -33,8 +33,6 @@ def list_files(dir, file_list):
             continue
         if filename.endswith('.pyc'):
             continue
-        if filename.endswith('.png'):
-            continue
         if filename.endswith('.swf'):
             continue
         if filename.endswith('.bak'):
