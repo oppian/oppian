@@ -24,7 +24,7 @@ class PostAdmin(admin.ModelAdmin):
         if form.cleaned_data['twitter']:
             try:
                 description = obj.tease
-                if len(obj.tease)>0:
+                if len(obj.tease)==0:
                     description = obj.title
                 
                 UpdateStatusFromLocalLink(description, obj.get_absolute_url())

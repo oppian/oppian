@@ -51,9 +51,11 @@ TEMPLATE_CONTEXT_PROCESSORS = TEMPLATE_CONTEXT_PROCESSORS + (
 )
 
 # the twitter email account of the site 
-TWITTER_EMAIL = "twitter@oppian.com"
+TWITTER_EMAIL = "twitter-test@oppian.com"
+#TWITTER_EMAIL = "twitter@oppian.com"
 # the password for the account referenced by the twitter email address above
-TWITTER_PASSWORD = "deteenee52"
+TWITTER_PASSWORD = "metef62" # oppian-test
+#TWITTER_PASSWORD = "deteenee52" # oppian
 # the name of the agent making the requests
 TWITTER_AGENT_STR = "www.oppian.com"
 # how often to check the tweet status
