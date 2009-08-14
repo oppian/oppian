@@ -11,6 +11,7 @@ TEMPLATE_DEBUG = DEBUG
 ADMINS = (
     ('Matthew Jacobi', 'matt@oppian.com'),
     ('Steve Hartley', 'steve@oppian.com'),
+    ('Lighthouse', 'ticket+oppian.24019-zcj7zsja@lighthouseapp.com'),
 )
 
 MANAGERS = ADMINS
@@ -34,6 +35,7 @@ TIME_ZONE = 'Europe/London'
 LANGUAGE_CODE = 'en-GB'
 
 SITE_ID = 1
+SITE_NAME = 'Oppian'
 
 # If you set this to False, Django will make some optimizations so as not
 # to load the internationalization machinery.
