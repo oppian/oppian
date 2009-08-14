@@ -22,4 +22,5 @@ urlpatterns = patterns('',
     url(r'^about/people/$', direct_to_template, {'template':'about/people.html'}, name='about_people'),
     url(r'^about/jobs/$', direct_to_template, {'template':'about/jobs.html'}, name='about_jobs'),
     url(r'^about/contact_us/$', direct_to_template, {'template':'about/contact_us.html'}, name='about_contactus'),
+    url(r'^robots.txt$', direct_to_template, {'template':'about/robots.txt', 'mimetype':'text/plain'}, name='about_robotstxt'),
 )
