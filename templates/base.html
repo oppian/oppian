@@ -56,7 +56,7 @@
 					<div class="twitter">
 						{% load humanize %}
 					    {% if tweet %}
-					    Latest tweet from {{ tweet.date|naturalday }}: {{ tweet.text }}
+					    Latest tweet from {{ tweet.date|naturalday }}: {{ tweet.text|urlize }}
 					    {% endif %}
 					</div>
 					&copy; 2009 Oppian Systems Ltd.
