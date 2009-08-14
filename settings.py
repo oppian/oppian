@@ -9,7 +9,8 @@ DEBUG = True
 TEMPLATE_DEBUG = DEBUG
 
 ADMINS = (
-    # ('Your Name', 'your_email@domain.com'),
+    ('Matthew Jacobi', 'matt@oppian.com'),
+    ('Steve Hartley', 'steve@oppian.com'),
 )
 
 MANAGERS = ADMINS
@@ -133,6 +134,19 @@ AWS_SECRET_ACCESS_KEY = 'ZXslmLM93TYrGA33GFyzIozSSN4VH1wrNXzyjXIt'
 AWS_BUILD_BUCKET_NAME = 'oppian-website-releases'
 BUILD_VERSION = ('0', '2')
 BUILD_APPNAME = 'oppian'
+
+# email
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_HOST_USER = 'www@oppian.com'
+EMAIL_HOST_PASSWORD = '4E6993'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+# default from address for errors
+import socket
+SERVER_EMAIL = '"%s" <www@oppian.com>' % socket.gethostname()
+# default from address for normal email
+DEFAULT_FROM_EMAIL = 'www@oppian.com'
+
 
 # local_settings.py can be used to override environment-specific settings
 # like database and email that differ between development and production.
