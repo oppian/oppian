@@ -34,4 +34,10 @@ if settings.SERVE_MEDIA:
             'document_root': '%s/images/' % settings.MEDIA_ROOT,
         }),
     )
-    
+
+handler500 = 'oppianapp.views.server_error'
+
+if settings.DEBUG:
+    urlpatterns += patterns('',
+        (r'^500/$', handler500),
+    )

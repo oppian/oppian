@@ -55,6 +55,7 @@ SHORTENER_REQUIRES_LOGIN = True
 # add the template context processor for the latest tweet
 TEMPLATE_CONTEXT_PROCESSORS = TEMPLATE_CONTEXT_PROCESSORS + (
     "twitterapp.context_processors.latest_tweet",
+    "oppianapp.context_processors.settings",
 )
 
 # the twitter email account of the site 
