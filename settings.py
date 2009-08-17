@@ -7,6 +7,7 @@ PROJECT_ROOT = os.path.abspath(os.path.dirname(__file__))
 
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
+SEND_BROKEN_LINK_EMAILS = True
 
 ADMINS = (
     ('Matthew Jacobi', 'matt@oppian.com'),
