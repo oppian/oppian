@@ -17,6 +17,9 @@ ADMINS = (
 
 MANAGERS = ADMINS
 
+# only serve media in Django in debug mode as in release mode, it is served by Apache
+SERVE_MEDIA = DEBUG
+
 DATABASE_ENGINE = 'sqlite3'           # 'postgresql_psycopg2', 'postgresql', 'mysql', 'sqlite3' or 'oracle'.
 DATABASE_NAME = os.path.join(PROJECT_ROOT, '.sqlite.db')              # Or path to database file if using sqlite3.
 DATABASE_USER = ''             # Not used with sqlite3.
