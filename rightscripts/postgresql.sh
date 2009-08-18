@@ -20,9 +20,12 @@ if test "$RS_REBOOT" = "true" ; then
 fi
 
 ## reset postgres admin account
-echo "ALTER USER postgres WITH PASSWORD '$DB_ADMIN_PASS';" | sudo -u postgres psql postgres
+sudo -u postgres psql postgres <<EOF
+ALTER USER postgres WITH PASSWORD '$DB_ADMIN_PASS';
+EOF
 
 ## create user + db
-sudo -u postgres createuser -D -A -P $DB_USER
-echo "CREATE ROLE $DB_USER PASSWORD '$DB_PASS' NOSUPERUSER NOCREATEDB NOCREATEROLE INHERIT LOGIN;" | sudo -u postgres psql postgres
+sudo -u postgres psql postgres <<EOF
+CREATE ROLE $DB_USER PASSWORD '$DB_PASS' NOSUPERUSER NOCREATEDB NOCREATEROLE INHERIT LOGIN;
+EOF
 sudo -u postgres createdb -O $DB_USER $DB_NAME
