@@ -159,6 +159,11 @@ SERVER_EMAIL = '"%s" <www@oppian.com>' % socket.gethostname()
 # default from address for normal email
 DEFAULT_FROM_EMAIL = 'www@oppian.com'
 
+# fixture
+FIXTURE_DIRS = (
+    os.path.join(PROJECT_ROOT, "fixtures"),
+)
+
 
 # local_settings.py can be used to override environment-specific settings
 # like database and email that differ between development and production.

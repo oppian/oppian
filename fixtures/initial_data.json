@@ -1,0 +1,70 @@
+[
+    {
+        "pk": 1, 
+        "model": "auth.user", 
+        "fields": {
+            "username": "matt", 
+            "first_name": "Matthew", 
+            "last_name": "Jacobi", 
+            "is_active": true, 
+            "is_superuser": true, 
+            "is_staff": true,  
+            "groups": [], 
+            "user_permissions": [], 
+            "password": "sha1$c3621$bf5b2e57a69e337b876578512d594ee0e1f6d148", 
+            "email": "matt@oppian.com", 
+            "date_joined": "2009-08-18 12:34:53"
+        }
+    }, 
+    {
+        "pk": 2, 
+        "model": "auth.user", 
+        "fields": {
+            "username": "steve", 
+            "first_name": "Stephen", 
+            "last_name": "Hartley", 
+            "is_active": true, 
+            "is_superuser": true, 
+            "is_staff": true,  
+            "groups": [], 
+            "user_permissions": [], 
+            "password": "sha1$c1b8d$a4363102490be9ef5a02c1fa3f78f5d21c5c0563", 
+            "email": "steve@oppian.com", 
+            "date_joined": "2009-08-18 12:34:53"
+        }
+    }, 
+    {
+        "pk": 3, 
+        "model": "auth.user", 
+        "fields": {
+            "username": "neil", 
+            "first_name": "Neil", 
+            "last_name": "Davis", 
+            "is_active": true, 
+            "is_superuser": true, 
+            "is_staff": true,  
+            "groups": [], 
+            "user_permissions": [], 
+            "password": "sha1$5ebf2$f4ab7b4819fa7ecb8b599a713f6f9ea362128639", 
+            "email": "neil@oppian.com", 
+            "date_joined": "2009-08-18 12:34:53"
+        }
+    }, 
+    {
+        "pk": 4, 
+        "model": "auth.user", 
+        "fields": {
+            "username": "mal", 
+            "first_name": "Mal", 
+            "last_name": "Minhas", 
+            "is_active": true, 
+            "is_superuser": true, 
+            "is_staff": true,  
+            "groups": [], 
+            "user_permissions": [], 
+            "password": "sha1$46612$0cf241076a8a7f7ccb45fb1d3f787361ecc089de", 
+            "email": "mal@oppian.com", 
+            "date_joined": "2009-08-18 12:34:53"
+        }
+    }
+]
