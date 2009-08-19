@@ -12,6 +12,20 @@ class CategoryAdmin(admin.ModelAdmin):
 admin.site.register(Category, CategoryAdmin)
 
 
+def SavePost(post, sendTweet):
+    post.save()
+    if sendTweet:
+        try:
+            description = post.tease
+            if len(post.tease)==0:
+                description = post.title
+            
+            UpdateStatusFromLocalLink(description, post.get_absolute_url())
+            
+        except Exception, e:
+            pass
+
+    
 class PostAdmin(admin.ModelAdmin):
     list_display  = ('title', 'publish', 'status',)
     list_filter   = ('publish', 'categories', 'status')
@@ -20,16 +34,6 @@ class PostAdmin(admin.ModelAdmin):
     form = PostAdminForm
     
     def save_model(self, request, obj, form, change):
-        obj.save()
-        if form.cleaned_data['twitter']:
-            try:
-                description = obj.tease
-                if len(obj.tease)==0:
-                    description = obj.title
-                
-                UpdateStatusFromLocalLink(description, obj.get_absolute_url())
-                
-            except Exception, e:
-                pass
+        SavePost(obj, form.cleaned_data['twitter'])
 
 admin.site.register(Post, PostAdmin)
