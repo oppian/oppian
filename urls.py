@@ -23,7 +23,7 @@ urlpatterns = patterns('',
     (r'^o/', include('url_shortener.urls')),
     
     # last, the about pages and home page etc
-    (r'^', include('about.urls')),
+    (r'^', include('oppianapp.urls')),
 )
 
 if settings.SERVE_MEDIA:
