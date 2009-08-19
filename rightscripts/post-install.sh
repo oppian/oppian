@@ -1,7 +1,5 @@
 #!/bin/bash -e
 #
-# Copyright (c) 2007-2009 RightScale, Inc, All Rights Reserved Worldwide.
-#
 # Parameters to retrieve the tarball with the source
 # $DEPLOY_DIR  -- Installed directory
 # $HOSTNAME    -- Hostname of server

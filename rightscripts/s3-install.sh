@@ -1,8 +1,7 @@
 #!/bin/bash -e
 #
-# Copyright (c) 2007-2009 RightScale, Inc, All Rights Reserved Worldwide.
-#
 # Parameters to retrieve the tarball with the source
+#
 # $APPLICATION_CODE_BUCKET  -- Bucket where the tarball resides
 # $APPLICATION_CODE_PACKAGE -- S3 Key of the tarball  (gzipped)
 #
