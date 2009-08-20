@@ -66,6 +66,9 @@ def post_detail(request, slug, year, month, day, **kwargs):
         date_field = 'publish',
         slug = slug,
         queryset = Post.objects.published(),
+        extra_context = {
+            'request': request,
+        },
         **kwargs
     )
 post_detail.__doc__ = date_based.object_detail.__doc__
