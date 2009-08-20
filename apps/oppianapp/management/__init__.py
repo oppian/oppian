@@ -33,7 +33,7 @@ if "oppianapp" in settings.INSTALLED_APPS:
             photos = Photo.objects.filter(photo='images/OppianO-96x82.png')
             if len(photos)==1:
                 blog_image_code = '<inline type="media.photo" id="%s" class="small_left" />' % photos[0].id
-            body = '%sHello all' % blog_image_code
+            body = "%s#Hello all and welcome to Oppian\n\nWe've just launched up our new web site and encourage you to look around.\n\n" % blog_image_code
             
             blogs = blog.Post.objects.filter(title=title)
             if len(blogs)==0:
