@@ -8,11 +8,21 @@
 
 {% block body %}
   <div class="post_list">
+  	{% load comments %}
     {% for post in object_list %}
-    <div>
-      <h3 class="title"><a href="{{ post.get_absolute_url }}">{{ post.title }}</a></h3>
-      <p class="date">{{ post.publish|date:"Y F d" }}</p>
-      <p class="tease">{{ post.tease }}</p>
+    {% get_comment_count for post as comment_count %}
+    <div class="post">
+      <h3><a href="{{ post.get_absolute_url }}">{{ post.title }}</a></h3>
+      <ul class="post_info">
+      	<li class="date">
+      		Posted by {{ post.author }}
+      		on {{ post.publish|date:"Y.m.d" }}
+      	</li>
+	  	<li class="comments">
+	  		{{ comment_count }} comment{{ comment_count|pluralize:',s' }}
+	  	</li>
+      </ul>
+      <p>{{ post.tease }}</p>
     </div>
     {% endfor %}
   </div>
