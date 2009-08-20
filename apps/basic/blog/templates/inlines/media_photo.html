@@ -1,7 +1,7 @@
 {% if object %}
-<img src="{{ object.photo.url }}" alt="object.photo.title">
+    {% include "inlines/media_photo_object.html" %}
 {% else %}
   {% for object in object_list %}
-<img src="{{ object.photo.url }}" alt="object.photo.title">
+    {% include "inlines/media_photo_object.html" %}
   {% endfor %}
 {% endif %}
