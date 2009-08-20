@@ -1,0 +1,30 @@
+{% load smart_if %}
+
+{% if object %}
+
+<img src="{{ object.photo.url }}" alt="{{ object.photo.title }}"
+
+    style="MARGIN-TOP: 2px; MARGIN-BOTTOM: 2px; MARGIN-RIGHT: 2px; MARGIN-LEFT: 2px"
+
+    {% if "small" in class %} 
+        width="48"
+    {% else %}
+        {% if "medium" in class %} 
+            width="96"
+        {% else %}
+            {% if "large" in class %} 
+                width="192"
+            {% endif %}
+        {% endif %}
+    {% endif %}
+    
+    {% if "left" in class %} 
+        align ="left"
+    {% else %}
+        {% if "right" in class %} 
+            align ="right"
+        {% endif %}
+    {% endif %}
+>
+
+{% endif %}
