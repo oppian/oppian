@@ -133,13 +133,10 @@ INSTALLED_APPS = (
     # django command extensions http://github.com/django-extensions
     'django_extensions',
     
-    # about (static pages)
-    'about',
-    
     # build tools
     'build',
     
-    # oppian web-site specific code
+    # oppian web-site specific code including static pages
     'oppianapp',
 )
 
