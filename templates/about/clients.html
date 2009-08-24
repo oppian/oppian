@@ -1,13 +1,30 @@
 {% extends 'base.html' %}
 
 {% block title %}Clients{% endblock %}
-{% block body_title %}Clients we work with{% endblock %}
+{% block body_title %}Clients we have worked with{% endblock %}
 {% block tab_id %}clients{% endblock %}
 
 {% block body %}
-<ul>
-	<li>Company1</li>
-	<li>Company2</li>
-	<li>Company3</li>
-</ul>
+<p>We can't tell you about all our clients, but we can give you a flavour of the work we've done and the people we've worked with.</p>
+
+<div class="yui-g" style="position:relative;">
+    <div class="yui-u first" style="position:absolute; top:50%; height:113px; margin-top:-75px;"><h1><a href="http://www.livetalkback.com"><img src="{{ MEDIA_URL }}images/partners/livetalkback_logo.png" alt="Greys Mead Live Talkback"></a></h1></div>
+    <div class="yui-u"><h1><a href="http://www.livetalkback.com"><img src="{{ MEDIA_URL }}images/partners/LiveTalkBackStack.png" alt="Greys Mead Live Talkback Screenshots"></a></h1></div>
+</div>
+
+<p>Live Talkback is a realtime voting service for audience participation and feedback.</p>
+
+<p>Oppian designed the end-to-end system architecture as well as implementing the server back-end and initial versions of the iPhone client and administation console.  To achieve this, we used Django and the iPhone SDK along with Amazon EC2 and RightScale services.</p>
+
+<h1>Partners</h1>
+<p>We've also partnered with these groups</p>
+
+<div class="yui-gb">
+    <div class="yui-u first"><h1><a href="http://goodguysmedia.com"><img src="{{ MEDIA_URL }}images/partners/GoodGuysMedia-logo.png" alt="Good Guys Media" style="background-color: rgb(140,199,63);"></a></h1></div>
+    <div class="yui-u"><h1><a href="http://transmissionbegins.com"><img src="{{ MEDIA_URL }}images/partners/TransmissionBegins-logo.png" alt="Transmission Begins"></a></h1></div>
+    <div class="yui-u"><h1><a href="http://tomsawyereffect.wordpress.com"><img src="{{ MEDIA_URL }}images/partners/TomSawyerEffect-logo.png" alt="Tom Sawyer Effect"></a></h1></div>
+    <div class="yui-u first"><h1><a href="http://cirrusmobile.com/"><img src="{{ MEDIA_URL }}images/partners/CirrusMobile-logo.png" alt="Cirrus Mobile"></a></h1></div>
+    <div class="yui-u"><h1><a href="http://www.slashdesign.com/"><img src="{{ MEDIA_URL }}images/partners/SlashDesign-logo.png" alt="Slash Design"></a></h1></div>
+</div>
+
 {% endblock %}
