@@ -1,0 +1,24 @@
+		    {% load comments %}
+		    <div id="comment_form">
+		    	<h4>Add Comment</h4>
+				<form action="{% comment_form_target %}" method="POST">
+				  <input type="hidden" name="next" value="{{ request.path }}"/>
+				  {% for field in form.hidden_fields %}
+				    {{ field }}
+				  {% endfor %}
+				  <table>
+					  {% for field in form.visible_fields %}
+					  <tr {% ifequal field.html_name 'honeypot' %}style="display: none;"{% endifequal %}>
+					  	<td>{{ field.label_tag }}</td>
+					  	<td>{{ field }}</td>
+					  </tr>
+					  {% endfor %}
+					  <tr>
+					    <td></td>
+					    <td>
+					      <input type="submit" name="post" class="submit-post" value="Post">
+					    </td>
+					  </tr>
+				  </table>
+				</form>
+		    </div>

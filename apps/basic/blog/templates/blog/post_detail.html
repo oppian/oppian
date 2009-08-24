@@ -7,9 +7,7 @@
 {% block body_class %}{{ block.super }} post_detail{% endblock %}
 {% block body_id %}post_{{ object.id }}{% endblock %}
 
-{% block body %}
-  {% load blog markup comments tagging_tags inlines %}
-  <div class="post">
+{% block subnav %}
 	  <p class="other_posts">
 	    {% if object.get_previous_by_publish %}
 	    <a class="previous" href="{{ object.get_previous_post.get_absolute_url }}">&laquo; {{ object.get_previous_post }}</a>
@@ -18,7 +16,11 @@
 	    | <a class="next" href="{{ object.get_next_post.get_absolute_url }}">{{ object.get_next_post }} &raquo;</a> 
 	    {% endif %}
 	  </p>
-	  	
+{% endblock %}
+
+{% block body %}
+  {% load blog markup comments tagging_tags inlines %}
+  <div class="post">	  	
 	  {% get_comment_count for object as comment_count %}
 	  <ul class="post_info">
 	  	<li class="date">
