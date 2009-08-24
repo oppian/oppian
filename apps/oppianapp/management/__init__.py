@@ -35,21 +35,24 @@ if "oppianapp" in settings.INSTALLED_APPS:
             id_logo = 0
             photos = Photo.objects.filter(photo='images/OppianO-96x82.png')
             if len(photos)==1:
-                id_o = photos[0].id
-            photos = Photo.objects.filter(photo='images/logo.png')
-            if len(photos)==1:
-                id_logo = photos[0].id
-                
-            body = """<inline type="media.photo" id="%(id_o)d" class="medium_right" />
-<inline type="media.photo" id="%(id_o)d" class="medium_left" />
-<inline type="media.photo" id="%(id_logo)d" class="small_left" />
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus a nibh nisl, at laoreet nulla. Sed libero tortor, semper at laoreet malesuada, fringilla a erat. Aliquam placerat orci eget neque tincidunt sagittis. Sed metus tellus, scelerisque in dictum sed, porta ac erat. Phasellus fermentum mattis turpis, non pretium augue sollicitudin vel. Nulla in arcu sem, a accumsan massa. Phasellus in arcu nec enim facilisis sodales. Cras sapien ante, eleifend et aliquet eget, lobortis et urna. Nam nec faucibus felis. Aenean egestas, erat non consectetur consequat, nisi lectus blandit augue, nec consectetur turpis nulla id justo. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Ut tristique congue elit eu porta. In vitae dignissim arcu. Donec vitae elit non turpis viverra consequat. Proin dignissim dapibus libero, vel consequat enim convallis sit amet.
+                id_o = photos[0].id                
+            body = """<inline type="media.photo" id="3" class="small_left" />
 
-Vestibulum venenatis ligula nec libero dapibus tempus. Proin at feugiat justo. Donec interdum dictum egestas. Suspendisse augue ipsum, dictum vel mollis ac, consequat ac dolor. Sed non magna ac odio semper semper eu id neque. Sed in lectus nisl. Proin a pharetra libero. Etiam nunc metus, aliquam a ultricies a, varius ut nisl. Nunc eu magna at enim fringilla sollicitudin. Pellentesque in tortor sit amet sem suscipit pharetra. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Pellentesque ullamcorper, mi nec luctus vestibulum, eros erat condimentum ante, non euismod nunc lorem sit amet urna. Suspendisse id augue at ipsum commodo congue sit amet et ipsum. Aliquam tristique metus in felis imperdiet pulvinar. Ut lobortis risus nec quam imperdiet lacinia ornare turpis euismod.
+Welcome to the new website for **Oppian Systems Ltd**.  Here you'll be able to find out all about us, what we do and how we do it.  Over the coming weeks we'll be expanding on these modest beginnings to add more open source software, how-to guides and product and project details, so do check back.  Our updates will also be [tweeted](http://twitter.com/oppian) so you shouldn't miss a thing.
 
-Ut euismod viverra iaculis. Etiam congue arcu a arcu accumsan porta. Sed eget aliquam turpis. Sed pretium lobortis massa a convallis. Nam augue felis, imperdiet a consectetur non, laoreet a tellus. Nunc metus lectus, porta eu lacinia nec, vehicula id orci. Vivamus blandit cursus ante. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Integer laoreet luctus feugiat. Pellentesque nec tortor nec diam aliquet bibendum. Aliquam vel lacus placerat risus pretium sodales vel a nibh. Fusce vel libero et tellus eleifend facilisis. Ut placerat sapien eget lectus ultrices non tristique ante viverra. Pellentesque vel pulvinar neque. 
-<inline type="media.photo" ids="%(id_o)d,%(id_logo)d" class="full" />
-""" % {'id_o': id_o, "id_logo": id_logo}
+# About us
+
+We are a software consultancy with members who have a long history of end-to-end systems including mobile devices, desktops and servers.  We're also great believers in cloud technologies which have helped us create and test massively scaling web solutions.  [Meet the team](/about/people/) or read more [about us](/about/).
+
+# Open Source
+
+We're also comitted to the Open Source community and will be releasing new frameworks and applications into open source in our [Labs](/labs/) area.  We'll also be producing [blog posts](/blog/) of our investigations, best-practices and gotchas to help everyone.
+Look out for upcoming posts involving Django utilities and iPhone development.
+
+# Contact us
+
+<inline type="media.photo" id="3" class="small_right" />If you'd like to make use of our services or have ideas for investigations then you can email us at [info@oppian.com](mailto:info@oppian.com) or see the [Contact Us](/about/contact_us/) section for our full contact details
+""" % {'id_o': id_o}
             
             blogs = blog.Post.objects.filter(title=title)
             if len(blogs)==0:
