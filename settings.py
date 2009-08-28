@@ -65,6 +65,7 @@ TEMPLATE_CONTEXT_PROCESSORS = TEMPLATE_CONTEXT_PROCESSORS + (
 
 # the twitter email account of the site 
 TWITTER_EMAIL = "twitter-test@oppian.com"
+TWITTER_USER  = "oppian"
 #TWITTER_EMAIL = "twitter@oppian.com"
 # the password for the account referenced by the twitter email address above
 TWITTER_PASSWORD = "metef62" # oppian-test
