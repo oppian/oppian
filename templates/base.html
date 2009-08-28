@@ -16,17 +16,17 @@
 			<div id="header_inner" class="fixed">
 		
 				<div id="logo">
-					<h1><span><a href="{% url home %}"><img src="{{ MEDIA_URL }}images/logo2.png" alt="Oppian"></a></span></h1>
+					<h1><span><a href="{% url home %}"><img src="{{ MEDIA_URL }}images/logo.png" alt="Oppian"></a></span></h1>
 					<h2>Act quickly, think slowly.</h2>
 				</div>
 				
 				<div id="menu" class="tab-{% block tab_id %}home{% endblock %}">
 					<ul>
-						<li><a id='tab-home' href="{% url home %}">Home</a></li>
-						<li><a id='tab-services' href="{% url services %}">Services</a></li>
-						<li><a id='tab-clients' href="{% url clients %}">Clients</a></li>
-						<li><a id='tab-about' href="{% url about %}">About</a></li>
-						<li><a id='tab-blog' href="{% url blog_index %}">Blog</a></li>
+						<li><a id='tab-home' class="hover" href="{% url home %}">Home</a></li>
+						<li><a id='tab-services' class="hover" href="{% url services %}">Services</a></li>
+						<li><a id='tab-clients' class="hover" href="{% url clients %}">Clients</a></li>
+						<li><a id='tab-about' class="hover" href="{% url about %}">About</a></li>
+						<li><a id='tab-blog' class="hover" href="{% url blog_index %}">Blog</a></li>
 					</ul>
 				</div>
 			</div>
@@ -62,5 +62,17 @@
 				Design by <a href="http://www.nodethirtythree.com/">NodeThirtyThree Design</a>.
 			{% endblock %}
 		</div>
+		<script type="text/javascript">
+			$(document).ready(function(){
+				$('.hover').hover(
+					function() {
+						$(this).addClass('active');
+					},
+					function() {
+						$(this).removeClass('active');
+					}
+				);
+			});
+		</script>
 	</body>
 </html>

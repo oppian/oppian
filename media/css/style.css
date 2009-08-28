@@ -55,8 +55,8 @@ clear: both;
 
 img
 {
-padding: 3px;
-border: solid 1px #e1e1e1;
+padding: 0px;
+border: 0;
 }
 
 img.floatTL
@@ -166,9 +166,9 @@ float: left;
 margin-left: 0.5em;
 display: block;
 padding: 1.1em 1.4em 1.0em 1.4em;
-background: #fff url('images/n4.gif') repeat-x;
-border: solid 1px #fff;
-color: #616161;
+background: #CA2F2F url('images/n3.gif') repeat-x;
+border: solid 1px #A94B4B;
+color: #fff;
 font-weight: bold;
 font-size: 1.0em;
 text-transform: lowercase;
@@ -182,9 +182,9 @@ text-decoration: none;
 #menu.tab-about li #tab-about,
 #menu.tab-blog li #tab-blog
 {
-background: #CA2F2F url('images/n3.gif') repeat-x;
-color: #fff;
-border: solid 1px #A94B4B;
+background: #fff url('images/n4.gif') repeat-x;
+color: #616161;
+border: solid 1px #fff;
 }
 
 /* Main */
