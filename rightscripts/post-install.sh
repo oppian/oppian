@@ -1,8 +1,12 @@
 #!/bin/bash -e
 #
-# Parameters to retrieve the tarball with the source
+# Some post django install tasks, like syncdb
+#
 # $DEPLOY_DIR  -- Installed directory
 # $HOSTNAME    -- Hostname of server
+# $APP_OWNER   -- User to chmod the files in deploy dir
+#
+# pkgs: flip
 
 #
 # Test for a reboot,  if this is a reboot just skip this script.
@@ -16,11 +20,17 @@ fi
 ## set hostname
 hostname $HOSTNAME
 
-## syncdb
+## move to deploy_dir
 cd $DEPLOY_DIR
-chmod +x manage.py
+
+## move settings_production.py to settings_local.py
+mv -f settings_production.py settings_local.py
+
+## fix newlines
 flip -u manage.py
-./manage.py syncdb --noinput
+
+## syncdb
+python manage.py syncdb --noinput
 
 ## chown
 echo "Changing ownership to $APP_OWNER..."

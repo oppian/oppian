@@ -173,8 +173,4 @@ FIXTURE_DIRS = (
 try:
     from settings_local import *
 except ImportError:
-    try: 
-        # no settings_local, then use settings_production
-        from settings_production import *
-    except ImportError:
-        pass
+    pass
