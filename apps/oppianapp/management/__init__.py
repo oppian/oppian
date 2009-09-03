@@ -30,13 +30,12 @@ if "oppianapp" in settings.INSTALLED_APPS:
                 
             title = "Welcome to Oppian"
             
-            
             id_o = 0
             id_logo = 0
             photos = Photo.objects.filter(photo='images/OppianO-96x82.png')
             if len(photos)==1:
                 id_o = photos[0].id                
-            body = """<inline type="media.photo" id="3" class="small_left" />
+            body = """<inline type="media.photo" id="%(id_o)d" class="small_left" />
 
 Welcome to the new website for **Oppian Systems Ltd**.  Here you'll be able to find out all about us, what we do and how we do it.  Over the coming weeks we'll be expanding on these modest beginnings to add more open source software, how-to guides and product and project details, so do check back.  Our updates will also be [tweeted](http://twitter.com/oppian) so you shouldn't miss a thing.
 
@@ -51,7 +50,7 @@ Look out for upcoming posts involving Django utilities and iPhone development.
 
 # Contact us
 
-<inline type="media.photo" id="3" class="small_right" />If you'd like to make use of our services or have ideas for investigations then you can email us at [info@oppian.com](mailto:info@oppian.com) or see the [Contact Us](/about/contact_us/) section for our full contact details
+<inline type="media.photo" id="%(id_o)d" class="small_right" />If you'd like to make use of our services or have ideas for investigations then you can email us at [info@oppian.com](mailto:info@oppian.com) or see the [Contact Us](/about/contact_us/) section for our full contact details
 """ % {'id_o': id_o}
             
             blogs = blog.Post.objects.filter(title=title)

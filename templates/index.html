@@ -3,5 +3,32 @@
 {% block title %}Home{% endblock %}
 
 {% block body %}
-Welcome to Oppian!
+<p style="text-align:center;margin-top:0px;margin-bottom:0px;padding:0px;">
+    {% include 'OppianExplosion.html' %}
+</p>
+
+<div class="yui-gb" style="margin-top:40px;">
+    <div class="yui-u first">
+        <h1 style="text-align:center">
+            <a href="{% url services %}"><img style="border:1px solid black;display: block;margin-left: auto; margin-right: auto" src="{{ MEDIA_URL }}images/services-logo.png" alt="Services"></a>
+            Services
+        </h1>
+        <p style="font-size:50%;text-align: center;">Image by <a href="{% url about_people %}#steve">Stephen Hartley</a></p>
+    </div>
+    <div class="yui-u">
+        <h1 style="text-align:center">
+            <a href="{% url about_people %}"><img style="border:1px solid black;display: block;margin-left: auto; margin-right: auto" src="{{ MEDIA_URL }}images/people-logo.png" alt="Oppianites"></a>
+            People
+        </h1>
+        <p style="font-size:50%;text-align: center;">Photo by <a href="http://www.flickr.com/photos/acaben/">acaben</a></p>
+    </div>
+    <div class="yui-u">
+        <h1 style="text-align:center">
+            <a href="/blog/"><img style="border:1px solid black;display: block;margin-left: auto; margin-right: auto" src="{{ MEDIA_URL }}images/blog-logo.png" alt="Blog"></a>
+            Blog
+        </h1>
+        <p style="font-size:50%;text-align: center;">Photo by <a href="http://www.flickr.com/photos/rachaelvoorhees/">Rachael Voorhees</a></p>
+    </div>
+</div>
+
 {% endblock %}
