@@ -24,86 +24,47 @@
 	<body class="thrColElsHdr" id="{% block body_id %}base{% endblock %}">
         <div id="container">
 
-		<div id="header">
-		
-		    {% block header %}
-		
-			    <div class="header_logo">
-		            <img src="{{ MEDIA_URL }}images/core/logo.png" width="270" height="81" class="header_logoImg" alt="Oppian logo" title="Oppian logo" />
-		        </div>
-		        
-				<div id="menu" class="header_nav">
-				    <ul class="topnav">
-		
-		            	<li class="topnav">
-		            	<div class="navonLHS"></div>
-		                <div class="navonMID"><h3 class="navonText"><a href="{% url home %}" target="_self" class="navOn" title="Home">Home</a></h3></div>
-		                <div class="navonRHS"></div>
-		           		</li>
-		                
-		                <li class="topnav">
-		            	<div class="navoffLHS"></div>
-		                <div class="navoffMID"><h3 class="navoffText"><a href="{% url about %}" target="_self" class="navOff" title="About">About</a></h3></div>
-		                <div class="navoffRHS"></div>
-		           		</li>
-		                
-		                <li class="topnav">
-		            	<div class="navoffLHS"></div>
-		                <div class="navoffMID"><h3 class="navoffText"><a href="{% url services %}" target="_self" class="navOff" title="Services">Services</a></h3></div>
-		                <div class="navoffRHS"></div>
-		           		</li>
-		                
-		                <li class="topnav">
-		            	<div class="navoffLHS"></div>
-		                <div class="navoffMID"><h3 class="navoffText"><a href="{% url clients %}" target="_self" class="navOff" title="Clients">Clients</a></h3></div>
-		                <div class="navoffRHS"></div>
-		           		</li>
-		                
-		                <li class="topnav">
-		            	<div class="navoffLHS"></div>
-		                <div class="navoffMID"><h3 class="navoffText"><a href="{% url labs %}" target="_self" class="navOff" title="Labs">Labs</a></h3></div>
-		                <div class="navoffRHS"></div>
-		           		</li>
-		                
-		                <li class="topnav">
-		            	<div class="navoffLHS"></div>
-		                <div class="navoffMID"><h3 class="navoffText"><a href="{% url blog %}" target="_self" class="navOff" title="Blog">Blog</a></h3></div>
-		                <div class="navoffRHS"></div>
-		           		</li>
-		                
-		                <li class="topnav">
-		            	<div class="navoffLHS"></div>
-		                <div class="navoffMID"><h3 class="navoffText"><a href="{% url contact %}" target="_self" class="navOff" title="Contact">Contact</a></h3></div>
-		                <div class="navoffRHS"></div>
-		           		</li>
-		
-					</ul>
-					
-		        </div>
-		    {% endblock %}
-		</div>
-			
-		<div id="main" class="contentDIV">
-            {% block body %}
-            {% endblock %}
-        </div>
-        
-        <div class="footerDIV">
-            <ul class="footernvav">
-                <li class="footernvav"><a href="{% url home %}" target="_self" title="Home">Home</a><div class="listDivider"></div></li>
-                <li class="footernvav"><a href="{% url about %}" target="_self" title="About">About</a><div class="listDivider"></div></li>
-                <li class="footernvav"><a href="{% url services %}" target="_self" title="Services">Services</a><div class="listDivider"></div></li>
-                <li class="footernvav"><a href="{% url clients %}" target="_self" title="Clients">Clients</a><div class="listDivider"></div></li>
-                <li class="footernvav"><a href="{% url labs %}" target="_self" title="Labs">Labs</a><div class="listDivider"></div></li>
-                <li class="footernvav"><a href="{% url blog %}" target="_blank" title="Blog">Blog</a><div class="listDivider"></div></li>
-                <li class="footernvav"><a href="{% url contact %}" target="_self" title="Contact">Contact</a></li>
-		    </ul>
-            <br /><br />
-	        <p class="footerCredit">Copyright © 2009 Oppian Systems Ltd. All rights reserved.</p>
-			<p class="footerCredit">Design by <a href="http://www.jonwallacedesign.com" target="_blank" title="Design by jonwallacedesign.com">jonwallacedesign.com</a></p>	    
-	    	<br />
-	    	<div class="footerBottomSpacer"></div>
-	    </div>
+			<div id="header">
+			    {% block header %}
+				    <div class="header_logo">
+			            <img src="{{ MEDIA_URL }}images/core/logo.png" width="270" height="81" class="header_logoImg" alt="Oppian logo" title="Oppian logo" />
+			        </div>
+			        <div id="menu" class="tab-{% block tab_id %}home{% endblock %}">
+						<ul class ="topnav">
+							<li><div id='tab-home-left'></div><a id='tab-home'  href="{% url home %}">Home</a><div id='tab-home-right'></div>
+							<li><div id='tab-about-left'></div><a id='tab-about'  href="{% url about %}">About</a><div id='tab-about-right'></div>
+							<li><div id='tab-services-left'></div><a id='tab-services'  href="{% url services %}">Services</a><div id='tab-services-right'></div>
+							<li><div id='tab-clients-left'></div><a id='tab-clients'  href="{% url clients %}">Clients</a><div id='tab-clients-right'></div>
+							<li><div id='tab-labs-left'></div><a id='tab-labs'  href="{% url labs %}">Labs</a><div id='tab-labs-right'></div>
+							<li><div id='tab-blog-left'></div><a id='tab-blog'  href="{% url blog %}">Blog</a><div id='tab-blog-right'></div>
+							<li><div id='tab-contact-left'></div><a id='tab-contact'  href="{% url contact %}">  Contact</a><div id='tab-contact-right'></div>
+							</li>
+						</ul>
+					</div>
+			    {% endblock %}
+			</div>
+				
+			<div id="main" class="contentDIV">
+	            {% block body %}
+	            {% endblock %}
+	        </div>
+	        
+	        <div class="footerDIV">
+	            <ul class="footernvav">
+	                <li class="footernvav"><a href="{% url home %}" target="_self" title="Home">Home</a><div class="listDivider"></div></li>
+	                <li class="footernvav"><a href="{% url about %}" target="_self" title="About">About</a><div class="listDivider"></div></li>
+	                <li class="footernvav"><a href="{% url services %}" target="_self" title="Services">Services</a><div class="listDivider"></div></li>
+	                <li class="footernvav"><a href="{% url clients %}" target="_self" title="Clients">Clients</a><div class="listDivider"></div></li>
+	                <li class="footernvav"><a href="{% url labs %}" target="_self" title="Labs">Labs</a><div class="listDivider"></div></li>
+	                <li class="footernvav"><a href="{% url blog %}" target="_blank" title="Blog">Blog</a><div class="listDivider"></div></li>
+	                <li class="footernvav"><a href="{% url contact %}" target="_self" title="Contact">Contact</a></li>
+			    </ul>
+	            <br /><br />
+		        <p class="footerCredit">Copyright © 2009 Oppian Systems Ltd. All rights reserved.</p>
+				<p class="footerCredit">Design by <a href="http://www.jonwallacedesign.com" target="_blank" title="Design by jonwallacedesign.com">jonwallacedesign.com</a></p>	    
+		    	<br />
+		    	<div class="footerBottomSpacer"></div>
+		    </div>
 	    </div>
 	</body>
 </html>
