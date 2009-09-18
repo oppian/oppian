@@ -30,20 +30,20 @@
 			            <img src="{{ MEDIA_URL }}images/core/logo.png" width="270" height="81" class="header_logoImg" alt="Oppian logo" title="Oppian logo" />
 			        </div>
 			        <div id="menu" class="tab-{% block tab_id %}home{% endblock %}">
-						<ul class ="topnav">
-							<li><div id='tab-home-left'></div><a id='tab-home'  href="{% url home %}">Home</a><div id='tab-home-right'></div>
-							<li><div id='tab-about-left'></div><a id='tab-about'  href="{% url about %}">About</a><div id='tab-about-right'></div>
-							<li><div id='tab-services-left'></div><a id='tab-services'  href="{% url services %}">Services</a><div id='tab-services-right'></div>
-							<li><div id='tab-clients-left'></div><a id='tab-clients'  href="{% url clients %}">Clients</a><div id='tab-clients-right'></div>
-							<li><div id='tab-labs-left'></div><a id='tab-labs'  href="{% url labs %}">Labs</a><div id='tab-labs-right'></div>
-							<li><div id='tab-blog-left'></div><a id='tab-blog'  href="{% url blog %}">Blog</a><div id='tab-blog-right'></div>
-							<li><div id='tab-contact-left'></div><a id='tab-contact'  href="{% url contact %}">  Contact</a><div id='tab-contact-right'></div>
+						<ul>
+							<li><div id='tab-home-left'></div><div><a id='tab-home'  href="{% url home %}">Home</a></div><div id='tab-home-right'></div>
+							<li><div id='tab-about-left'></div><div><a id='tab-about'  href="{% url about %}">About</a></div><div id='tab-about-right'></div>
+							<li><div id='tab-services-left'></div><div><a id='tab-services'  href="{% url services %}">Services</a></div><div id='tab-services-right'></div>
+							<li><div id='tab-clients-left'></div><div><a id='tab-clients'  href="{% url clients %}">Clients</a></div><div id='tab-clients-right'></div>
+							<li><div id='tab-labs-left'></div><div><a id='tab-labs'  href="{% url labs %}">Labs</a></div><div id='tab-labs-right'></div>
+							<li><div id='tab-blog-left'></div><div><a id='tab-blog'  href="{% url blog %}">Blog</a></div><div id='tab-blog-right'></div>
+							<li><div id='tab-contact-left'></div><div><a id='tab-contact'  href="{% url contact %}">  Contact</a></div><div id='tab-contact-right'></div>
 							</li>
 						</ul>
 					</div>
 			    {% endblock %}
 			</div>
-				
+
 			<div id="main" class="contentDIV">
 	            {% block body %}
 	            {% endblock %}

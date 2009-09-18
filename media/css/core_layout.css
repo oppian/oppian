@@ -74,198 +74,81 @@ hr {display:none}
 	background-repeat: no-repeat;
 }
 
+
+#menu li,
 #menu ul
 {
-list-style: none;
-padding:0;
-margin:0;
-display:inline;
-}
-
-#menu ul li
-{
-list-style: none;
-padding:0;
-margin:0;
-display:inline;
-}
-
-#menu li
-{
-float: left;
-padding:0;
-margin:0;
-display:inline;
+	padding:0;
+	margin:0;
+	float: left;
+	display:inline;
 }
 
 #menu li a
 {
-	padding: 0;
-	margin: 0;
-	text-decoration: none;
 	width: auto;
 	height: 170px;
-	float: left;
-    font-family: Tahoma, Arial, Helvetica, sans-serif;
 	color: #fff;
 	font-size: 1.1em;
 	line-height: 1.3em;
 	font-weight: bold;
 	padding-top: 80px;
-	width: auto;
-	height: 170px;
 	float: left;
 }
 
-#menu li h3
-{
-	float: left;
-	padding:0;
-	margin:0;
-	display:inline;
-	padding: 0;
-	margin: 0;
-	text-decoration: none;
-	width: auto;
-	float: left;
-    font-family: Tahoma, Arial, Helvetica, sans-serif;
-	color: #fff;
-	font-size: 1.1em;
-	line-height: 1.3em;
-	font-weight: bold;
-	padding-top: 80px;
-	width: auto;
-	float: left;
-}
-
-
-#menu li h3 a:hover
-{
+#menu li a:hover {
 	border: 0;
 	color: #FF6;
 }
 
-#menu div
+#menu li div 
+{
+	height: 170px;
+	float: left;
+}
+#menu li div:first-of-type,
+#menu li div:last-of-type 
 {
     width: 18px;
-	height: 170px;
-	float: left;
 }
+
 
 #menu li a.active,
-#menu.tab-home li #tab-home,
-#menu.tab-about li #tab-about,
-#menu.tab-services li #tab-services,
-#menu.tab-clients li #tab-clients,
-#menu.tab-labs li #tab-labs,
-#menu.tab-blog li #tab-blog,
-#menu.tab-contact li #tab-contact
+#menu.tab-home #tab-home,
+#menu.tab-about #tab-about,
+#menu.tab-services #tab-services,
+#menu.tab-clients #tab-clients,
+#menu.tab-labs #tab-labs,
+#menu.tab-blog #tab-blog,
+#menu.tab-contact #tab-contact
 {
-	width: auto;
-	height: 170px;
 	background-image: url(../images/core/navitem_ON_mid.png);
-	float: left;
-	font-family: Tahoma, Arial, Helvetica, sans-serif;
 	color: #a10b12;
-	font-size: 1.1em;
-	line-height: 1.3em;
-	font-weight: bold;
-	padding-top: 80px;
 }
 
-#menu.tab-home li #tab-home-left,
-#menu.tab-about li #tab-about-left,
-#menu.tab-services li #tab-services-left,
-#menu.tab-clients li #tab-clients-left,
-#menu.tab-labs li #tab-labs-left,
-#menu.tab-blog li #tab-blog-left,
-#menu.tab-contact li #tab-contact-left
+#menu.tab-home #tab-home-left,
+#menu.tab-about #tab-about-left,
+#menu.tab-services #tab-services-left,
+#menu.tab-clients #tab-clients-left,
+#menu.tab-labs #tab-labs-left,
+#menu.tab-blog #tab-blog-left,
+#menu.tab-contact #tab-contact-left
 {
 	background-image: url(../images/core/navitem_ON_lhs.png);
 }
 
 
-#menu.tab-home li #tab-home-right,
-#menu.tab-about li #tab-about-right,
-#menu.tab-services li #tab-services-right,
-#menu.tab-clients li #tab-clients-right,
-#menu.tab-labs li #tab-labs-right,
-#menu.tab-blog li #tab-blog-right,
-#menu.tab-contact li #tab-contact-right
+#menu.tab-home #tab-home-right,
+#menu.tab-about #tab-about-right,
+#menu.tab-services #tab-services-right,
+#menu.tab-clients #tab-clients-right,
+#menu.tab-labs #tab-labs-right,
+#menu.tab-blog #tab-blog-right,
+#menu.tab-contact #tab-contact-right
 {
 	background-image: url(../images/core/navitem_ON_rhs.png);
 }
 
-
-/* --- NAV --- */
-
-.navonLHS {
-	width: 18px;
-	height: 170px;
-	background-image: url(../images/core/navitem_ON_lhs.png);
-	float: left;
-}
-.navonMID {
-	width: auto;
-	height: 170px;
-	background-image: url(../images/core/navitem_ON_mid.png);
-	float: left;
-}
-.navonRHS {
-	width: 18px;
-	height: 170px;
-	background-image: url(../images/core/navitem_ON_rhs.png);
-	float: left;
-}
-.navonText {
-	font-family: Tahoma, Arial, Helvetica, sans-serif;
-	color: #a10b12;
-	/*font-size: 1.1em;
-	line-height: 1.3em;*/
-	font-size: 1.1em;
-	line-height: 1.3em;
-	font-weight: bold;
-	padding-top: 80px;
-}
-.navoffLHS {
-	width: 18px;
-	height: 170px;
-	float: left;
-}
-.navoffMID {
-	width: auto;
-	height: 170px;
-	float: left;
-}
-.navoffRHS {
-	width: 18px;
-	height: 170px;
-	float: left;
-}
-.navoffText {
-	font-family: Tahoma, Arial, Helvetica, sans-serif;
-	color: #fff;
-	/*font-size: 1.1em;
-	line-height: 1.3em;*/
-	font-size: 1.1em;
-	line-height: 1.3em;
-	font-weight: bold;
-	padding-top: 80px;
-}
-.topnav {
-	padding:0;
-	margin:0;
-	display:inline;
-}
-#topnav ul {
-	margin: 0;
-	padding: 0;
-	list-style-type: none;
-	list-style-image: none;
-}
-#topnav li {
-	display:inline;
-}
 
 /* --- SECONDARY NAV --- */
 
@@ -921,4 +804,76 @@ form label input.calc {
 form input.button {
     clear: left;
 	float: left;
+}
+
+
+
+/* --- NAV --- */
+
+.navonLHS {
+	width: 18px;
+	height: 170px;
+	background-image: url(../images/core/navitem_ON_lhs.png);
+	float: left;
+}
+.navonMID {
+	width: auto;
+	height: 170px;
+	background-image: url(../images/core/navitem_ON_mid.png);
+	float: left;
+}
+.navonRHS {
+	width: 18px;
+	height: 170px;
+	background-image: url(../images/core/navitem_ON_rhs.png);
+	float: left;
+}
+.navonText {
+	font-family: Tahoma, Arial, Helvetica, sans-serif;
+	color: #a10b12;
+	/*font-size: 1.1em;
+	line-height: 1.3em;*/
+	font-size: 1.1em;
+	line-height: 1.3em;
+	font-weight: bold;
+	padding-top: 80px;
+}
+.navoffLHS {
+	width: 18px;
+	height: 170px;
+	float: left;
+}
+.navoffMID {
+	width: auto;
+	height: 170px;
+	float: left;
+}
+.navoffRHS {
+	width: 18px;
+	height: 170px;
+	float: left;
+}
+.navoffText {
+	font-family: Tahoma, Arial, Helvetica, sans-serif;
+	color: #fff;
+	/*font-size: 1.1em;
+	line-height: 1.3em;*/
+	font-size: 1.1em;
+	line-height: 1.3em;
+	font-weight: bold;
+	padding-top: 80px;
+}
+.topnav {
+	padding:0;
+	margin:0;
+	display:inline;
+}
+#topnav ul {
+	margin: 0;
+	padding: 0;
+	list-style-type: none;
+	list-style-image: none;
+}
+#topnav li {
+	display:inline;
 }
