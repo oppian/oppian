@@ -1,1 +1,123 @@
-{% extends 'base.html' %}{% block title %}People{% endblock %}{% block tab_id %}people{% endblock %}{% block body %}        	<div class="contentSubNav">                	<!--2NDRYNAV-->                      <div id="secondarynav_top" class="secondarynav_top">          </div>                  	  <div id="secondarynav_middle" class="secondarynav_middle">                	<ul class="topnav">                        	<li class="topnav">         	                    <div class="secondarynav_highlight_top_off"></div>                  <div class="secondarynav_highlight_middle_off">                  <h4 class="secondarynav_middle_layout"><a href="{% url about %}" class="secondarynav_link_off" target="_self" title="About">About</a></h4>                  </div>                  <div class="secondarynav_highlight_bottom_off"></div>                                                                         <div class="secondarynav_divider"></div>                </li>                <li class="topnav">                                    <div class="secondarynav_highlight_top"></div>                  <div class="secondarynav_highlight_middle">                  <h4 class="secondarynav_middle_layout"><a href="{% url people %}" class="secondarynav_link" target="_self" title="People">People</a></h4>                  </div>                  <div class="secondarynav_highlight_bottom"></div>                                                                     <div class="secondarynav_divider"></div>                </li>                 <li class="topnav">                                <div class="secondarynav_highlight_top_off"></div>                  <div class="secondarynav_highlight_middle_off">                  <h4 class="secondarynav_middle_layout"><a href="{% url labs %}" class="secondarynav_link_off" target="_self" title="Labs">Labs</a></h4>                  </div>                  <div class="secondarynav_highlight_bottom_off"></div>                                                                 <div class="secondarynav_divider"></div>              	</li>               	<li class="topnav">                                <div class="secondarynav_highlight_top_off"></div>                  <div class="secondarynav_highlight_middle_off">                  <h4 class="secondarynav_middle_layout"><a href="{% url blog %}" class="secondarynav_link_off" target="_self" title="Blog">Blog</a></h4>                  </div>                  <div class="secondarynav_highlight_bottom_off"></div>              	                                                <div class="secondarynav_divider"></div>              	</li>              	              	<li class="topnav">                  <div class="secondarynav_highlight_top_off">                  </div>                  <div class="secondarynav_highlight_middle_off">                    <h4 class="secondarynav_middle_layout"><a href="{% url contact %}" class="secondarynav_link_off" target="_self" title="Contact">Contact</a></h4>                  </div>                  <div class="secondarynav_highlight_bottom_off">                  </div>              	                </li>                          </ul>    	                          </div>                      <div id="secondarynav_bottom" class="secondarynav_bottom">          </div>                </div>                <div class="contentMainPanel">                	<h1>Oppian People</h1>          <p class="paragraphText">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec sit amet tortor et enim pharetra iaculis. Nulla ut felis mauris. Nam imperdiet viverra turpis et sodales. Cras sit amet diam volutpat nisl venenatis fringilla sit amet vestibulum nunc.</p>                    <div class="hr"><hr /></div>                    <img src="{{ MEDIA_URL }}images/about/mal.jpg" class="imageLeftAlign" width="210" height="143" alt="Mal Minhas" title="Mal Minhas" /><h3>Mal Minhas</h3>            <p class="paragraphText">Mal is Oppian's primary business development manager, but can turn his hand to development too. After his Computing Science master's degree from Imperial College, he has acquired over fourteen years experience building and leading teams in industry leading companies such as Apple, Adobe and Symbian. He a frequent speaker at mobile and open source conferences supporting gnubox, sf.gnupoc.net, symbianos.org, PyCon, FOSDEM and has participated in Bluetooth SIG and IrDA standards bodies.</p>            <p class="paragraphText"><em>Mal specialist areas of excellence are Python, Bluetooth, networking/communications, synchronisation, messaging along with Mac OS X and Linux.</em></p>                      <div class="hr"><hr /></div>                  <img src="{{ MEDIA_URL }}images/about/steve.jpg" class="imageLeftAlign" width="210" height="143" alt="Stephen Hartley" title="Stephen Hartley" /><h3>Stephen Hartley</h3>            <p class="paragraphText">After Stephen's Computer Science degree from Durham University, he started his consulting career at Teleca working on banking software, Unix mail systems and PC communications systems. From here he went on to work for Psion and then Symbian focusing on Messaging and UI design and development before becoming a senior Technical Lead and architect responsible for the Nokia 7710 UI at Mobile Innovation. Following the acquisition of Mobile Innovation by Macromedia and Macromedia by Adobe, Stephen spent two years in San Francisco working on various projects involving the Flash player including porting to new platforms.</p>            <p class="paragraphText"><em>Stephen's areas of special interest are Python, Django, Perl, Symbian OS, iPhone and is looking for an excuse to use LLVM in anger.</em></p>                      <div class="hr"><hr /></div>                  <img src="{{ MEDIA_URL }}images/about/neil.jpg" class="imageLeftAlign" width="210" height="143" alt="Neil Davis" title="Neil Davis" /><h3>Neil Davis</h3>            <p class="paragraphText">Following his computer science and mathematics degree from Leeds University, Neil worked at Psion creating the initial Symbian UI and the IrDA file transfer engine and then on to the Symbian/PC connectivity and synchronisation software. After Symbian, Neil had a stint at Extended Systems improving their infrared connectivity devices and then at Management Systems Designers implementing an XSLT-based publication system. Then Neil joined Stephen developing the Nokia 7710 UI at Mobile Innovations before developing Flash and large-scale server implementations including authentication and billing systems. Since founding Oppian Neil was the lead architect and developer for the Live Talkback product for Greys Mead developing both the server and the prototype iPhone client.</p>            <p class="paragraphText"><em>Neil's favourite areas of technology are iPhone, Python/Django, XML/XSLT, Java and Flash.</em></p>                      <div class="hr"><hr /></div>                  <img src="{{ MEDIA_URL }}images/about/matt.jpg" class="imageLeftAlign" width="210" height="143" alt="Matthew Jacobi" title="Matthew Jacobi" /><h3>Matthew Jacobi</h3>            <p class="paragraphText">Matt co-founded the ISP, Cybernet 2000 in Australia where he was the technical architect looking after all areas of technology with particular focus on QOS and bandwidth optimisation. After this Matt, developed an ecommerce system using LAMP for inteRad Technology followed by implementing an audit system for credit card transactions at Paytech along with CRM tools. Matt then entered the mobile software development arena; creating numerous PDA/Smartphone applications on Symbian, PalmOS, Windows CE and Linux devices, before escaping to the UK to join Stephen and Neil at Mobile Innovation. After helping to develop the Nokia Series 80 UI, Matt worked at Adobe to produce various Flash based solutions including an optimized Flash application framework (Cairngorm) for agile application development and then, as systems architect, he created customer deployments of Adobe's mobile data services server. Since Oppian, Matt has primarily been focused on Django-based server systems which are highly scalable.</p>            <p class="paragraphText"><em>Matt has a particularly strong experience in Python/Django, Symbian, SQL, SOAP, Java and Linux.</em></p>                                                           </div>    {% endblock %}
+{% extends 'base.html' %}
+{% block title %}People{% endblock %}
+{% block tab_id %}about{% endblock %}
+
+{% block body %}
+    
+    	<div class="contentSubNav">
+        
+        	<!--2NDRYNAV-->
+            
+          <div id="secondarynav_top" class="secondarynav_top">
+          </div>
+            
+      	  <div id="secondarynav_middle" class="secondarynav_middle">
+        
+        	<ul class="topnav">
+            
+            	<li class="topnav"> 
+        	  
+                  <div class="secondarynav_highlight_top_off"></div>
+                  <div class="secondarynav_highlight_middle_off">
+                  <h4 class="secondarynav_middle_layout"><a href="{% url about %}" class="secondarynav_link_off" target="_self" title="About">About</a></h4>
+                  </div>
+                  <div class="secondarynav_highlight_bottom_off"></div>
+                  
+                 
+                      
+                <div class="secondarynav_divider"></div>
+                </li>
+                <li class="topnav">
+                  
+                  <div class="secondarynav_highlight_top"></div>
+                  <div class="secondarynav_highlight_middle">
+                  <h4 class="secondarynav_middle_layout"><a href="{% url people %}" class="secondarynav_link" target="_self" title="People">People</a></h4>
+                  </div>
+                  <div class="secondarynav_highlight_bottom"></div>
+                  
+                 
+                  
+                <div class="secondarynav_divider"></div>
+                </li> 
+                <li class="topnav">
+              
+                  <div class="secondarynav_highlight_top_off"></div>
+                  <div class="secondarynav_highlight_middle_off">
+                  <h4 class="secondarynav_middle_layout"><a href="{% url labs %}" class="secondarynav_link_off" target="_self" title="Labs">Labs</a></h4>
+                  </div>
+                  <div class="secondarynav_highlight_bottom_off"></div>
+                  
+                 
+              
+                <div class="secondarynav_divider"></div>
+              	</li> 
+              	<li class="topnav">
+              
+                  <div class="secondarynav_highlight_top_off"></div>
+                  <div class="secondarynav_highlight_middle_off">
+                  <h4 class="secondarynav_middle_layout"><a href="{% url blog %}" class="secondarynav_link_off" target="_self" title="Blog">Blog</a></h4>
+                  </div>
+                  <div class="secondarynav_highlight_bottom_off"></div>
+              	
+                
+                
+                <div class="secondarynav_divider"></div>
+              	</li>
+              	
+              	<li class="topnav">
+                  <div class="secondarynav_highlight_top_off">
+                  </div>
+                  <div class="secondarynav_highlight_middle_off">
+                    <h4 class="secondarynav_middle_layout"><a href="{% url contact %}" class="secondarynav_link_off" target="_self" title="Contact">Contact</a></h4>
+                  </div>
+                  <div class="secondarynav_highlight_bottom_off">
+                  </div>
+              	
+                </li>
+              
+            </ul>    	
+                
+          </div>
+            
+          <div id="secondarynav_bottom" class="secondarynav_bottom">
+          </div>
+
+        
+        </div>
+        
+        <div class="contentMainPanel">
+        
+        	<h1>Oppian People</h1>
+          <p class="paragraphText">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec sit amet tortor et enim pharetra iaculis. Nulla ut felis mauris. Nam imperdiet viverra turpis et sodales. Cras sit amet diam volutpat nisl venenatis fringilla sit amet vestibulum nunc.</p>
+          
+          <div class="hr"><hr /></div>
+          
+          <img src="{{ MEDIA_URL }}images/about/mal.jpg" class="imageLeftAlign" width="210" height="143" alt="Mal Minhas" title="Mal Minhas" /><h3>Mal Minhas</h3>
+            <p class="paragraphText">Mal is Oppian's primary business development manager, but can turn his hand to development too. After his Computing Science master's degree from Imperial College, he has acquired over fourteen years experience building and leading teams in industry leading companies such as Apple, Adobe and Symbian. He a frequent speaker at mobile and open source conferences supporting gnubox, sf.gnupoc.net, symbianos.org, PyCon, FOSDEM and has participated in Bluetooth SIG and IrDA standards bodies.</p>
+            <p class="paragraphText"><em>Mal specialist areas of excellence are Python, Bluetooth, networking/communications, synchronisation, messaging along with Mac OS X and Linux.</em></p>
+            
+          <div class="hr"><hr /></div>
+          
+        <img src="{{ MEDIA_URL }}images/about/steve.jpg" class="imageLeftAlign" width="210" height="143" alt="Stephen Hartley" title="Stephen Hartley" /><h3>Stephen Hartley</h3>
+            <p class="paragraphText">After Stephen's Computer Science degree from Durham University, he started his consulting career at Teleca working on banking software, Unix mail systems and PC communications systems. From here he went on to work for Psion and then Symbian focusing on Messaging and UI design and development before becoming a senior Technical Lead and architect responsible for the Nokia 7710 UI at Mobile Innovation. Following the acquisition of Mobile Innovation by Macromedia and Macromedia by Adobe, Stephen spent two years in San Francisco working on various projects involving the Flash player including porting to new platforms.</p>
+            <p class="paragraphText"><em>Stephen's areas of special interest are Python, Django, Perl, Symbian OS, iPhone and is looking for an excuse to use LLVM in anger.</em></p>
+            
+          <div class="hr"><hr /></div>
+          
+        <img src="{{ MEDIA_URL }}images/about/neil.jpg" class="imageLeftAlign" width="210" height="143" alt="Neil Davis" title="Neil Davis" /><h3>Neil Davis</h3>
+            <p class="paragraphText">Following his computer science and mathematics degree from Leeds University, Neil worked at Psion creating the initial Symbian UI and the IrDA file transfer engine and then on to the Symbian/PC connectivity and synchronisation software. After Symbian, Neil had a stint at Extended Systems improving their infrared connectivity devices and then at Management Systems Designers implementing an XSLT-based publication system. Then Neil joined Stephen developing the Nokia 7710 UI at Mobile Innovations before developing Flash and large-scale server implementations including authentication and billing systems. Since founding Oppian Neil was the lead architect and developer for the Live Talkback product for Greys Mead developing both the server and the prototype iPhone client.</p>
+            <p class="paragraphText"><em>Neil's favourite areas of technology are iPhone, Python/Django, XML/XSLT, Java and Flash.</em></p>
+            
+          <div class="hr"><hr /></div>
+          
+        <img src="{{ MEDIA_URL }}images/about/matt.jpg" class="imageLeftAlign" width="210" height="143" alt="Matthew Jacobi" title="Matthew Jacobi" /><h3>Matthew Jacobi</h3>
+            <p class="paragraphText">Matt co-founded the ISP, Cybernet 2000 in Australia where he was the technical architect looking after all areas of technology with particular focus on QOS and bandwidth optimisation. After this Matt, developed an ecommerce system using LAMP for inteRad Technology followed by implementing an audit system for credit card transactions at Paytech along with CRM tools. Matt then entered the mobile software development arena; creating numerous PDA/Smartphone applications on Symbian, PalmOS, Windows CE and Linux devices, before escaping to the UK to join Stephen and Neil at Mobile Innovation. After helping to develop the Nokia Series 80 UI, Matt worked at Adobe to produce various Flash based solutions including an optimized Flash application framework (Cairngorm) for agile application development and then, as systems architect, he created customer deployments of Adobe's mobile data services server. Since Oppian, Matt has primarily been focused on Django-based server systems which are highly scalable.</p>
+            <p class="paragraphText"><em>Matt has a particularly strong experience in Python/Django, Symbian, SQL, SOAP, Java and Linux.</em></p>
+            
+          
+            
+           
+        
+      </div>
+    
+{% endblock %}
