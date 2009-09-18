@@ -1,34 +1,67 @@
 {% extends 'base.html' %}
 
-{% block title %}Home{% endblock %}
+{% block title %}Act Quickly, Think Slowly{% endblock %}
 
 {% block body %}
-<p style="text-align:center;margin-top:0px;margin-bottom:0px;padding:0px;">
-    {% include 'OppianExplosion.html' %}
-</p>
-
-<div class="yui-gb" style="margin-top:40px;">
-    <div class="yui-u first">
-        <h1 style="text-align:center">
-            <a href="{% url services %}"><img style="border:1px solid black;display: block;margin-left: auto; margin-right: auto" src="{{ MEDIA_URL }}images/services-logo.png" alt="Services"></a>
-            Services
-        </h1>
-        <p style="font-size:50%;text-align: center;">Image by <a href="{% url about_people %}#steve">Stephen Hartley</a></p>
-    </div>
-    <div class="yui-u">
-        <h1 style="text-align:center">
-            <a href="{% url about_people %}"><img style="border:1px solid black;display: block;margin-left: auto; margin-right: auto" src="{{ MEDIA_URL }}images/people-logo.png" alt="Oppianites"></a>
-            People
-        </h1>
-        <p style="font-size:50%;text-align: center;">Photo by <a href="http://www.flickr.com/photos/acaben/">acaben</a></p>
-    </div>
-    <div class="yui-u">
-        <h1 style="text-align:center">
-            <a href="/blog/"><img style="border:1px solid black;display: block;margin-left: auto; margin-right: auto" src="{{ MEDIA_URL }}images/blog-logo.png" alt="Blog"></a>
-            Blog
-        </h1>
-        <p style="font-size:50%;text-align: center;">Photo by <a href="http://www.flickr.com/photos/rachaelvoorhees/">Rachael Voorhees</a></p>
-    </div>
-</div>
-
+        <div class="content2Cols_LHS">
+            <h1>Welcome to Oppian</h1>
+            <p class="paragraphText">Oppian is a team of creative, talented engineers with a wealth of experience working at the heart of the mobile and web service delivery industry.</p>
+            <p class="paragraphText">Please explore our site to find out all about Oppian and how we could help our your next project. We would love to hear from you so please do drop us a note via our <a href="{% url contact %}" target="_self" title="Contact us">contact page</a>.</p>
+            <br />
+            <p class="paragraphLink"><a href="{% url about %}" target="self" title="Follow this link to find out more about Oppian">Follow this link to find out more about Oppian</a></p>
+        </div>
+        
+        <div class="content2Cols_RHS">
+          <object classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" width="435" height="320" id="FlashID" title="Oppian">
+            <param name="movie" value="{{ MEDIA_URL }}flash/homepage.swf" />
+            <param name="quality" value="high" />
+            <param name="wmode" value="opaque" />
+            <param name="swfversion" value="9.0.45.0" />
+            <!-- This param tag prompts users with Flash Player 6.0 r65 and higher to download the latest version of Flash Player. Delete it if you don't want users to see the prompt. -->
+            <param name="expressinstall" value="{{ MEDIA_URL }}scripts/expressInstall.swf" />
+            <!-- Next object tag is for non-IE browsers. So hide it from IE using IECC. -->
+            <!--[if !IE]>-->
+            <object type="application/x-shockwave-flash" data="{{ MEDIA_URL }}flash/homepage.swf" width="435" height="320">
+              <!--<![endif]-->
+              <param name="quality" value="high" />
+              <param name="wmode" value="opaque" />
+              <param name="swfversion" value="9.0.45.0" />
+              <param name="expressinstall" value="{{ MEDIA_URL }}scripts/expressInstall.swf" />
+              <!-- The browser displays the following alternative content for users with Flash Player 6.0 and older. -->
+              <div>
+                <h4>Content on this page requires a newer version of Adobe Flash Player.</h4>
+                <p><a href="http://www.adobe.com/go/getflashplayer"><img src="http://www.adobe.com/images/shared/download_buttons/get_flash_player.gif" alt="Get Adobe Flash player" width="112" height="33" /></a></p>
+              </div>
+              <!--[if !IE]>-->
+            </object>
+            <!--<![endif]-->
+          </object>
+        </div>
+        
+        <div class="content4Cols">
+        	<a href="{% url people %}" target="_self" title="Oppian People" class="imgLink"><img src="{{ MEDIA_URL }}images/about/mal.jpg" width="210" height="143" border="0" alt="Oppian People" title="Oppian People" /></a>
+        	<h3>People</h3>
+            <p class="paragraphLink"><a href="{% url people %}" target="_self" title="Find out more about the people behind Oppian.">Find out more about the people behind Oppian.</a></p>
+            </div>
+        <div class="content4Cols">
+        	<a href="{% url services %}" target="_self" title="Oppian Services" class="imgLink"><img src="{{ MEDIA_URL }}images/home/services.jpg" width="210" height="143" border="0" alt="Oppian Services" title="Oppian Services" /></a>
+        	<h3>Services</h3>
+            <p class="paragraphLink"><a href="{% url services %}" target="_self" title="Find out more about the services we offer at Oppian.">Find out more about the services we offer at Oppian.</a></p>
+        </div>
+        <div class="content4Cols">
+        	<a href="{% url clients %}" target="_self" title="Oppian Clients" class="imgLink"><img src="{{ MEDIA_URL }}images/clients/livetalkback.jpg" width="210" height="143" border="0" alt="Oppian Clients" title="Oppian Clients" /></a>
+        	<h3>Clients</h3>
+            <p class="paragraphLink"><a href="{% url clients %}" target="_self" title="Find out more about the clients we work with.">Find out more about the clients we work with.</a></p>
+        </div>
+        <div class="content4Cols_end">        
+            <a href="{% url blog %}" target="_self" title="Oppian Blog" class="imgLink"><img src="{{ MEDIA_URL }}images/home/blog.jpg" width="210" height="143" border="0" alt="Oppian Blog" title="Oppian Blog" /></a>
+            <h3>Blog</h3>
+            <p class="paragraphLink"><a href="{% url blog %}" target="_self" title="Stay up to date with all the latest news from Oppian.">Stay up to date with all the latest news from Oppian.</a></p>
+        </div>
+        
+<script type="text/javascript">
+<!--
+swfobject.registerObject("FlashID");
+//-->
+</script>
 {% endblock %}

@@ -1,78 +1,109 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
-<html>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en-GB">
+
 	<head>
+		<title>Oppian | {% block title %}{% endblock %}</title>
+		<link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
+
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-		<title>{% block title %}{% endblock %} - Oppian</title>
-		<link rel="stylesheet" type="text/css" href="http://yui.yahooapis.com/2.7.0/build/grids/grids-min.css"> 
-		<!-- custom css -->
-		<link rel="stylesheet" type="text/css" href="{{ MEDIA_URL }}css/style.css" />
-		<!--  jquery -->
-		<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js"></script>
+		<meta name="designer" content="jonwallacedesign.com" />
+
+		<link href="{{ MEDIA_URL }}css/core_layout.css" rel="stylesheet" type="text/css" media="screen" />
+		<link href="{{ MEDIA_URL }}css/core_typography.css" rel="stylesheet" type="text/css" media="screen" />
+		<!--[if lt IE 7.]>
+		<script defer type="text/javascript" src="{{ MEDIA_URL }}js/pngfix.js"></script>
+		<![endif]-->
+		<script src="{{ MEDIA_URL }}scripts/swfobject_modified.js" type="text/javascript"></script>
+		<!-- Lightbox code -->
+		<script type="text/javascript" src="{{ MEDIA_URL }}js/prototype.js"></script>
+		<script type="text/javascript" src="{{ MEDIA_URL }}js/scriptaculous.js?load=effects,builder"></script>
+		<script type="text/javascript" src="{{ MEDIA_URL }}js/lightbox.js"></script>
+		<link rel="stylesheet" href="{{ MEDIA_URL }}css/lightbox.css" type="text/css" media="screen" />
 	</head>
-	<body id="{% block body_id %}base{% endblock %}">
+
+	<body class="thrColElsHdr" id="{% block body_id %}base{% endblock %}">
+        <div id="container">
+
 		<div id="header">
-			<!-- header -->
-			{% block header %}
-			<div id="header_inner" class="fixed">
 		
-				<div id="logo">
-					<h1><span><a href="{% url home %}"><img src="{{ MEDIA_URL }}images/logo.png" alt="Oppian"></a></span></h1>
-					<h2>Act quickly, think slowly.</h2>
-				</div>
-				
-				<div id="menu" class="tab-{% block tab_id %}home{% endblock %}">
-					<ul>
-						<li><a id='tab-home' class="hover" href="{% url home %}">Home</a></li>
-						<li><a id='tab-services' class="hover" href="{% url services %}">Services</a></li>
-						<li><a id='tab-clients' class="hover" href="{% url clients %}">Clients</a></li>
-						<li><a id='tab-about' class="hover" href="{% url about %}">About</a></li>
-						<li><a id='tab-blog' class="hover" href="{% url blog_index %}">Blog</a></li>
+		    {% block header %}
+		
+			    <div class="header_logo">
+		            <img src="{{ MEDIA_URL }}images/core/logo.png" width="270" height="81" class="header_logoImg" alt="Oppian logo" title="Oppian logo" />
+		        </div>
+		        
+				<div id="menu" class="header_nav">
+				    <ul class="topnav">
+		
+		            	<li class="topnav">
+		            	<div class="navonLHS"></div>
+		                <div class="navonMID"><h3 class="navonText"><a href="{% url home %}" target="_self" class="navOn" title="Home">Home</a></h3></div>
+		                <div class="navonRHS"></div>
+		           		</li>
+		                
+		                <li class="topnav">
+		            	<div class="navoffLHS"></div>
+		                <div class="navoffMID"><h3 class="navoffText"><a href="{% url about %}" target="_self" class="navOff" title="About">About</a></h3></div>
+		                <div class="navoffRHS"></div>
+		           		</li>
+		                
+		                <li class="topnav">
+		            	<div class="navoffLHS"></div>
+		                <div class="navoffMID"><h3 class="navoffText"><a href="{% url services %}" target="_self" class="navOff" title="Services">Services</a></h3></div>
+		                <div class="navoffRHS"></div>
+		           		</li>
+		                
+		                <li class="topnav">
+		            	<div class="navoffLHS"></div>
+		                <div class="navoffMID"><h3 class="navoffText"><a href="{% url clients %}" target="_self" class="navOff" title="Clients">Clients</a></h3></div>
+		                <div class="navoffRHS"></div>
+		           		</li>
+		                
+		                <li class="topnav">
+		            	<div class="navoffLHS"></div>
+		                <div class="navoffMID"><h3 class="navoffText"><a href="{% url labs %}" target="_self" class="navOff" title="Labs">Labs</a></h3></div>
+		                <div class="navoffRHS"></div>
+		           		</li>
+		                
+		                <li class="topnav">
+		            	<div class="navoffLHS"></div>
+		                <div class="navoffMID"><h3 class="navoffText"><a href="{% url blog %}" target="_self" class="navOff" title="Blog">Blog</a></h3></div>
+		                <div class="navoffRHS"></div>
+		           		</li>
+		                
+		                <li class="topnav">
+		            	<div class="navoffLHS"></div>
+		                <div class="navoffMID"><h3 class="navoffText"><a href="{% url contact %}" target="_self" class="navOff" title="Contact">Contact</a></h3></div>
+		                <div class="navoffRHS"></div>
+		           		</li>
+		
 					</ul>
-				</div>
-			</div>
-			{% endblock %}
+					
+		        </div>
+		    {% endblock %}
 		</div>
-		<div id="main">
-			<div id="main_inner" class="fixed">
-				<div id="primaryContent_columnless">
-					<div id="columnA_columnless">
-						<!-- subnav -->
-						{% block subnav %}{% endblock %}
-						<!-- body title -->
-						<h3>{% block body_title %}{% endblock %}</h3>
-						<!-- body -->
-						{% block body %}
-						BODY Nam ut augue vitae velit blandit scelerisque. Fusce nunc elit, pulvinar at feugiat in, iaculis vel nunc. Nulla ac orci libero. Mauris ut ante metus, a interdum est. Nunc elementum, ante ac euismod ultricies, nulla nunc condimentum ligula, id iaculis purus nisi in risus. In pulvinar condimentum ligula nec suscipit. Cras neque magna, condimentum quis aliquet et, pharetra nec nisl. Pellentesque a orci orci, nec vehicula odio. Curabitur orci velit, gravida at euismod feugiat, varius ultricies neque. Nulla ut eros dolor, eu vulputate orci. Morbi nisl ipsum, imperdiet eu porttitor sit amet, eleifend ut velit. Cras vel mi vitae nisl ultricies convallis. Integer ac erat leo. Morbi consequat lorem vitae odio facilisis at malesuada dui vehicula.
-						{% endblock %}
-					</div>
-				</div>
-				<br class="clear"/>
-			</div>
-		</div>
-		<div id="footer" class="fixed">
-			<!-- footer -->
-			{% block footer %}
-				<div class="twitter">
-					{% load humanize %}
-				    {% if tweet %}
-					    Latest tweet from {{ tweet.date|naturalday }}: {{ tweet.text|urlize }}
-				    {% endif %}
-				</div>
-				Copyright © 2009 Oppian Systems Ltd. All rights reserved.<br/>
-				Design by <a href="http://www.nodethirtythree.com/">NodeThirtyThree Design</a>.
-			{% endblock %}
-		</div>
-		<script type="text/javascript">
-			$(document).ready(function(){
-				$('.hover').hover(
-					function() {
-						$(this).addClass('active');
-					},
-					function() {
-						$(this).removeClass('active');
-					}
-				);
-			});
-		</script>
+			
+		<div id="main" class="contentDIV">
+            {% block body %}
+            {% endblock %}
+        </div>
+        
+        <div class="footerDIV">
+            <ul class="footernvav">
+                <li class="footernvav"><a href="{% url home %}" target="_self" title="Home">Home</a><div class="listDivider"></div></li>
+                <li class="footernvav"><a href="{% url about %}" target="_self" title="About">About</a><div class="listDivider"></div></li>
+                <li class="footernvav"><a href="{% url services %}" target="_self" title="Services">Services</a><div class="listDivider"></div></li>
+                <li class="footernvav"><a href="{% url clients %}" target="_self" title="Clients">Clients</a><div class="listDivider"></div></li>
+                <li class="footernvav"><a href="{% url labs %}" target="_self" title="Labs">Labs</a><div class="listDivider"></div></li>
+                <li class="footernvav"><a href="{% url blog %}" target="_blank" title="Blog">Blog</a><div class="listDivider"></div></li>
+                <li class="footernvav"><a href="{% url contact %}" target="_self" title="Contact">Contact</a></li>
+		    </ul>
+            <br /><br />
+	        <p class="footerCredit">Copyright © 2009 Oppian Systems Ltd. All rights reserved.</p>
+			<p class="footerCredit">Design by <a href="http://www.jonwallacedesign.com" target="_blank" title="Design by jonwallacedesign.com">jonwallacedesign.com</a></p>	    
+	    	<br />
+	    	<div class="footerBottomSpacer"></div>
+	    </div>
+	    </div>
 	</body>
 </html>

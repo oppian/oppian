@@ -1,0 +1,87 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<title>{% block title %}{% endblock %} - Oppian</title>
+		<link rel="stylesheet" type="text/css" href="http://yui.yahooapis.com/2.7.0/build/grids/grids-min.css"> 
+		<!-- custom css -->
+		<link rel="stylesheet" type="text/css" href="{{ MEDIA_URL }}css/style.css" />
+		<!--  jquery -->
+		<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js"></script>
+	</head>
+	<body id="{% block body_id %}base{% endblock %}">
+		<div id="header">
+			<!-- header -->
+			{% block header %}
+			<div id="header_inner" class="fixed">
+		
+				<div id="logo">
+					<h1><span><a href="{% url home %}"><img src="{{ MEDIA_URL }}images/logo.png" alt="Oppian"></a></span></h1>
+					<h2>Act quickly, think slowly.</h2>
+				</div>
+				
+				<div id="menu" class="tab-{% block tab_id %}home{% endblock %}">
+					<ul>
+						<li><a id='tab-home'     class="hover" href="{% url home %}">            Home</a></li>
+						<li><a id='tab-about'    class="hover" href="{% url about %}">           About</a></li>
+						<li><a id='tab-services' class="hover" href="{% url services %}">        Services</a></li>
+						<li><a id='tab-clients'  class="hover" href="{% url clients %}">         Clients</a></li>
+						<li><a id='tab-labs'     class="hover" href="{% url blog_index %}">      Labs</a></li>
+						<li><a id='tab-blog'     class="hover" href="{% url blog_index %}">      Blog</a></li>
+						<li><a id='tab-contact'  class="hover" href="{% url about_contactus %}"> Contact</a></li>
+					</ul>
+				</div>
+			</div>
+			{% endblock %}
+		</div>
+		<div id="main">
+			<div id="main_inner" class="fixed">
+				<div id="primaryContent_columnless">
+					<div id="columnA_columnless">
+						<!-- subnav -->
+						{% block subnav %}{% endblock %}
+						<!-- body title -->
+						<h3>{% block body_title %}{% endblock %}</h3>
+						<!-- body -->
+						{% block body %}
+						BODY Nam ut augue vitae velit blandit scelerisque. Fusce nunc elit, pulvinar at feugiat in, iaculis vel nunc. Nulla ac orci libero. Mauris ut ante metus, a interdum est. Nunc elementum, ante ac euismod ultricies, nulla nunc condimentum ligula, id iaculis purus nisi in risus. In pulvinar condimentum ligula nec suscipit. Cras neque magna, condimentum quis aliquet et, pharetra nec nisl. Pellentesque a orci orci, nec vehicula odio. Curabitur orci velit, gravida at euismod feugiat, varius ultricies neque. Nulla ut eros dolor, eu vulputate orci. Morbi nisl ipsum, imperdiet eu porttitor sit amet, eleifend ut velit. Cras vel mi vitae nisl ultricies convallis. Integer ac erat leo. Morbi consequat lorem vitae odio facilisis at malesuada dui vehicula.
+						{% endblock %}
+					</div>
+				</div>
+				<br class="clear"/>
+			</div>
+		</div>
+		<div id="footer" class="fixed">
+			<!-- footer -->
+			{% block footer %}
+				<div>
+					<a href="{% url home %}">Home</a> |
+					<a href="{% url about %}">About</a> | 
+					<a href="{% url services %}">Services</a> | 
+					<a href="{% url clients %}">Clients</a> | 
+					<a href="{% url clients %}">Labs</a> | 
+					<a href="{% url blog_index %}">Blog</a> | 
+					<a href="{% url about_contactus %}">contact</a> | 
+				</div>
+				<br/>
+				<p>
+				Copyright © 2009 Oppian Systems Ltd. All rights reserved.<br/>
+				Design by <a href="http://johnwallacedesign.com/">johnwallacedesign.com</a>
+				</p>
+				
+			{% endblock %}
+		</div>
+		<script type="text/javascript">
+			$(document).ready(function(){
+				$('.hover').hover(
+					function() {
+						$(this).addClass('active');
+					},
+					function() {
+						$(this).removeClass('active');
+					}
+				);
+			});
+		</script>
+	</body>
+</html>

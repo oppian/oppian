@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block title %}About{% endblock %}
+{% block body_title %}About Oppian{% endblock %}
+{% block tab_id %}about{% endblock %}
+
+{% block subnav %}
+<a href="{% url about_people %}">People</a> | 
+<a href="{% url about_jobs %}">Jobs</a> | 
+<a href="{% url about_contactus %}">Contact Us</a>
+{% endblock %}
+
+{% block body %}
+<p>Oppian is a team of creative, talented engineers with a wealth of experience working at the heart of the mobile and web service devlivery industry.</p>
+
+<p>You can find out about the <a href="{% url about_people %}">members of Oppian</a> and our <a href="{% url clients %}">clients and partners</a>.</p>
+ 
+{% endblock %}

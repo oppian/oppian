@@ -13,14 +13,12 @@ urlpatterns = patterns('',
     # home page
     url(r'^$', direct_to_template, {'template':'index.html'}, name='home'),
     
-    # fixed pages - first level
-    url(r'^services/$', direct_to_template, {'template':'about/services.html'}, name='services'),
-    url(r'^clients/$', direct_to_template, {'template':'about/clients.html'}, name='clients'),
-    
-    # fixed pages - about and sub about
-    url(r'^about/$', direct_to_template, {'template':'about/about.html'}, name='about'),
-    url(r'^about/people/$', direct_to_template, {'template':'about/people.html'}, name='about_people'),
-    url(r'^about/jobs/$', direct_to_template, {'template':'about/jobs.html'}, name='about_jobs'),
-    url(r'^about/contact_us/$', direct_to_template, {'template':'about/contact_us.html'}, name='about_contactus'),
-    url(r'^robots.txt$', direct_to_template, {'template':'about/robots.txt', 'mimetype':'text/plain'}, name='about_robotstxt'),
+    url(r'^about.html$', direct_to_template, {'template':'about.html'}, name='about'),
+    url(r'^people.html$', direct_to_template, {'template':'people.html'}, name='people'),
+    url(r'^services.html$', direct_to_template, {'template':'services.html'}, name='services'),
+    url(r'^clients.html$', direct_to_template, {'template':'clients.html'}, name='clients'),
+    url(r'^labs.html$', direct_to_template, {'template':'labs.html'}, name='labs'),
+    url(r'^blog.html$', direct_to_template, {'template':'blog.html'}, name='blog'),
+    url(r'^contact.html$', direct_to_template, {'template':'contact.html'}, name='contact'),
+    url(r'^robots.txt$', direct_to_template, {'template':'robots.txt', 'mimetype':'text/plain'}, name='robotstxt'),
 )
