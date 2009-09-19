@@ -18,7 +18,7 @@ urlpatterns = patterns('',
     url(r'^services.html$', direct_to_template, {'template':'services.html'}, name='services'),
     url(r'^clients.html$', direct_to_template, {'template':'clients.html'}, name='clients'),
     url(r'^labs.html$', direct_to_template, {'template':'labs.html'}, name='labs'),
-    url(r'^blog.html$', direct_to_template, {'template':'blog.html'}, name='blog'),
+    url(r'^blog/$', direct_to_template, {'template':'blog/'}, name='blog'),
     url(r'^contact.html$', direct_to_template, {'template':'contact.html'}, name='contact'),
     url(r'^robots.txt$', direct_to_template, {'template':'robots.txt', 'mimetype':'text/plain'}, name='robotstxt'),
 )
