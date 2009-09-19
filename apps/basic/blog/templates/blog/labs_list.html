@@ -1,0 +1,59 @@
+{% extends "blog/base_blog.html" %}
+{% block tab_id %}labs{% endblock %}
+
+{% block title %}Labs{% endblock %}
+{% block body_title %}OppianLabs{% endblock %}
+
+{% block body_class %}{{ block.super }} post_list{% endblock %}
+
+{% block body %}
+    <div class="contentSubNav">
+        <div id="secondarynav_top" class="secondarynav_top"></div>
+        <div id="secondarynav_middle" class="secondarynav_middle">
+            <ul class="topnav">
+                <li class="topnav"> 
+                    <div class="secondarynav_highlight_top"></div>
+                    <div class="secondarynav_highlight_middle"><h4 class="secondarynav_middle_layout"><a href="{% url labs %}" class="secondarynav_link" target="_self" title="Labs">Labs</a></h4></div>
+                    <div class="secondarynav_highlight_bottom"></div>
+                    <div class="secondarynav_divider"></div>
+                </li>                
+            </ul>
+        </div>
+        <div id="secondarynav_bottom" class="secondarynav_bottom"></div>
+    </div>
+        
+    <div class="contentMainPanel">
+        <h1>Oppian Labs</h1>
+
+        {% load comments %}
+        {% load humanize %}
+    
+        {% for post in object_list %}
+            <div class="hr"><hr /></div>
+            {% get_comment_count for post as comment_count %}
+            <div class="post">
+                <img src="{{ MEDIA_URL }}images/labs/labs_image.jpg" alt="Labs image" width="210" height="143" border="0" class="imageRightAlign" title="Blog image" /></a>
+                <h3><a href="{{ post.get_absolute_url }}">{{ post.title }}</a></h3>
+                <p class="paragraphText">{{ post.tease }}</p>
+                <ul class="paragraphSmallText">
+                    <li>Posted by {{ post.author }} on {{ post.publish|date|naturalday }}</li>
+                    <li>{{ comment_count }} comment{{ comment_count|pluralize:',s' }}</li>
+                </ul>
+            </div>
+        {% endfor %}
+        <br/><br/><br/><br/><br/><br/><br/><br/>
+    </div>
+  
+    {% if is_paginated %}
+        <p class="pagination">
+            {% if has_next %}
+                <a class="older" href="?page={{ next }}">Older</a>
+            {% endif %}
+            {% if has_next and has_previous %} | {% endif %}
+            {% if has_previous %}
+                <a class="newer" href="?page={{ previous }}">Newer</a>
+            {% endif %}
+        </p>
+    {% endif %}
+    
+{% endblock %}

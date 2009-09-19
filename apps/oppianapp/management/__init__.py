@@ -25,6 +25,20 @@ if "oppianapp" in settings.INSTALLED_APPS:
             from basic.blog.admin import SavePost
             import datetime
             
+            categories = blog.Category.objects.filter(slug='blog')
+            if len(categories)==0:
+                category_blog=blog.Category(slug='blog', title='blog')
+                category_blog.save()
+            else:
+                category_blog=categories[0]
+                
+            categories = blog.Category.objects.filter(slug='lab')
+            if len(categories)==0:
+                category_lab=blog.Category(slug='lab', title='lab')
+                category_lab.save()
+            else:
+                category_lab=categories[0]
+                            
             if verbosity >= 2:
                 print "creating oppian blogs:"
                 
@@ -63,8 +77,10 @@ Look out for upcoming posts involving Django utilities and iPhone development.
                     status=2, # public
                     allow_comments=True,
                     publish=datetime.datetime.now(),
-                    created=datetime.datetime.now())                    
+                    created=datetime.datetime.now())
                 SavePost(post, True)
+                post.categories.add(category_blog)
+                post.save()
                 if verbosity >= 2:
                     print '  Adding "%s"' % title
         

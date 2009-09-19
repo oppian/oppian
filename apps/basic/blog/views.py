@@ -9,15 +9,30 @@ import datetime
 import re
 
 
-def post_list(request, page=0, **kwargs):
+def post_list(request, template_name = 'blog/post_list.html', page=0, **kwargs):
+    category_blog=Category.objects.get(slug='blog')
     return list_detail.object_list(
         request,
-        queryset = Post.objects.published(),
+        queryset = Post.objects.published().filter(categories=category_blog),
+        template_name = template_name,
         paginate_by = 20,
         page = page,
         **kwargs
     )
 post_list.__doc__ = list_detail.object_list.__doc__
+
+
+def labs_list(request, template_name = 'labs/labs_list.html', page=0, **kwargs):
+    category_lab=Category.objects.get(slug='lab')
+    return list_detail.object_list(
+        request,
+        queryset = Post.objects.published().filter(categories=category_lab),
+        template_name = template_name,
+        paginate_by = 20,
+        page = page,
+        **kwargs
+    )
+labs_list.__doc__ = list_detail.object_list.__doc__
 
 
 def post_archive_year(request, year, **kwargs):
