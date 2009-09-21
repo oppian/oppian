@@ -16,6 +16,9 @@ urlpatterns = patterns('',
     # comments
     (r'^comments/', include('django.contrib.comments.urls')),
     
+    # contact form
+    (r'^contact/', include('contact_form.urls')),
+    
     # blog
     (r'^blog/', include('basic.blog.urls')),
     
