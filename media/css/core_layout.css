@@ -326,7 +326,7 @@ a.secondarynav_link_off:hover {
 .content2Cols_RHS {
 	width: 435px;
 	float: left;
-	padding-right: px;
+	padding-right: 0px; /* SMH */
 }
 .content4Cols {
 	width: 210px;
@@ -441,7 +441,7 @@ a.secondarynav_link_off:hover {
 	list-style-type: none;
 	list-style-image: none;
 	
-	ist-style: none;
+	list-style: none;
 	margin-left: 0;
 	margin-top: 0;
 	padding-left: 1em;
@@ -569,6 +569,35 @@ a.navOff:active {
 }
 
 /* --- FORM --- */
+#EmailForm p
+{
+	padding: 0;
+	margin-top: 0.7em;
+	margin-bottom: 0.7em;
+}
+
+form input[type="text"],
+form textarea,
+#EmailForm input[type="text"],
+#EmailForm textarea
+{
+	width: 95%;
+	clear: both;
+	background-color: #E4E4E4;
+	border: 1px solid #ccc;
+    border-left-color: #ccc;
+    border-top-color: #ccc;
+    padding: 0 2px;
+    line-height: 20px;
+	padding: 5px;
+	
+	font-family: Tahoma, Arial, Helvetica, sans-serif;
+	color: #333333;
+	font-size: 0.9em;
+	line-height: 1.3em;
+	font-weight: normal;
+}
+
 
 .contacFormP{
 	padding: 0;
@@ -672,7 +701,9 @@ form p {
 	width: 100%;
 	font-size: 1em;
 	line-height: 1.5em;
-	padding: 0 0 9px;
+	padding: 0;
+	margin-top: 0.7em;
+	margin-bottom: 0.7em;
 }
 
 form input {
@@ -771,16 +802,19 @@ form label.checkbox {
 	padding: 0 0 15px;
 }
 /* style the form elements to look similar across browsers ... emulates Safari */
+/*
 form label input,
 form textarea {
-    border: 1px solid #ddd;
+    border: 1px solid #ddd; 
     border-left-color: #c3c3c3;
     border-top-color: #7c7c7c;
     padding: 0 2px;
     height: 18px;
     line-height: 20px;
-    background: #fff /*url(../images/input-bg.gif)*/ repeat-x top left; /* SMH */
+    background: #fff 
 }
+*/
+
 form input.checkbox,
 form select {
     border: 1px solid #ddd;
@@ -788,9 +822,10 @@ form select {
     border-top-color: #7c7c7c;
     background-color: #fff;    
 }
+	
 form textarea {
 	margin-top: 3px;
-	width: 383px;
+/*	width: 383px; */
 	height: auto;
 	display: block;
 }
