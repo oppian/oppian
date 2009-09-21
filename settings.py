@@ -131,6 +131,8 @@ INSTALLED_APPS = (
     # tagging http://code.google.com/p/django-tagging/
     'tagging',
     
+    'contact_form',
+    
     # django command extensions http://github.com/django-extensions
     'django_extensions',
     
