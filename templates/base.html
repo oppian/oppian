@@ -5,7 +5,7 @@
 		<title>Oppian | {% block title %}{% endblock %}</title>
 		<link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
 
-		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 		<meta name="designer" content="jonwallacedesign.com" />
 
 		<link href="{{ MEDIA_URL }}css/core_layout.css" rel="stylesheet" type="text/css" media="screen" />
@@ -19,6 +19,7 @@
 		<script type="text/javascript" src="{{ MEDIA_URL }}js/scriptaculous.js?load=effects,builder"></script>
 		<script type="text/javascript" src="{{ MEDIA_URL }}js/lightbox.js"></script>
 		<link rel="stylesheet" href="{{ MEDIA_URL }}css/lightbox.css" type="text/css" media="screen" />
+		{% block head_extra %}{% endblock %}
 	</head>
 
 	<body class="thrColElsHdr" id="{% block body_id %}base{% endblock %}">
@@ -31,14 +32,13 @@
 			        </div>
 			        <div id="menu" class="tab-{% block tab_id %}home{% endblock %}">
 						<ul>
-							<li><div id='tab-home-left'></div><div><a id='tab-home'  href="{% url home %}">Home</a></div><div id='tab-home-right'></div>
-							<li><div id='tab-about-left'></div><div><a id='tab-about'  href="{% url about %}">About</a></div><div id='tab-about-right'></div>
-							<li><div id='tab-services-left'></div><div><a id='tab-services'  href="{% url services %}">Services</a></div><div id='tab-services-right'></div>
-							<li><div id='tab-clients-left'></div><div><a id='tab-clients'  href="{% url clients %}">Clients</a></div><div id='tab-clients-right'></div>
-							<li><div id='tab-labs-left'></div><div><a id='tab-labs'  href="{% url labs %}">Labs</a></div><div id='tab-labs-right'></div>
-							<li><div id='tab-blog-left'></div><div><a id='tab-blog'  href="{% url blog %}">Blog</a></div><div id='tab-blog-right'></div>
-							<li><div id='tab-contact-left'></div><div><a id='tab-contact'  href="{% url contact %}">  Contact</a></div><div id='tab-contact-right'></div>
-							</li>
+							<li><div id='tab-home-left'></div><div><a id='tab-home'  href="{% url home %}">Home</a></div><div id='tab-home-right'></div></li>
+							<li><div id='tab-about-left'></div><div><a id='tab-about'  href="{% url about %}">About</a></div><div id='tab-about-right'></div></li>
+							<li><div id='tab-services-left'></div><div><a id='tab-services'  href="{% url services %}">Services</a></div><div id='tab-services-right'></div></li>
+							<li><div id='tab-clients-left'></div><div><a id='tab-clients'  href="{% url clients %}">Clients</a></div><div id='tab-clients-right'></div></li>
+							<li><div id='tab-labs-left'></div><div><a id='tab-labs'  href="{% url labs %}">Labs</a></div><div id='tab-labs-right'></div></li>
+							<li><div id='tab-blog-left'></div><div><a id='tab-blog'  href="{% url blog %}">Blog</a></div><div id='tab-blog-right'></div></li>
+							<li><div id='tab-contact-left'></div><div><a id='tab-contact'  href="{% url contact %}">  Contact</a></div><div id='tab-contact-right'></div></li>
 						</ul>
 					</div>
 			    {% endblock %}
