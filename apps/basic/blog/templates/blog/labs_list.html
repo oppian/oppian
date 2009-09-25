@@ -27,21 +27,29 @@
 
         {% load comments %}
         {% load humanize %}
-    
-        {% for post in object_list %}
-            <div class="hr"><hr /></div>
-            {% get_comment_count for post as comment_count %}
-            <div class="post">
-                <img src="{{ MEDIA_URL }}images/labs/labs_image.jpg" alt="Labs image" width="210" height="143" border="0" class="imageRightAlign" title="Blog image" /></a>
-                <h3><a href="{{ post.get_absolute_url }}">{{ post.title }}</a></h3>
-                <p class="paragraphText">{{ post.tease }}</p>
-                <ul class="paragraphSmallText">
-                    <li>Posted by {{ post.author }} on {{ post.publish|date|naturalday }}</li>
-                    <li>{{ comment_count }} comment{{ comment_count|pluralize:',s' }}</li>
-                </ul>
-            </div>
-        {% endfor %}
-        <br/><br/><br/><br/><br/><br/><br/><br/>
+        {% load smart_if %}
+        
+        {% if object_list|length == 0 %}
+        
+            <br/><br/><br/><br/><br/><br/><br/><br/>
+            
+        {% else %}
+        
+            {% for post in object_list %}
+                <div class="hr"><hr /></div>
+                {% get_comment_count for post as comment_count %}
+                <div class="post">
+                    <img src="{{ MEDIA_URL }}{{ post.thumb.photo }}" class="thumb" alt="Blog image - {{ post.thumb.title }}" style="float:right;" height="104" />
+                    <h3><a href="{{ post.get_absolute_url }}">{{ post.title }}</a></h3>
+                    <p class="paragraphText">{{ post.tease }}</p>
+                    <ul class="paragraphSmallText">
+                        <li>Posted by {{ post.author }} on {{ post.publish|date|naturalday }}</li>
+                        <li>{{ comment_count }} comment{{ comment_count|pluralize:',s' }}</li>
+                    </ul>
+                </div>
+            {% endfor %}
+        
+        {% endif %}
     </div>
   
     {% if is_paginated %}

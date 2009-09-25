@@ -43,15 +43,19 @@ if "oppianapp" in settings.INSTALLED_APPS:
                 print "creating oppian blogs:"
                 
             title = "Welcome to Oppian"
+            tease = "An introduction to the new website for Oppian Systems."
             
             id_o = 0
-            id_logo = 0
+            id_oppian = 0
             photos = Photo.objects.filter(photo='images/OppianO-96x82.png')
             if len(photos)==1:
-                id_o = photos[0].id                
-            body = """<inline type="media.photo" id="%(id_o)d" class="small_left" />
-
-Welcome to the new website for **Oppian Systems Ltd**.  Here you'll be able to find out all about us, what we do and how we do it.  Over the coming weeks we'll be expanding on these modest beginnings to add more open source software, how-to guides and product and project details, so do check back.  Our updates will also be [tweeted](http://twitter.com/oppian) so you shouldn't miss a thing.
+                id_o = photos[0].id
+            photos = Photo.objects.filter(photo='images/oppian.png')
+            if len(photos)==1:
+                oppian_photo = photos[0]
+                                
+            body = """
+<inline type="media.photo" id="%(id_o)d" class="small_left" />Welcome to the new website for **Oppian Systems Ltd**.  Here you'll be able to find out all about us, what we do and how we do it.  Over the coming weeks we'll be expanding on these modest beginnings to add more open source software, how-to guides and product and project details, so do check back.  Our updates will also be [tweeted](http://twitter.com/oppian) so you shouldn't miss a thing.
 
 # About us
 
@@ -72,8 +76,9 @@ Look out for upcoming posts involving Django utilities and iPhone development.
                 post=blog.Post(
                     title=title,
                     body=body,
-                    tease=title,
+                    tease=tease,
                     slug=slugify(title),
+                    thumb=oppian_photo,
                     status=2, # public
                     allow_comments=True,
                     publish=datetime.datetime.now(),
