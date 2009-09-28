@@ -128,6 +128,9 @@ INSTALLED_APPS = (
     # url shortener git://github.com/nileshk/url-shortener.git 
     'url_shortener',
     
+    # web-crawler robot control hg clone http://bitbucket.org/jezdez/django-robots/ 
+    'robots',
+
     # tagging http://code.google.com/p/django-tagging/
     'tagging',
     

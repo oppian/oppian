@@ -25,6 +25,9 @@ urlpatterns = patterns('',
     # link shortener
     (r'^o/', include('url_shortener.urls')),
     
+    # robot crontrol
+    (r'^robots.txt$', include('robots.urls')),
+    
     # last, the about pages and home page etc
     (r'^', include('oppianapp.urls')),
 )
