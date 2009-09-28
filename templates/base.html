@@ -17,14 +17,19 @@
 		
 		<!-- JQuery code -->
 		<link rel="stylesheet" type="text/css" href="{{ MEDIA_URL }}css/jquery/thumbs.css" media="screen" />
+		<link rel="stylesheet" type="text/css" href="{{ MEDIA_URL }}css/overlay-apple.css" media="screen" />
 		<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js"></script>
+	<!-- <script type="text/javascript" src="http://cdn.jquerytools.org/1.1.1/full/jquery.tools.min.js"></script> -->
+	<!--	<script type="text/javascript" src="http://static.flowplayer.org/js/tools/tools.flashembed-1.0.4.min.js"></script> -->
 		<script type="text/javascript" src="{{ MEDIA_URL }}js/jquery.center.js"></script>
 		<script type="text/javascript" src="{{ MEDIA_URL }}js/jquery.jthumb.js"></script>
+		<script type="text/javascript" src="{{ MEDIA_URL }}js/jquery.tools.min.js"></script>
 		<script type="text/javascript">
 			jQuery(document).ready(function() 
 			{
 			 $("a.thumb, img.thumb").thumbs();
-			 $("a.thumb img, img.thumb").thumbsImg();			     
+			 $("a.thumb img, img.thumb").thumbsImg();
+			 $("#triggers img[rel]").overlay({effect: 'apple'});
 			});
 		</script>
 
