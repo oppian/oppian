@@ -3,93 +3,66 @@
 {% block tab_id %}about{% endblock %}
 
 {% block body %}
-    	<div class="contentSubNav">
+<div class="contentSubNav">
         
-        	<!--2NDRYNAV-->
+    <!--2NDRYNAV-->
             
-          <div id="secondarynav_top" class="secondarynav_top">
-          </div>
+    <div id="secondarynav_top" class="secondarynav_top"></div>
+    <div id="secondarynav_middle" class="secondarynav_middle">
+        <ul class="topnav">
+            <li class="topnav"> 
+        	    <div class="secondarynav_highlight_top"></div>
+                <div class="secondarynav_highlight_middle">
+                    <h4 class="secondarynav_middle_layout"><a href="about.html" class="secondarynav_link" target="_self" title="About">About</a></h4>
+                </div>
+                <div class="secondarynav_highlight_bottom"></div>
+                <div class="secondarynav_divider"></div>
+            </li>
+            <li class="topnav">
+                <div class="secondarynav_highlight_top_off"></div>
+                <div class="secondarynav_highlight_middle_off">
+                    <h4 class="secondarynav_middle_layout"><a href="{% url people %}" class="secondarynav_link_off" target="_self" title="People">People</a></h4>
+                </div>
+                <div class="secondarynav_highlight_bottom_off"></div>
+                <div class="secondarynav_divider"></div>
+            </li> 
+            <li class="topnav">
+                <div class="secondarynav_highlight_top_off"></div>
+                <div class="secondarynav_highlight_middle_off">
+                    <h4 class="secondarynav_middle_layout"><a href="{% url labs %}" class="secondarynav_link_off" target="_self" title="Labs">Labs</a></h4>
+                </div>
+                <div class="secondarynav_highlight_bottom_off"></div>
+                <div class="secondarynav_divider"></div>
+            </li> 
+            <li class="topnav">
+                <div class="secondarynav_highlight_top_off"></div>
+                <div class="secondarynav_highlight_middle_off">
+                    <h4 class="secondarynav_middle_layout"><a href="{% url blog %}" class="secondarynav_link_off" target="_self" title="Blog">Blog</a></h4>
+                </div>
+                <div class="secondarynav_highlight_bottom_off"></div>
+              	<div class="secondarynav_divider"></div>
+            </li>
+            <li class="topnav">
+                <div class="secondarynav_highlight_top_off"></div>
+                <div class="secondarynav_highlight_middle_off">
+                    <h4 class="secondarynav_middle_layout"><a href="{% url contact %}" class="secondarynav_link_off" target="_self" title="Contact">Contact</a></h4>
+                </div>
+                <div class="secondarynav_highlight_bottom_off"></div>
+            </li>
+        </ul>    	
+    </div>
             
-      	  <div id="secondarynav_middle" class="secondarynav_middle">
-        
-        	<ul class="topnav">
-            
-            	<li class="topnav"> 
-        	  
-                  <div class="secondarynav_highlight_top"></div>
-                  <div class="secondarynav_highlight_middle">
-                  <h4 class="secondarynav_middle_layout"><a href="about.html" class="secondarynav_link" target="_self" title="About">About</a></h4>
-                  </div>
-                  <div class="secondarynav_highlight_bottom"></div>
-                  
-                 
-                      
-                <div class="secondarynav_divider"></div>
-                </li>
-                <li class="topnav">
-                  
-                  <div class="secondarynav_highlight_top_off"></div>
-                  <div class="secondarynav_highlight_middle_off">
-                  <h4 class="secondarynav_middle_layout"><a href="{% url people %}" class="secondarynav_link_off" target="_self" title="People">People</a></h4>
-                  </div>
-                  <div class="secondarynav_highlight_bottom_off"></div>
-                  
-                 
-                  
-                <div class="secondarynav_divider"></div>
-                </li> 
-                <li class="topnav">
-              
-                  <div class="secondarynav_highlight_top_off"></div>
-                  <div class="secondarynav_highlight_middle_off">
-                  <h4 class="secondarynav_middle_layout"><a href="{% url labs %}" class="secondarynav_link_off" target="_self" title="Labs">Labs</a></h4>
-                  </div>
-                  <div class="secondarynav_highlight_bottom_off"></div>
-                  
-                 
-              
-                <div class="secondarynav_divider"></div>
-              	</li> 
-              	<li class="topnav">
-              
-                  <div class="secondarynav_highlight_top_off"></div>
-                  <div class="secondarynav_highlight_middle_off">
-                  <h4 class="secondarynav_middle_layout"><a href="{% url blog %}" class="secondarynav_link_off" target="_self" title="Blog">Blog</a></h4>
-                  </div>
-                  <div class="secondarynav_highlight_bottom_off"></div>
-              	
-                
-                
-                <div class="secondarynav_divider"></div>
-              	</li>
-              	<li class="topnav">
-              
-                  <div class="secondarynav_highlight_top_off"></div>
-                  <div class="secondarynav_highlight_middle_off">
-                  <h4 class="secondarynav_middle_layout"><a href="{% url contact %}" class="secondarynav_link_off" target="_self" title="Contact">Contact</a></h4>
-                  </div>
-                  <div class="secondarynav_highlight_bottom_off"></div>
-              	
-                </li>
-              
-            </ul>    	
-                
-          </div>
-            
-          <div id="secondarynav_bottom" class="secondarynav_bottom">
-          </div>
+    <div id="secondarynav_bottom" class="secondarynav_bottom"></div>
+</div>
 
         
-        </div>
-        
-        <div class="contentMainPanel">
-        
-        <h1>About Oppian</h1>
-        <p class="paragraphText">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec sit amet tortor et enim pharetra iaculis. Nulla ut felis mauris. Nam imperdiet viverra turpis et sodales. Cras sit amet diam volutpat nisl venenatis fringilla sit amet vestibulum nunc.</p>
-        <p class="paragraphText"><img src="{{ MEDIA_URL }}images/about/logo.jpg" class="imageRightAlign" width="210" height="143" alt="Oppian logo" title="Oppian logo" />Cras pellentesque bibendum ante ut condimentum. Sed in lacus nec nulla dictum porttitor sed in eros. Aenean id magna ac elit ullamcorper bibendum. Ut semper ullamcorper augue, eu vehicula diam semper quis. Suspendisse eu nulla eu orci facilisis consectetur sed vehicula leo. Nam pretium fringilla ligula a mattis. Etiam pellentesque lobortis tortor. Donec turpis dolor, facilisis sed blandit in, bibendum nec nunc. Integer sit amet nisi et lectus malesuada feugiat. Integer tempor justo et leo euismod consequat.</p>
+<div class="contentMainPanel">
+    <h1>About Oppian</h1>
+    <p class="paragraphText">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec sit amet tortor et enim pharetra iaculis. Nulla ut felis mauris. Nam imperdiet viverra turpis et sodales. Cras sit amet diam volutpat nisl venenatis fringilla sit amet vestibulum nunc.</p>
+    <p class="paragraphText"><img src="{{ MEDIA_URL }}images/about/logo.jpg" class="imageRightAlign" width="210" height="143" alt="Oppian logo" title="Oppian logo" />Cras pellentesque bibendum ante ut condimentum. Sed in lacus nec nulla dictum porttitor sed in eros. Aenean id magna ac elit ullamcorper bibendum. Ut semper ullamcorper augue, eu vehicula diam semper quis. Suspendisse eu nulla eu orci facilisis consectetur sed vehicula leo. Nam pretium fringilla ligula a mattis. Etiam pellentesque lobortis tortor. Donec turpis dolor, facilisis sed blandit in, bibendum nec nunc. Integer sit amet nisi et lectus malesuada feugiat. Integer tempor justo et leo euismod consequat.</p>
             
-        <br />
-        <p class="paragraphLink"><a href="{% url people %}" target="_self" title="Follow this link to find out more about the people behind Oppian">Follow this link to find out more about the people behind Oppian</a></p>
-    </div>
+    <br />
+    <p class="paragraphLink"><a href="{% url people %}" target="_self" title="Follow this link to find out more about the people behind Oppian">Follow this link to find out more about the people behind Oppian</a></p>
+</div>
 
 {% endblock %}

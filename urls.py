@@ -5,6 +5,13 @@ from django.conf import settings
 from django.contrib import admin
 admin.autodiscover()
 
+from basic.blog.feeds import BlogPostsFeed, BlogPostsByCategory
+
+feeds = {
+    'latest': BlogPostsByCategory,
+}
+
+
 urlpatterns = patterns('',
     # Uncomment the admin/doc line below and add 'django.contrib.admindocs' 
     # to INSTALLED_APPS to enable admin documentation:
@@ -28,6 +35,9 @@ urlpatterns = patterns('',
     # robot crontrol
     (r'^robots.txt$', include('robots.urls')),
     
+    # feeds
+    (r'^feeds/(?P<url>.*)/$', 'django.contrib.syndication.views.feed', {'feed_dict': feeds}),
+        
     # last, the about pages and home page etc
     (r'^', include('oppianapp.urls')),
 )

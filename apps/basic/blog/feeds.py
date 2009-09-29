@@ -25,7 +25,7 @@ class BlogPostsFeed(Feed):
 
 class BlogPostsByCategory(Feed):
     _site = Site.objects.get_current()
-    title = '%s posts category feed' % _site.name
+    title = '%s posts by category' % _site.name
     
     def get_object(self, bits):
         if len(bits) != 1:
