@@ -319,14 +319,14 @@ a.secondarynav_link_off:hover {
 	background-position: top;
 }
 .content2Cols_LHS {
-	width: 435px;
+	width: 315px;
 	float: left;
 	padding-right: 15px;
 }
 .content2Cols_RHS {
-	width: 435px;
+	width: 315px;
 	float: left;
-	padding-right: 0px; /* SMH */
+	padding-right: 0px;
 }
 .content4Cols {
 	width: 210px;
