@@ -16,8 +16,7 @@
  */
 jQuery.fn.thumbs = function()
 {
-	/*return this.wrap('<div class="thumb-img"><div class="thumb-inner">' + '</div><div class="thumb-strip"></div><div class="thumb-zoom"></div></div>'); */
-    return this.wrap('<div class="thumb-outer"><div class="thumb-img"><div class="thumb-inner">' + '</div></div><div class="thumb-zoom"></div></div>');
+	return this.wrap('<div class="thumb-outer"><div class="thumb-img"><div class="thumb-inner">' + '</div></div><div class="thumb-after"></div></div>');
 }
 
 /*
@@ -34,7 +33,6 @@ jQuery.fn.thumbsImg = function()
 		function()
 		{
 		  jQuery(this).center(); /* needs jquery.center.js */
-		 
 		}
 	)
 }
