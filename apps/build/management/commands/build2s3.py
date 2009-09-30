@@ -44,6 +44,7 @@ def list_files(dir, file_list):
             list_files(fullname, file_list)
             continue
         file_list.append(fullname)
+        print " + %s" % fullname
         
 def create_tmp(suffix=None):
     """Creates a tmp file with a particular prefix and suffix."""
