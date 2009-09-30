@@ -87,12 +87,12 @@ hr {display:none}
 #menu li a
 {
 	width: auto;
-	height: 170px;
 	color: #fff;
 	font-size: 1.1em;
 	line-height: 1.3em;
 	font-weight: bold;
-	padding-top: 80px;
+	border: 0;
+	margin-top: 80px;
 	float: left;
 }
 
@@ -113,6 +113,17 @@ hr {display:none}
 }
 
 
+#menu.tab-home #tab-home-mid,
+#menu.tab-about #tab-about-mid,
+#menu.tab-services #tab-services-mid,
+#menu.tab-clients #tab-clients-mid,
+#menu.tab-labs #tab-labs-mid,
+#menu.tab-blog #tab-blog-mid,
+#menu.tab-contact #tab-contact-mid
+{
+	background-image: url(../images/core/navitem_ON_mid.png);
+}
+
 #menu li a.active,
 #menu.tab-home #tab-home,
 #menu.tab-about #tab-about,
@@ -122,9 +133,11 @@ hr {display:none}
 #menu.tab-blog #tab-blog,
 #menu.tab-contact #tab-contact
 {
-	background-image: url(../images/core/navitem_ON_mid.png);
 	color: #a10b12;
 }
+
+
+
 
 #menu.tab-home #tab-home-left,
 #menu.tab-about #tab-about-left,
@@ -319,15 +332,27 @@ a.secondarynav_link_off:hover {
 	background-position: top;
 }
 .content2Cols_LHS {
-	width: 315px;
+	width: 435px;
 	float: left;
 	padding-right: 15px;
 }
 .content2Cols_RHS {
+	width: 435px;
+	float: left;
+	padding-right: 0px;
+}
+
+.content2Cols_inner_LHS {
+	width: 315px;
+	float: left;
+	padding-right: 15px;
+}
+.content2Cols_inner_RHS {
 	width: 315px;
 	float: left;
 	padding-right: 0px;
 }
+
 .content4Cols {
 	width: 210px;
 	padding-right: 15px;
