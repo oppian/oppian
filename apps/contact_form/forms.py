@@ -149,7 +149,7 @@ class ContactForm(forms.Form):
     phone = forms.CharField(max_length=100,
                            widget=forms.TextInput(attrs=attrs_dict),
                            label=u'Your Phone Number')
-    body = forms.CharField(widget=forms.Textarea(attrs=attrs_dict),
+    body = forms.CharField(widget=forms.Textarea(attrs={ 'class': 'required', 'rows':'6'}),
                               label=u'Your Enquiry')
     
     from_email = settings.DEFAULT_FROM_EMAIL

@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% block title %}Clients{% endblock %}
+{% block tab_id %}clients{% endblock %}
+
+{% block body %}      
+
+{% include "clients_sub_menu.html" %}
+        
+<div class="contentMainPanel">
+        
+    <h1>Oppian Partners</h1>
+    <p class="paragraphText">We've also partnered with these groups...</p>
+          
+    <div class="content3Cols"><a href="http://goodguysmedia.com/" target="_blank" class="imgLink" title="Good Guys Media"><img src="{{ MEDIA_URL }}images/clients/goodguysmedia.jpg" width="210" height="143" border="0" alt="Good Guys Media" title="Good Guys Media" /></a></div>
+    <div class="content3Cols"><a href="http://transmissionbegins.com/" target="_blank" class="imgLink" title="Transmission Begins"><img src="{{ MEDIA_URL }}images/clients/transmissionbegins.jpg" width="210" height="143" border="0" alt="Transmission Begins" title="Transmission Begins" /></a></div>
+    <div class="content3Cols_end"><a href="http://tomsawyereffect.wordpress.com/" target="_blank" class="imgLink" title="The Tom Sawyer Effect"><img src="{{ MEDIA_URL }}images/clients/tomsawyereffect.jpg" width="210" height="143" border="0" alt="The Tom Sawyer Effect" title="The Tom Sawyer Effect" /></a></div>
+        
+    <!--
+    <div class="content3Cols"><a href="http://www.slashdesign.com/" target="_blank" class="imgLink" title="Slash Design"><img src="{{ MEDIA_URL }}images/clients/slashdesign.jpg" width="210" height="143" border="0" alt="Slash Design" title="Slash Design" /></a></div>
+    //-->    
+            
+    <div class="hr"><hr /></div>
+    <p class="paragraphLink"><a href="{% url services %}" target="_self" title="Follow this link to find out more about the our services we offer our clients">Follow this link to find out more about the our services we offer our clients</a></p>
+</div>
+    
+{% endblock %}

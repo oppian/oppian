@@ -1,0 +1,11 @@
+{% load set_vars_from_json %}
+{% set_vars_from_json_block %}
+{ "menu":
+    [{"name":"Oppian Services", "url":"{% url services %}"},
+     {"name":"Recommended",     "url":"{% url recommended %}"},
+     {"name":"Clients",         "url":"{% url clients %}"},
+     {"name":"Contact",         "url":"{% url contact %}"}
+    ]
+}
+{% end_set_vars_from_json_block %}
+{% include "sub_menu.html" %}

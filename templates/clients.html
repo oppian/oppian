@@ -3,52 +3,8 @@
 {% block tab_id %}clients{% endblock %}
 
 {% block body %}      
-<div class="contentSubNav">
-        
-    <!--2NDRYNAV-->
-            
-    <div id="secondarynav_top" class="secondarynav_top"></div>
-    <div id="secondarynav_middle" class="secondarynav_middle">
-        <ul class="topnav">
-            <li class="topnav"> 
-        	    <div class="secondarynav_highlight_top"></div>
-                <div class="secondarynav_highlight_middle">
-                    <h4 class="secondarynav_middle_layout"><a href="{% url clients %}" class="secondarynav_link" target="_self" title="Clients">Clients</a></h4>
-                </div>
-                <div class="secondarynav_highlight_bottom"></div>
-                <div class="secondarynav_divider"></div>
-            </li>
-            
-            <li class="topnav">
-                <div class="secondarynav_highlight_top_off"></div>
-                <div class="secondarynav_highlight_middle_off">
-                    <h4 class="secondarynav_middle_layout"><a href="#partners" class="secondarynav_link_off" target="_self" title="Partners">Partners</a></h4>
-                </div>
-                <div class="secondarynav_highlight_bottom_off"></div>
-                <div class="secondarynav_divider"></div>
-            </li>
-            
-            <li class="topnav">
-                <div class="secondarynav_highlight_top_off"></div>
-                <div class="secondarynav_highlight_middle_off">
-                    <h4 class="secondarynav_middle_layout"><a href="{% url services %}" class="secondarynav_link_off" target="_self" title="Services">Services</a></h4>
-                </div>
-                <div class="secondarynav_highlight_bottom_off"></div>
-                <div class="secondarynav_divider"></div>
-            </li>
-            <li class="topnav">
-                <div class="secondarynav_highlight_top_off"></div>
-                <div class="secondarynav_highlight_middle_off">
-                    <h4 class="secondarynav_middle_layout"><a href="{% url contact %}" class="secondarynav_link_off" target="_self" title="Contact">Contact</a></h4>
-                </div>
-                <div class="secondarynav_highlight_bottom_off"></div>
-            </li>
-        </ul>    	
-    </div>
-            
-    <div id="secondarynav_bottom" class="secondarynav_bottom"></div>
-</div>
 
+{% include "clients_sub_menu.html" %}
         
 <div class="contentMainPanel">
         
@@ -69,26 +25,7 @@
     <br/>
     <p class="paragraphText">Oppian created the initial end-to-end system architecture for Live Talkback. In addition, we implemented the server back-end and the prototype of the iPhone client. To achieve this, we used Django and the iPhone SDK along with Amazon EC2 and RightScale services.</p>
     <p class="paragraphText">We're proud to have helped Live Talkback win 3rd place in the <a href="http://www.o2litmus.co.uk/appshowdown">O2 Litmus app showdown</a>.</p>
-    <div class="hr"><hr /></div>
-          
-    <div class="apple_overlay black" id="photo1" style="background-image:url({{ MEDIA_URL }}/images/overlay/white.png);width:400px;padding:35px">
-        <img src="{{ MEDIA_URL }}images/clients/livetalkback_large.jpg" style="margin-left:40px;"/>
-    </div>
-          
-    <a name="partners" id="partners"></a>
-    <h1>Oppian Partners</h1>
-    <p class="paragraphText">We've also partnered with these groups...</p>
-          
-    <div class="content3Cols"><a href="http://goodguysmedia.com/" target="_blank" class="imgLink" title="Good Guys Media"><img src="{{ MEDIA_URL }}images/clients/goodguysmedia.jpg" width="210" height="143" border="0" alt="Good Guys Media" title="Good Guys Media" /></a></div>
-    <div class="content3Cols"><a href="http://transmissionbegins.com/" target="_blank" class="imgLink" title="Transmission Begins"><img src="{{ MEDIA_URL }}images/clients/transmissionbegins.jpg" width="210" height="143" border="0" alt="Transmission Begins" title="Transmission Begins" /></a></div>
-    <div class="content3Cols_end"><a href="http://tomsawyereffect.wordpress.com/" target="_blank" class="imgLink" title="The Tom Sawyer Effect"><img src="{{ MEDIA_URL }}images/clients/tomsawyereffect.jpg" width="210" height="143" border="0" alt="The Tom Sawyer Effect" title="The Tom Sawyer Effect" /></a></div>
-        
-    <!--
-    <div class="content3Cols"><a href="http://www.slashdesign.com/" target="_blank" class="imgLink" title="Slash Design"><img src="{{ MEDIA_URL }}images/clients/slashdesign.jpg" width="210" height="143" border="0" alt="Slash Design" title="Slash Design" /></a></div>
-    //-->    
-            
-    <div class="hr"><hr /></div>
-    <p class="paragraphLink"><a href="{% url services %}" target="_self" title="Follow this link to find out more about the our services we offer our clients">Follow this link to find out more about the our services we offer our clients</a></p>
+
 </div>
     
 {% endblock %}

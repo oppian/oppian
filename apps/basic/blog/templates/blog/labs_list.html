@@ -7,21 +7,16 @@
 {% block body_class %}{{ block.super }} post_list{% endblock %}
 
 {% block body %}
-    <div class="contentSubNav">
-        <div id="secondarynav_top" class="secondarynav_top"></div>
-        <div id="secondarynav_middle" class="secondarynav_middle">
-            <ul class="topnav">
-                <li class="topnav"> 
-                    <div class="secondarynav_highlight_top"></div>
-                    <div class="secondarynav_highlight_middle"><h4 class="secondarynav_middle_layout"><a href="{% url labs %}" class="secondarynav_link" target="_self" title="Labs">Labs</a></h4></div>
-                    <div class="secondarynav_highlight_bottom"></div>
-                    <div class="secondarynav_divider"></div>
-                </li>                
-            </ul>
-        </div>
-        <div id="secondarynav_bottom" class="secondarynav_bottom"></div>
-    </div>
-        
+
+    {% load set_vars_from_json %}
+    {% set_vars_from_json_block %}
+    { "menu":
+        [{"name":"Oppian Labs",  "url":"{% url labs %}"}
+        ]
+    }
+    {% end_set_vars_from_json_block %}
+    {% include "sub_menu.html" %}
+    
     <div class="contentMainPanel">
         <a href="/feeds/latest/lab/"><img src="{{ MEDIA_URL }}images/RSS_feed_icon_by_carrotmadman6.gif" width=24 border=0 style="float:left;padding-top:4px;"></a><h1>Oppian Labs</h1>
 

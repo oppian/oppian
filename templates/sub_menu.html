@@ -1,0 +1,33 @@
+{% load smart_if %}
+{% load set_vars_from_json %}
+
+<div class="contentSubNav">    
+    <div id="secondarynav_top" class="secondarynav_top"></div>
+    <div id="secondarynav_middle" class="secondarynav_middle">
+        <ul class="topnav">
+            {% for item in menu %}
+                <li class="topnav">
+                
+                    <!-- test code to simulat what is selected --> 
+                    {% if item.url == request.path_info %}
+                        {% set_vars_from_json '{ "selmod":"" }' %}
+                    {% else %}
+                        {% set_vars_from_json '{ "selmod":"_off" }' %}
+                    {% endif %}
+
+                    <div class="secondarynav_highlight_top{{ selmod }}"></div>
+                    <div class="secondarynav_highlight_middle{{ selmod }}">
+                        <h4 class="secondarynav_middle_layout"><a href="{{ item.url }}" class="secondarynav_link{{ selmod }}" target="_self" title="{{ item.name }}">{{ item.name }}</a></h4>
+                    </div>
+                    <div class="secondarynav_highlight_bottom{{ selmod }}"></div>
+                    
+                    {% if not forloop.last %} 
+                        <div class="secondarynav_divider"></div>
+                    {% endif %}
+                </li>
+            {% endfor %}
+        </ul>        
+    </div>
+            
+    <div id="secondarynav_bottom" class="secondarynav_bottom"></div>
+</div>

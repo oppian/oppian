@@ -1,0 +1,12 @@
+{% load set_vars_from_json %}
+{% set_vars_from_json_block %}
+{ "menu":
+    [{"name":"Contact Oppian",  "url":"{% url contact %}"},
+     {"name":"Map",             "url":"{% url map %}"},
+     {"name":"About us",        "url":"{% url about %}"},
+     {"name":"People",          "url":"{% url people %}"},
+     {"name":"Blog",            "url":"{% url blog %}"}
+    ]
+}
+{% end_set_vars_from_json_block %}
+{% include "sub_menu.html" %}
