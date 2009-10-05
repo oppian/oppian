@@ -331,6 +331,12 @@ a.secondarynav_link_off:hover {
 	background-image: url(../images/core/contentPanel.png);
 	background-position: top;
 }
+
+.highlight {
+	max-height: 400px;
+    overflow:auto;
+}
+
 .content2Cols_LHS {
 	width: 435px;
 	float: left;
