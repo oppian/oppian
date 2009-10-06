@@ -334,7 +334,10 @@ a.secondarynav_link_off:hover {
 
 .highlight {
 	max-height: 400px;
+	background-color:#FFFFCC;
     overflow:auto;
+    margin:4px;
+    padding-left:4px;
 }
 
 .content2Cols_LHS {
@@ -942,3 +945,6 @@ form input.button {
 #topnav li {
 	display:inline;
 }
+
+.post_summary {
+height:203px;
