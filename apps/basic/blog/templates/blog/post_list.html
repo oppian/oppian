@@ -35,7 +35,7 @@
             {% for post in object_list %}
                 <div class="hr"><hr /></div>
                 {% get_comment_count for post as comment_count %}
-                <div class="post">
+                <div class="post_summary">
                     {% if post.thumb and post.thumb.photo|length > 0 %}
                         <img src="{{ MEDIA_URL }}{{ post.thumb.photo }}" class="thumb" alt="Blog image - {{ post.thumb.title }}" style="float:right;" height="104" />
                     {% else %}
