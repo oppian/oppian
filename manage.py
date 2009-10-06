@@ -5,6 +5,7 @@ import sys
 cwd = dirname(abspath(__file__))
 sys.path.insert(0, join(cwd, 'lib/django'))
 sys.path.insert(0, join(cwd, 'apps'))
+sys.path.insert(0, join(cwd, 'apps/oppianapp/utils'))
 sys.path.insert(0, join(cwd, 'lib/boto'))
 
 from django.core.management import execute_manager

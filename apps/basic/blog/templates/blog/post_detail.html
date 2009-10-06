@@ -32,7 +32,7 @@
 	  	</li>
 	  </ul>
 	  
-	  <p>{{ object.body|markdown|render_inlines }}</p>
+	  <p>{{ object.body|markdown:"pygments"|render_inlines }}</p>
 	  
 	  {% tags_for_object object as tag_list %}
 	  {% if tag_list %}
