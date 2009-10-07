@@ -4,10 +4,7 @@
 /* --- MAIN --- */
 
 body {
-	margin-left: 0px;
-	margin-top: 0px;
-	margin-right: 0px;
-	margin-bottom: 0px;
+	margin: 0px;
 	text-align: left;
 	background-color: #fff;
 	font-family: Tahoma, Arial, Helvetica, sans-serif;
@@ -332,13 +329,35 @@ a.secondarynav_link_off:hover {
 	background-position: top;
 }
 
-.highlight {
-	max-height: 400px;
+
+/*
+ *
+ */
+
+.sourcecode {
+	width:840px;
+	max-width:840px;
+	overflow:auto;
+	}
+
+.sourcecodetable {
 	background-color:#FFFFCC;
-    overflow:auto;
+    border-collapse: collapse;
+	border: 1px solid #99CC66;
     margin:4px;
-    padding-left:4px;
 }
+.linenos {
+    border-right: 1px solid #99CC66;
+    padding:0px 2px 0px 2px;
+    margin:0;
+}
+.code {
+	padding-left:4px;
+}
+
+/*
+ *
+ */
 
 .content2Cols_LHS {
 	width: 435px;

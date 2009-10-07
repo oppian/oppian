@@ -18,7 +18,7 @@ class CodeBlockPreprocessor(Preprocessor):
             elif line.startswith("@@") is True and seen_start is True:
                 lexer = get_lexer_by_name(lang)
                 content = "\n".join(block)
-                highlighted = highlight(content, lexer, HtmlFormatter())
+                highlighted = highlight(content, lexer, HtmlFormatter(linenos='table', cssclass="sourcecode", lineseparator="<br>"))
                 new_lines.append("\n%s\n" % (highlighted))
                 lang = None
                 block = []
