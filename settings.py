@@ -143,6 +143,9 @@ INSTALLED_APPS = (
     # build tools
     'build',
     
+    # google analytics - from http://github.com/montylounge/django-google-analytics
+    'google_analytics',
+    
     # oppian web-site specific code including static pages
     'oppianapp',
 )
@@ -173,6 +176,8 @@ FIXTURE_DIRS = (
     os.path.join(PROJECT_ROOT, "fixtures"),
 )
 
+# Google Analytics
+GOOGLE_ANALYTICS_MODEL = True
 
 # local_settings.py can be used to override environment-specific settings
 # like database and email that differ between development and production.
