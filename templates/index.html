@@ -1,14 +1,15 @@
 {% extends 'base.html' %}
-{% block title %}Act Quickly, Think Slowly{% endblock %}
+{% block title %}Home{% endblock %}
 {% block tab_id %}home{% endblock %}
 
 {% block body %}
         <div class="content2Cols_LHS">
             <h1>Welcome to Oppian</h1>
-            <p class="paragraphText">Oppian is a team of creative, talented engineers with a wealth of experience working at the heart of the mobile and web service delivery industry.</p>
-            <p class="paragraphText">Please explore our site to find out all about Oppian and how we could help our your next project. We would love to hear from you so please do drop us a note via our <a href="{% url contact %}" target="_self" title="Contact us">contact page</a>.</p>
-            <br />
-            <p class="paragraphLink"><a href="{% url about %}" target="self" title="Follow this link to find out more about Oppian">Follow this link to find out more about Oppian</a></p>
+            <p class="paragraphText"><span class="oppian_name">Oppian</span> is a group of creative and passionate technologists with a wealth of experience gained from the forefront of mobile and web development, working with companies 
+like Apple, Adobe, Symbian and Psion.</p>
+
+            <p class="paragraphText">We believe that mobile software will increasingly be transformed through the use of cloud computing and we have the technical ability and experience to help you take part.</p>
+            <p class="paragraphText">Please <a href="{% url contact %}">contact us</a> to find out how we could help advise you with your mobile strategy.</p>
         </div>
         
         <div class="content2Cols_RHS">
@@ -64,4 +65,6 @@
 swfobject.registerObject("FlashID");
 //-->
 </script>
+
+<p class="hidden">Has anyone really been far even as decided to use even go want to do look more like?</p>
 {% endblock %}
