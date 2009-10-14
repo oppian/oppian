@@ -103,60 +103,38 @@ hr {display:none}
 	height: 170px;
 	float: left;
 }
-#menu li div:first-of-type,
-#menu li div:last-of-type 
+
+#menu .menu_left_off,
+#menu .menu_right_off
 {
-    width: 18px;
+	width: 18px;
 }
 
-
-#menu.tab-home #tab-home-mid,
-#menu.tab-about #tab-about-mid,
-#menu.tab-services #tab-services-mid,
-#menu.tab-clients #tab-clients-mid,
-#menu.tab-labs #tab-labs-mid,
-#menu.tab-blog #tab-blog-mid,
-#menu.tab-contact #tab-contact-mid
+#menu .menu_left_on
 {
-	background-image: url(../images/core/navitem_ON_mid.png);
-}
-
-#menu li a.active,
-#menu.tab-home #tab-home,
-#menu.tab-about #tab-about,
-#menu.tab-services #tab-services,
-#menu.tab-clients #tab-clients,
-#menu.tab-labs #tab-labs,
-#menu.tab-blog #tab-blog,
-#menu.tab-contact #tab-contact
-{
-	color: #a10b12;
-}
-
-
-
-
-#menu.tab-home #tab-home-left,
-#menu.tab-about #tab-about-left,
-#menu.tab-services #tab-services-left,
-#menu.tab-clients #tab-clients-left,
-#menu.tab-labs #tab-labs-left,
-#menu.tab-blog #tab-blog-left,
-#menu.tab-contact #tab-contact-left
-{
+	width: 18px;
 	background-image: url(../images/core/navitem_ON_lhs.png);
 }
 
-
-#menu.tab-home #tab-home-right,
-#menu.tab-about #tab-about-right,
-#menu.tab-services #tab-services-right,
-#menu.tab-clients #tab-clients-right,
-#menu.tab-labs #tab-labs-right,
-#menu.tab-blog #tab-blog-right,
-#menu.tab-contact #tab-contact-right
+#menu .menu_right_on
 {
+	width: 18px;
 	background-image: url(../images/core/navitem_ON_rhs.png);
+}
+
+#menu .menu_mid_on
+{
+	background-image: url(../images/core/navitem_ON_mid.png);
+	
+}
+
+#menu .menu_mid_on a
+{
+    color: #a10b12;
+}
+
+#menu .menu_mid_off
+{
 }
 
 

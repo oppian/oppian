@@ -1,0 +1,27 @@
+{% load smart_if %}
+{% load set_vars_from_json %}
+
+{% comment %}
+This template draws the main navigation tabs.
+
+The variable "tab" should be set to the current page's ID.
+
+{% endcomment %}
+
+<div id="menu">
+    <ul>
+        {% for item in main_menu %}
+            {% if item.id == tab %}
+                {% set_vars_from_json '{ "selmod":"_on" }' %}
+            {% else %}
+                {% set_vars_from_json '{ "selmod":"_off" }' %}
+            {% endif %}
+
+            <li>
+                <div class="menu_left{{ selmod }}"></div>
+                <div class="menu_mid{{ selmod }}"><a href="{{ item.url }}">{{item.name}}</a></div>
+                <div class="menu_right{{ selmod }}"></div>
+            </li>        
+        {% endfor %}
+    </ul>
+</div>
