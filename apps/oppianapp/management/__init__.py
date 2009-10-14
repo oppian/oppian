@@ -59,7 +59,7 @@ if "oppianapp" in settings.INSTALLED_APPS:
 
 # About us
 
-We are a software consultancy with members who have a long history of end-to-end systems including mobile devices, desktops and servers.  We're also great believers in cloud technologies which have helped us create and test massively scaling web solutions.  [Meet the team](/about/people/) or read more [about us](/about/).
+We are a software consultancy with members who have a long history of end-to-end systems including mobile devices, desktops and servers.  We're also great believers in cloud technologies which have helped us create and test massively scaling web solutions.  [Meet the team](/people/) or read more [about us](/about/).
 
 # Open Source
 
@@ -68,7 +68,7 @@ Look out for upcoming posts involving Django utilities and iPhone development.
 
 # Contact us
 
-<inline type="media.photo" id="%(id_o)d" class="small_right" />If you'd like to make use of our services or have ideas for investigations then you can email us at [info@oppian.com](mailto:info@oppian.com) or see the [Contact Us](/about/contact_us/) section for our full contact details
+<inline type="media.photo" id="%(id_o)d" class="small_right" />If you'd like to make use of our services or have ideas for investigations then you can email us at [info@oppian.com](mailto:info@oppian.com) or see the [Contact Us](/contact/) section for our full contact details
 """ % {'id_o': id_o}
             
             blogs = blog.Post.objects.filter(title=title)
