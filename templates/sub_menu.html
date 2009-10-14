@@ -8,7 +8,6 @@
             {% for item in menu %}
                 <li class="topnav">
                 
-                    <!-- test code to simulat what is selected --> 
                     {% if item.url == request.path_info %}
                         {% set_vars_from_json '{ "selmod":"" }' %}
                     {% else %}
