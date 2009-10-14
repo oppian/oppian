@@ -13,32 +13,24 @@ like Apple, Adobe, Symbian and Psion.</p>
         </div>
         
         <div class="content2Cols_RHS">
-          <object classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" width="435" height="320" id="FlashID" title="Oppian">
-            <param name="movie" value="{{ MEDIA_URL }}flash/homepage.swf" />
-            <param name="quality" value="high" />
-            <param name="wmode" value="opaque" />
-            <param name="swfversion" value="9.0.45.0" />
-            <!-- This param tag prompts users with Flash Player 6.0 r65 and higher to download the latest version of Flash Player. Delete it if you don't want users to see the prompt. -->
-            <param name="expressinstall" value="{{ MEDIA_URL }}scripts/expressInstall.swf" />
-            <!-- Next object tag is for non-IE browsers. So hide it from IE using IECC. -->
-            <!--[if !IE]>-->
-            <object type="application/x-shockwave-flash" data="{{ MEDIA_URL }}flash/homepage.swf" width="435" height="320">
-              <!--<![endif]-->
-              <param name="quality" value="high" />
-              <param name="wmode" value="opaque" />
-              <param name="swfversion" value="9.0.45.0" />
-              <param name="expressinstall" value="{{ MEDIA_URL }}scripts/expressInstall.swf" />
-              <!-- The browser displays the following alternative content for users with Flash Player 6.0 and older. -->
-              <div>
-                <h4>Content on this page requires a newer version of Adobe Flash Player.</h4>
-                <p><a href="http://www.adobe.com/go/getflashplayer"><img src="http://www.adobe.com/images/shared/download_buttons/get_flash_player.gif" alt="Get Adobe Flash player" width="112" height="33" /></a></p>
-              </div>
-              <!--[if !IE]>-->
-            </object>
-            <!--<![endif]-->
-          </object>
+            <div id="welcome_flash" style="width:435px;height:320px;">
+                <div class="flash_container" >
+                    <img src="{{ MEDIA_URL }}/images/flashplayer_100x100.jpg" />
+                    <h3>Get Adobe Flash Player</h3>
+                    <p>You must have the latest Flash player installed.</p>
+                    <p>You can <a href="http://get.adobe.com/flashplayer/">download it here</a>.</p>
+                    <br clear="all" />
+                </div>
+            </div>
         </div>
-
+        <script type="text/javascript">
+        flashembed("welcome_flash", {
+            src:"{{ MEDIA_URL }}flash/homepage.swf", 
+            version: [8,0],
+            expressInstall: "{{ MEDIA_URL }}/flash/expressinstall.swf",
+            });
+        </script>
+        
         <div class="content4Cols">
         	<a href="{% url people %}" target="_self" title="Oppian People" class="imgLink"><img src="{{ MEDIA_URL }}images/about/mal.jpg" width="210" height="143" border="0" alt="Oppian People" title="Oppian People" /></a>
         	<h3>People</h3>
@@ -59,12 +51,6 @@ like Apple, Adobe, Symbian and Psion.</p>
             <h3>Blog</h3>
             <p class="paragraphLink"><a href="{% url blog %}" target="_self" title="Stay up to date with all the latest news from Oppian.">Stay up to date with all the latest news from Oppian.</a></p>
         </div>
-
-<script type="text/javascript">
-<!--
-swfobject.registerObject("FlashID");
-//-->
-</script>
 
 <p class="hidden">Has anyone really been far even as decided to use even go want to do look more like?</p>
 {% endblock %}

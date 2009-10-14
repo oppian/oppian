@@ -945,3 +945,20 @@ form input.button {
 
 .post_summary {
 height:203px;
+}
+
+.flash_container {
+	border:1px outset #ccc;
+	background-color:#efefef;
+	padding:10px;
+	font-family:"bitstream vera sans", "lucida console", "verdana";
+}
+
+.flash_container img {
+	float:left;
+	margin-right:10px;
+}
+
+.flash_container h3 {
+	margin-top:0px;
+}
