@@ -36,7 +36,21 @@
                 <div class="hr"><hr /></div>
                 {% get_comment_count for post as comment_count %}
                 <div class="post_summary">
-                    <img src="{{ MEDIA_URL }}{{ post.thumb.photo }}" class="thumb" alt="Blog image - {{ post.thumb.title }}" style="float:right;" height="104" />
+                    {% if post.thumb and post.thumb.photo|length > 0 %}
+                            <img src="{{ MEDIA_URL }}{{ post.thumb.photo }}" alt="Labs image - {{ post.thumb.title }}" style="float:right;" height="104" />
+                        {% else %}
+                            <img src="{{ MEDIA_URL }}images/oppian.png" alt="Labs image - Oppian" style="float:right;" height="104" />
+                    {% endif %}
+                        
+                    {% comment %}
+                        // as this isn't working properly on all browsers, I'm disabling for now
+                        {% if post.thumb and post.thumb.photo|length > 0 %}
+                            <img src="{{ MEDIA_URL }}{{ post.thumb.photo }}" class="thumb" alt="Blog image - {{ post.thumb.title }}" style="float:right;" height="104" />
+                        {% else %}
+                            <img src="{{ MEDIA_URL }}images/oppian.png" class="thumb" alt="Blog image - Oppian" style="float:right;" height="104" />
+                        {% endif %}
+                    {% endcomment %}
+                    
                     <h3><a href="{{ post.get_absolute_url }}">{{ post.title }}</a></h3>
                     <p class="paragraphText">{{ post.tease }}</p>
                     <ul class="paragraphSmallText">
