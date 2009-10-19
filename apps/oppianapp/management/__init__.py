@@ -68,7 +68,7 @@ Look out for upcoming posts involving Django utilities and iPhone development.
 
 # Contact us
 
-<inline type="media.photo" id="%(id_o)d" class="small_right" />If you'd like to make use of our services or have ideas for investigations then you can email us at [info@oppian.com](mailto:info@oppian.com) or see the [Contact Us](/contact/) section for our full contact details
+If you'd like to make use of our services or have ideas for investigations then you can email us at [info@oppian.com](mailto:info@oppian.com) or see the [Contact Us](/contact/) section for our full contact details
 """ % {'id_o': id_o}
             
             blogs = blog.Post.objects.filter(title=title)
