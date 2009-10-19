@@ -1,6 +1,10 @@
 {% load comments i18n %}
+
 <form action="{% comment_form_target %}" method="post">
+  {% comment %}
   {% if next %}<input type="hidden" name="next" value="{{ next }}" />{% endif %}
+  {% endcomment %}
+  <input type="hidden" name="next" value="{{ request.path }}" />
   {% for field in form %}
     {% if field.is_hidden %}
       {{ field }}
