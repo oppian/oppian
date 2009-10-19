@@ -20,6 +20,9 @@ fi
 ## enable macro mod
 a2enmod macro
 
+## enable rewrite mod
+a2enmod rewrite
+
 ## create sym link to conf location
 ln -s -f $CONF_LOCATION /etc/apache2/sites-available/$SITE
 
