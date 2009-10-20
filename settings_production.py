@@ -8,3 +8,13 @@ DATABASE_USER = 'oppian'             # Not used with sqlite3.
 DATABASE_PASSWORD = 'ceelness22'         # Not used with sqlite3.
 DATABASE_HOST = 'localhost'             # Set to empty string for localhost. Not used with sqlite3.
 DATABASE_PORT = ''             # Set to empty string for default. Not used with sqlite3.
+
+# the twitter email account of the site 
+TWITTER_EMAIL = "twitter@oppian.com"
+TWITTER_USER  = "oppian"
+# the password for the account referenced by the twitter email address above
+TWITTER_PASSWORD = "deteenee52" # oppian
+# the name of the agent making the requests
+TWITTER_AGENT_STR = "oppian.com"
+# how often to check the tweet status
+TWITTER_TIMEOUT = 3600
