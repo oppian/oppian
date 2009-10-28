@@ -10,12 +10,14 @@ TEMPLATE_DEBUG = DEBUG
 SEND_BROKEN_LINK_EMAILS = True
 
 ADMINS = (
-    ('Matthew Jacobi', 'matt@oppian.com'),
-    ('Steve Hartley', 'steve@oppian.com'),
-    ('Lighthouse', 'ticket+oppian.24019-zcj7zsja@lighthouseapp.com'),
+    ('Web Admins Oppian', 'web-admins@oppian.com'),   
 )
 
 MANAGERS = ADMINS
+
+CONTACT_RECIPIENTS = (
+    ('Contact Oppian', 'contact@oppian.com'),
+)
 
 # only serve media in Django in debug mode as in release mode, it is served by Apache
 SERVE_MEDIA = DEBUG

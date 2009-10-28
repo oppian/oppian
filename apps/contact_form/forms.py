@@ -154,7 +154,7 @@ class ContactForm(forms.Form):
     
     from_email = settings.DEFAULT_FROM_EMAIL
     
-    recipient_list = [mail_tuple[1] for mail_tuple in settings.MANAGERS]
+    recipient_list = [mail_tuple[1] for mail_tuple in settings.CONTACT_RECIPIENTS]
 
     subject_template_name = "contact/contact_form_subject.txt"
     
