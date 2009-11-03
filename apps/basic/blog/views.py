@@ -73,6 +73,11 @@ post_archive_day.__doc__ = date_based.archive_day.__doc__
 
 
 def post_detail(request, slug, year, month, day, **kwargs):
+    if request.user and request.user.is_staff:
+        queryset = Post.objects.all()
+    else:
+        queryset = Post.objects.published()
+
     return date_based.object_detail(
         request,
         year = year,
@@ -80,7 +85,7 @@ def post_detail(request, slug, year, month, day, **kwargs):
         day = day,
         date_field = 'publish',
         slug = slug,
-        queryset = Post.objects.published(),
+        queryset = queryset,
         extra_context = {
             'request': request,
         },
