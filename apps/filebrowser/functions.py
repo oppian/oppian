@@ -31,7 +31,7 @@ def _url_to_path(value):
     mediaurl_re = re.compile(r'^(%s)' % (MEDIA_URL))
     value = mediaurl_re.sub('', value)
     return value
-    
+
 
 def _path_to_url(value):
     """
@@ -43,7 +43,7 @@ def _path_to_url(value):
     mediaroot_re = re.compile(r'^(%s)' % (MEDIA_ROOT))
     value = mediaroot_re.sub('', value)
     return _url_join(MEDIA_URL, value)
-    
+
 
 def _dir_from_url(value):
     """
@@ -51,13 +51,13 @@ def _dir_from_url(value):
     URL has to be an absolute URL including MEDIA_URL or
     an URL relative to MEDIA_URL.
     """
-    
+
     mediaurl_re = re.compile(r'^(%s)' % (MEDIA_URL))
     value = mediaurl_re.sub('', value)
     directory_re = re.compile(r'^(%s)' % (DIRECTORY))
     value = directory_re.sub('', value)
     return os.path.split(value)[0]
-    
+
 
 def _get_version_path(value, version_prefix):
     """
@@ -74,7 +74,7 @@ def _get_version_path(value, version_prefix):
         return os.path.join(VERSIONS_BASEDIR, path, version_filename)
     else:
         return None
-    
+
 
 def _sort_by_attr(seq, attr):
     """
@@ -88,7 +88,7 @@ def _sort_by_attr(seq, attr):
     the sorted list of objects.
     """
     import operator
-    
+
     # Use the "Schwartzian transform"
     # Create the auxiliary list of tuples where every i-th tuple has form
     # (seq[i].attr, i, seq[i]) and sort it. The second item of tuple is needed not
@@ -97,7 +97,7 @@ def _sort_by_attr(seq, attr):
     intermed = map(None, map(getattr, seq, (attr,)*len(seq)), xrange(len(seq)), seq)
     intermed.sort()
     return map(operator.getitem, intermed, (-1,) * len(intermed))
-    
+
 
 def _url_join(*args):
     if args[0].startswith("http://"):
@@ -114,66 +114,71 @@ def _url_join(*args):
     if os.path.splitext(args[-1])[1]:
         url = url.rstrip("/")
     return url
-    
+
+def _listdir(path):
+    """
+    Return dirlist
+    """
+    return default_storage.listdir(path)
 
 def _get_path(path):
     """
     Get Path.
     """
-    
-    if os.path.isabs(path) or not os.path.isdir(os.path.join(MEDIA_ROOT, DIRECTORY, path)):
+    #if os.path.isabs(path) or not os.path.isdir(os.path.join(MEDIA_ROOT, DIRECTORY, path)):
+    if os.path.isabs(path):# or not default_storage.exists(os.path.join(MEDIA_ROOT, DIRECTORY, path)):
         return None
     return path
-    
+
 
 def _get_file(path, filename):
     """
     Get File.
     """
-    
+
     if not os.path.isfile(os.path.join(MEDIA_ROOT, DIRECTORY, path, filename)) and not os.path.isdir(os.path.join(MEDIA_ROOT, DIRECTORY, path, filename)):
         return None
     return filename
-    
+
 
 def _get_breadcrumbs(query, path, title):
     """
     Get breadcrumbs.
     """
-    
+
     breadcrumbs = []
     dir_query = ""
     if path:
         for item in path.split(os.sep):
-            dir_query = os.path.join(dir_query,item)
-            breadcrumbs.append([item,dir_query])
+            dir_query = os.path.join(dir_query, item)
+            breadcrumbs.append([item, dir_query])
     if title:
-        breadcrumbs.append([title,''])
+        breadcrumbs.append([title, ''])
     return breadcrumbs
-    
+
 
 def _get_filterdate(filterDate, dateTime):
     """
     Get filterdate.
     """
-    
+
     returnvalue = ''
     dateYear = strftime("%Y", gmtime(dateTime))
     dateMonth = strftime("%m", gmtime(dateTime))
     dateDay = strftime("%d", gmtime(dateTime))
     if filterDate == 'today' and int(dateYear) == int(localtime()[0]) and int(dateMonth) == int(localtime()[1]) and int(dateDay) == int(localtime()[2]): returnvalue = 'true'
-    elif filterDate == 'thismonth' and dateTime >= time()-2592000: returnvalue = 'true'
+    elif filterDate == 'thismonth' and dateTime >= time() - 2592000: returnvalue = 'true'
     elif filterDate == 'thisyear' and int(dateYear) == int(localtime()[0]): returnvalue = 'true'
-    elif filterDate == 'past7days' and dateTime >= time()-604800: returnvalue = 'true'
+    elif filterDate == 'past7days' and dateTime >= time() - 604800: returnvalue = 'true'
     elif filterDate == '': returnvalue = 'true'
     return returnvalue
-    
+
 
 def _get_settings_var():
     """
     Get settings variables used for FileBrowser listing.
     """
-    
+
     settings_var = {}
     # Main
     settings_var['DEBUG'] = DEBUG
@@ -199,52 +204,52 @@ def _get_settings_var():
     # Convert Filenames
     settings_var['CONVERT_FILENAME'] = CONVERT_FILENAME
     return settings_var
-    
+
 
 def _handle_file_upload(path, file):
     """
     Handle File Upload.
     """
-    
+
     file_path = os.path.join(path, file.name)
     uploadedfile = default_storage.save(file_path, file)
     return uploadedfile
-    
+
 
 def _get_file_type(filename):
     """
     Get file type as defined in EXTENSIONS.
     """
-    
+
     file_extension = os.path.splitext(filename)[1].lower()
     file_type = ''
-    for k,v in EXTENSIONS.iteritems():
+    for k, v in EXTENSIONS.iteritems():
         for extension in v:
             if file_extension == extension.lower():
                 file_type = k
     return file_type
-    
+
 
 def _is_selectable(filename, selecttype):
     """
     Get select type as defined in FORMATS.
     """
-    
+
     file_extension = os.path.splitext(filename)[1].lower()
     select_types = []
-    for k,v in SELECT_FORMATS.iteritems():
+    for k, v in SELECT_FORMATS.iteritems():
         for extension in v:
             if file_extension == extension.lower():
                 select_types.append(k)
     return select_types
-    
+
 
 def _version_generator(value, version_prefix, force=None):
     """
     Generate Version for an Image.
     value has to be a serverpath relative to MEDIA_ROOT.
     """
-    
+
     # PIL's Error "Suspension not allowed here" work around:
     # s. http://mail.python.org/pipermail/image-sig/1999-August/000816.html
     if STRICT_PIL:
@@ -255,7 +260,7 @@ def _version_generator(value, version_prefix, force=None):
         except ImportError:
             import ImageFile
     ImageFile.MAXBLOCK = IMAGE_MAXBLOCK # default is 64k
-    
+
     try:
         im = Image.open(os.path.join(MEDIA_ROOT, value))
         version_path = _get_version_path(value, version_prefix)
@@ -272,32 +277,32 @@ def _version_generator(value, version_prefix, force=None):
         return version_path
     except:
         return None
-    
+
 
 def scale_and_crop(im, width, height, opts):
-    x, y   = [float(v) for v in im.size]
+    x, y = [float(v) for v in im.size]
     if width:
         xr = float(width)
     else:
-        xr = float(x*height/y)
+        xr = float(x * height / y)
     if height:
         yr = float(height)
     else:
-        yr = float(y*width/x)
-    
+        yr = float(y * width / x)
+
     if 'crop' in opts:
-        r = max(xr/x, yr/y)
+        r = max(xr / x, yr / y)
     else:
-        r = min(xr/x, yr/y)
-    
+        r = min(xr / x, yr / y)
+
     if r < 1.0 or (r > 1.0 and 'upscale' in opts):
-        im = im.resize((int(x*r), int(y*r)), resample=Image.ANTIALIAS)
-    
+        im = im.resize((int(x * r), int(y * r)), resample=Image.ANTIALIAS)
+
     if 'crop' in opts:
-        x, y   = [float(v) for v in im.size]
-        ex, ey = (x-min(x, xr))/2, (y-min(y, yr))/2
+        x, y = [float(v) for v in im.size]
+        ex, ey = (x - min(x, xr)) / 2, (y - min(y, yr)) / 2
         if ex or ey:
-            im = im.crop((int(ex), int(ey), int(x-ex), int(y-ey)))
+            im = im.crop((int(ex), int(ey), int(x - ex), int(y - ey)))
     return im
 scale_and_crop.valid_options = ('crop', 'upscale')
 
@@ -307,6 +312,6 @@ def _convert_filename(value):
         return value.replace(" ", "_").lower()
     else:
         return value
-        
-    
+
+
 

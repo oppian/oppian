@@ -47,9 +47,9 @@ urlpatterns = patterns('',
 if settings.SERVE_MEDIA:
     urlpatterns += patterns('',
         # static files, note: use of settings for DRY
-        (r'^%s(?P<path>.*)$' % settings.MEDIA_URL[1:], 'django.views.static.serve', {'document_root': settings.MEDIA_ROOT}),
+        (r'^%s(?P<path>.*)$' % settings.MEDIA_URL[1:], 'django.views.static.serve', {'document_root': settings.MEDIA_ROOT_LOCAL}),
         (r'^(?P<path>favicon.ico)$', 'django.views.static.serve', {
-            'document_root': '%s/images/' % settings.MEDIA_ROOT,
+            'document_root': '%s/images/' % settings.MEDIA_ROOT_LOCAL,
         }),
     )
 

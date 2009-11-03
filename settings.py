@@ -53,11 +53,12 @@ SITE_DOMAIN = socket.gethostname()
 
 # If you set this to False, Django will make some optimizations so as not
 # to load the internationalization machinery.
-USE_I18N = True
+USE_I18N = False
 
 # Absolute path to the directory that holds media.
 # Example: "/home/media/media.lawrence.com/"
-MEDIA_ROOT = os.path.join(PROJECT_ROOT, 'media/')
+MEDIA_ROOT_LOCAL = os.path.join(PROJECT_ROOT, 'media/')
+MEDIA_ROOT = 'media/'
 
 # if SHORTENER_REQUIRES_LOGIN is True, then only logged in users can submit new URLs
 SHORTENER_REQUIRES_LOGIN = True
@@ -189,6 +190,13 @@ GOOGLE_ANALYTICS_MODEL = True
 
 # filebrowser
 FILEBROWSER_URL_FILEBROWSER_MEDIA = '%sfilebrowser/' % MEDIA_URL
+FILEBROWSER_DIRECTORY = ''
+
+# django storages: http://code.welldev.org/django-storages/wiki/S3Storage
+DEFAULT_FILE_STORAGE = 'backends.s3boto.S3BotoStorage'
+AWS_STORAGE_BUCKET_NAME = 'oppian-files'
+from S3 import CallingFormat
+AWS_CALLING_FORMAT = CallingFormat.SUBDOMAIN
 
 # local_settings.py can be used to override environment-specific settings
 # like database and email that differ between development and production.
