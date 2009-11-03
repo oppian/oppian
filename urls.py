@@ -17,27 +17,29 @@ urlpatterns = patterns('',
     # to INSTALLED_APPS to enable admin documentation:
     (r'^admin/doc/', include('django.contrib.admindocs.urls')),
 
+    # filebrowser: Add the following line BEFORE the admin-urls:
+    (r'^admin/filebrowser/', include('filebrowser.urls')),
     # Uncomment the next line to enable the admin:
     (r'^admin/', include(admin.site.urls)),
-    
+
     # comments
     (r'^comments/', include('django.contrib.comments.urls')),
-    
+
     # contact form
     (r'^contact/', include('contact_form.urls')),
-    
+
     # blog
     (r'^blog/', include('basic.blog.urls')),
-    
+
     # link shortener
     (r'^o/', include('url_shortener.urls')),
-    
+
     # robot crontrol
     (r'^robots.txt$', include('robots.urls')),
-    
+
     # feeds
     (r'^feeds/(?P<url>.*)/$', 'django.contrib.syndication.views.feed', {'feed_dict': feeds}),
-        
+
     # last, the about pages and home page etc
     (r'^', include('oppianapp.urls')),
 )

@@ -10,8 +10,11 @@ TEMPLATE_DEBUG = DEBUG
 SEND_BROKEN_LINK_EMAILS = True
 
 ADMINS = (
-    ('Web Admins Oppian', 'web-admins@oppian.com'),   
+    ('Web Admins Oppian', 'web-admins@oppian.com'),
 )
+
+# admin password
+# besket78
 
 MANAGERS = ADMINS
 
@@ -68,7 +71,7 @@ TEMPLATE_CONTEXT_PROCESSORS = TEMPLATE_CONTEXT_PROCESSORS + (
 
 # the twitter email account of the site 
 TWITTER_EMAIL = "twitter-test@oppian.com"
-TWITTER_USER  = "oppian"
+TWITTER_USER = "oppian"
 #TWITTER_EMAIL = "twitter@oppian.com"
 # the password for the account referenced by the twitter email address above
 TWITTER_PASSWORD = "metef62" # oppian-test
@@ -111,7 +114,7 @@ TEMPLATE_DIRS = (
     # Put strings here, like "/home/html/django_templates" or "C:/www/django/templates".
     # Always use forward slashes, even on Windows.
     # Don't forget to use absolute paths, not relative paths.
-    os.path.join(PROJECT_ROOT, "templates").replace('\\','/'),
+    os.path.join(PROJECT_ROOT, "templates").replace('\\', '/'),
 )
 
 INSTALLED_APPS = (
@@ -124,30 +127,33 @@ INSTALLED_APPS = (
     'django.contrib.comments',
     'django.contrib.markup',
     'django.contrib.humanize',
-    
+
     # basic apps http://github.com/nathanborror/django-basic-apps/tree/master
     'basic.*',
-    
+
     # url shortener git://github.com/nileshk/url-shortener.git 
     'url_shortener',
-    
+
     # web-crawler robot control hg clone http://bitbucket.org/jezdez/django-robots/ 
     'robots',
 
     # tagging http://code.google.com/p/django-tagging/
     'tagging',
-    
+
     'contact_form',
-    
+
     # django command extensions http://github.com/django-extensions
     'django_extensions',
-    
+
     # build tools
     'build',
-    
+
     # google analytics - from http://github.com/montylounge/django-google-analytics
     'google_analytics',
-    
+
+    # http://code.google.com/p/django-filebrowser/wiki/filebrowser_3
+    'filebrowser',
+
     # oppian web-site specific code including static pages
     'oppianapp',
 )
@@ -180,6 +186,9 @@ FIXTURE_DIRS = (
 
 # Google Analytics
 GOOGLE_ANALYTICS_MODEL = True
+
+# filebrowser
+FILEBROWSER_URL_FILEBROWSER_MEDIA = '%sfilebrowser/' % MEDIA_URL
 
 # local_settings.py can be used to override environment-specific settings
 # like database and email that differ between development and production.
