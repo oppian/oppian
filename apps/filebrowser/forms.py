@@ -8,7 +8,7 @@ from django.utils.translation import ugettext as _
 
 # filebrowser imports
 from filebrowser.fb_settings import MAX_UPLOAD_SIZE
-from filebrowser.functions import _get_file_type, _convert_filename, _get_file
+from filebrowser.functions import _get_file_type, _convert_filename, _exists
 
 alnum_name_re = re.compile(r'^[\sa-zA-Z0-9._/-]+$')
 
@@ -52,7 +52,7 @@ class RenameForm(forms.Form):
             if not alnum_name_re.search(self.cleaned_data['name']):
                 raise forms.ValidationError(_(u'Only letters, numbers, underscores, spaces and hyphens are allowed.'))
             # file/directory must not already exist.
-            if _get_file("", _convert_filename(self.cleaned_data['name']) + self.file_extension):
+            if _exists(_convert_filename(self.cleaned_data['name']) + self.file_extension):
                 raise forms.ValidationError(_(u'The File/Folder already exists.'))
         return _convert_filename(self.cleaned_data['name'])
     

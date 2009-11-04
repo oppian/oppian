@@ -20,7 +20,7 @@ from django.core.files.storage import default_storage
 
 # filebrowser imports
 from filebrowser.fb_settings import *
-from filebrowser.functions import _url_to_path, _path_to_url, _sort_by_attr, _get_path, _get_file, _get_version_path, _get_breadcrumbs, _get_filterdate, _get_settings_var, _handle_file_upload, _get_file_type, _url_join, _convert_filename, _listdir, _delete
+from filebrowser.functions import _url_to_path, _path_to_url, _sort_by_attr, _get_path, _get_file, _get_version_path, _get_breadcrumbs, _get_filterdate, _get_settings_var, _handle_file_upload, _get_file_type, _url_join, _convert_filename, _listdir, _delete, _exists
 from filebrowser.templatetags.fb_tags import query_helper
 from filebrowser.base import FileObject
 from filebrowser.decorators import flash_login_required
@@ -229,9 +229,8 @@ def _check_file(request):
     if request.method == 'POST':
         for k, v in request.POST.items():
             if k != "folder":
-                v = _convert_filename(v)
-                # TODO: change to _get_file
-                if os.path.isfile(os.path.join(MEDIA_ROOT, DIRECTORY, folder, v)):
+                v = _convert_filename(v) 
+                if _exists(os.path.join(MEDIA_ROOT, DIRECTORY, folder, v)):
                     fileArray[k] = v
 
     return HttpResponse(simplejson.dumps(fileArray))
@@ -429,15 +428,15 @@ def versions(request):
     # QUERY / PATH CHECK
     query = request.GET
     path = _get_path(query.get('dir', ''))
-    filename = _get_file(query.get('dir', ''), query.get('filename', ''))
-    if path is None or filename is None:
+    filename = query.get('filename', '')
+    filepath = _get_file(path, filename)
+    if path is None or filepath is None:
         msg = _('Directory/File does not exist.')
         request.user.message_set.create(message=msg)
         return HttpResponseRedirect(reverse("fb_browse"))
-    abs_path = os.path.join(MEDIA_ROOT, DIRECTORY, path)
 
     return render_to_response('filebrowser/versions.html', {
-        'original': _path_to_url(os.path.join(DIRECTORY, path, filename)),
+        'original': _path_to_url(filepath),
         'query': query,
         'title': _(u'Versions for "%s"') % filename,
         'settings_var': _get_settings_var(),

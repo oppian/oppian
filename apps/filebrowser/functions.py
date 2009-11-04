@@ -58,6 +58,14 @@ def _dir_from_url(value):
     value = directory_re.sub('', value)
     return os.path.split(value)[0]
 
+def _exists(filepath):
+    """
+    Checks to see if filepath exists in storage. Relative to MEDIA_ROOT.
+    """
+    filepath = os.path.normpath(filepath) 
+    if not default_storage.exists(os.path.join(MEDIA_ROOT, DIRECTORY, filepath)):
+        return None
+    return filepath
 
 def _get_version_path(value, version_prefix):
     """
@@ -67,11 +75,11 @@ def _get_version_path(value, version_prefix):
     version_filename = filename + version_prefix + ext
     Returns a path relative to MEDIA_ROOT.
     """
-    #if os.path.isfile(os.path.join(MEDIA_ROOT, value)):
-    if default_storage.exists(os.path.join(MEDIA_ROOT, value)):
-        path, filename = os.path.split(value)
+    filepath = _exists(value)
+    if filepath:
+        path, filename = os.path.split(filepath)
         filename, ext = os.path.splitext(filename)
-        version_filename = filename + "_" + version_prefix + ext
+        version_filename = u"%s_%s%s" % (filename, version_prefix, ext)
         return os.path.join(VERSIONS_BASEDIR, path, version_filename)
     else:
         return None
@@ -128,8 +136,8 @@ def _delete(path, filename):
     """
     default_storage.delete(os.path.join(path, filename))
 
-# TODO: add an _exists
 # TODO: add an _isdir and _isfile
+
 def _get_path(path):
     """
     Get Path.
@@ -145,11 +153,7 @@ def _get_file(path, filename):
     Get File.
     """
 
-    #if not os.path.isfile(os.path.join(MEDIA_ROOT, DIRECTORY, path, filename)) and not os.path.isdir(os.path.join(MEDIA_ROOT, DIRECTORY, path, filename)):
-    if not default_storage.exists(os.path.join(MEDIA_ROOT, DIRECTORY, path, filename)):
-        return None
-    return filename
-
+    return _exists(os.path.join(path, filename))
 
 def _get_breadcrumbs(query, path, title):
     """

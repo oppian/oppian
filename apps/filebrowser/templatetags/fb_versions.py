@@ -8,7 +8,7 @@ from django.utils.encoding import force_unicode
 
 # filebrowser imports
 from filebrowser.fb_settings import MEDIA_ROOT, MEDIA_URL, VERSIONS
-from filebrowser.functions import _url_to_path, _path_to_url, _get_version_path, _version_generator, _get_file
+from filebrowser.functions import _url_to_path, _path_to_url, _get_version_path, _version_generator, _exists
 from filebrowser.base import FileObject
 
 register = Library()
@@ -36,7 +36,7 @@ class VersionNode(Node):
                 return None
         try:
             version_path = _get_version_path(str(source), version_prefix)
-            if not _get_file('', version_path):
+            if not _exists(version_path):
                 # create version
                 version_path = _version_generator(_url_to_path(str(source)), version_prefix)
             # TODO: generate if modified time has changed
@@ -93,7 +93,7 @@ class VersionObjectNode(Node):
                 return None
         try:
             version_path = _get_version_path(_url_to_path(str(source)), version_prefix)
-            if not _get_file('', version_path):
+            if not _exists(version_path):
                 # create version
                 version_path = _version_generator(_url_to_path(str(source)), version_prefix)
             # TODO: generate if modified time has changed
