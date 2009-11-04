@@ -87,19 +87,31 @@ class S3BotoStorage(Storage):
 
     def listdir(self, name):
         name = self._clean_name(name)
-        return [l.name[len(name) + 1:] for l in self.bucket.list() if not len(name) or l.name[:len(name)] == name]
+        ret_arr = []
+        for l in self.bucket.list(prefix=name+'/', delimiter='/'):
+            tmpname = l.name[len(name) + 1:]
+            if not len(name) or l.name[:len(name)] == name:
+                ret_arr.append(tmpname)
+        return ret_arr
+        #return [l.name[len(name) + 1:] for l in self.bucket.list() if not len(name) or l.name[:len(name)] == name]
 
     def size(self, name):
         name = self._clean_name(name)
-        return self.bucket.get_key(name).size
+        key = self.bucket.get_key(name)
+        if key:
+            return key.size
+        return 0 # folders are not found independently of files and are set to have 0 size
     
     def last_modified(self, name):
         name = self._clean_name(name)
-        last_modified_str = self.bucket.get_key(name).last_modified
+        key = self.bucket.get_key(name)
         import time
         import datetime
-        return datetime.datetime(*time.strptime(
-                        last_modified_str, '%a, %d %b %Y %H:%M:%S %Z')[0:6])
+        if key:
+            last_modified_str = key.last_modified
+            return datetime.datetime(*time.strptime(
+                            last_modified_str, '%a, %d %b %Y %H:%M:%S %Z')[0:6])
+        return datetime.datetime.now()
         
     def url(self, name):
         name = self._clean_name(name)

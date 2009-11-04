@@ -146,19 +146,23 @@ def mkdir(request):
         if form.is_valid():
             server_path = os.path.join(abs_path, form.cleaned_data['dir_name'])
             try:
+                dirname = form.cleaned_data['dir_name']
                 # PRE CREATE SIGNAL
-                filebrowser_pre_createdir.send(sender=request, path=path, dirname=form.cleaned_data['dir_name'])
+                filebrowser_pre_createdir.send(sender=request, path=path, dirname=dirname)
                 # CREATE FOLDER
+                # TODO: don't create folders
                 os.mkdir(server_path)
                 os.chmod(server_path, 0775)
                 # POST CREATE SIGNAL
-                filebrowser_post_createdir.send(sender=request, path=path, dirname=form.cleaned_data['dir_name'])
+                filebrowser_post_createdir.send(sender=request, path=path, dirname=dirname)
                 # MESSAGE & REDIRECT
-                msg = _('The Folder %s was successfully created.') % (form.cleaned_data['dir_name'])
+                msg = _('The Folder %s was successfully created.') % (dirname)
                 request.user.message_set.create(message=msg)
                 # on redirect, sort by date desc to see the new directory on top of the list
                 # remove filter in order to actually _see_ the new folder
-                redirect_url = reverse("fb_browse") + query_helper(query, "ot=desc,o=date", "ot,o,filter_type,filter_date,q")
+                new_path=os.path.join(path, dirname)#.replace('\\','/')
+                
+                redirect_url = reverse("fb_browse") + query_helper(query, "ot=desc,o=date,dir=%s" %(new_path), "ot,o,filter_type,filter_date,q")
                 return HttpResponseRedirect(redirect_url)
             except OSError, (errno, strerror):
                 if errno == 13:

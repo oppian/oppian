@@ -28,9 +28,9 @@ class FileObject(object):
     """
 
     def __init__(self, path):
-        self.path = path
-        self.head = os.path.split(path)[0]
-        self.filename = os.path.split(path)[1]
+        self.path = os.path.normpath(path)
+        self.head = os.path.split(self.path)[0]
+        self.filename = os.path.split(self.path)[1]
         self.filename_lower = self.filename.lower() # important for sorting
         self.filetype = _get_file_type(self.filename)
 
@@ -85,7 +85,7 @@ class FileObject(object):
         """
         Full server PATH including MEDIA_ROOT.
         """
-        return u"%s" % os.path.join(MEDIA_ROOT, self.path)
+        return u"%s" % os.path.normpath(os.path.join(MEDIA_ROOT, self.path))
     path_full = property(_path_full)
 
     def _path_relative(self):
@@ -102,7 +102,7 @@ class FileObject(object):
     path_relative_directory = property(_path_relative_directory)
 
     def _url_relative(self):
-        return self.path
+        return self.path.replace('\\', '/')
     url_relative = property(_url_relative)
 
     def _url_full(self):

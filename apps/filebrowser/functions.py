@@ -157,7 +157,7 @@ def _get_breadcrumbs(query, path, title):
     breadcrumbs = []
     dir_query = ""
     if path:
-        for item in path.split(os.sep):
+        for item in os.path.normpath(path).split(os.sep):
             dir_query = os.path.join(dir_query, item)
             breadcrumbs.append([item, dir_query])
     if title:
@@ -281,7 +281,7 @@ def _version_generator(value, version_prefix, force=None):
         version = scale_and_crop(im, VERSIONS[version_prefix]['width'], VERSIONS[version_prefix]['height'], VERSIONS[version_prefix]['opts'])
         # create tmp file to store versions
         from django.core.files.temp import TemporaryFile
-        tmpfile = TemporaryFile(suffix=version_path)
+        tmpfile = TemporaryFile(suffix=os.path.splitext(version_path)[1])
         try:
             version.save(tmpfile, quality=90, optimize=1)
         except IOError:
