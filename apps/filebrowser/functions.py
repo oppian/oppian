@@ -67,7 +67,8 @@ def _get_version_path(value, version_prefix):
     version_filename = filename + version_prefix + ext
     Returns a path relative to MEDIA_ROOT.
     """
-    if os.path.isfile(os.path.join(MEDIA_ROOT, value)):
+    #if os.path.isfile(os.path.join(MEDIA_ROOT, value)):
+    if default_storage.exists(os.path.join(MEDIA_ROOT, value)):
         path, filename = os.path.split(value)
         filename, ext = os.path.splitext(filename)
         version_filename = filename + "_" + version_prefix + ext
@@ -121,6 +122,12 @@ def _listdir(path):
     """
     return default_storage.listdir(path)
 
+def _delete(path, filename):
+    """
+    Deletes a file
+    """
+    default_storage.delete(os.path.join(path, filename))
+
 def _get_path(path):
     """
     Get Path.
@@ -136,7 +143,8 @@ def _get_file(path, filename):
     Get File.
     """
 
-    if not os.path.isfile(os.path.join(MEDIA_ROOT, DIRECTORY, path, filename)) and not os.path.isdir(os.path.join(MEDIA_ROOT, DIRECTORY, path, filename)):
+    #if not os.path.isfile(os.path.join(MEDIA_ROOT, DIRECTORY, path, filename)) and not os.path.isdir(os.path.join(MEDIA_ROOT, DIRECTORY, path, filename)):
+    if not default_storage.exists(os.path.join(MEDIA_ROOT, DIRECTORY, path, filename)):
         return None
     return filename
 
@@ -262,20 +270,27 @@ def _version_generator(value, version_prefix, force=None):
     ImageFile.MAXBLOCK = IMAGE_MAXBLOCK # default is 64k
 
     try:
-        im = Image.open(os.path.join(MEDIA_ROOT, value))
+        #im = Image.open(os.path.join(MEDIA_ROOT, value))
+        im = Image.open(default_storage.open(os.path.join(MEDIA_ROOT, value)))
         version_path = _get_version_path(value, version_prefix)
         absolute_version_path = os.path.join(MEDIA_ROOT, version_path)
         version_dir = os.path.split(absolute_version_path)[0]
-        if not os.path.isdir(version_dir):
+        if os.path.isabs(version_dir) and not os.path.isdir(version_dir):
             os.makedirs(version_dir)
             os.chmod(version_dir, 0775)
         version = scale_and_crop(im, VERSIONS[version_prefix]['width'], VERSIONS[version_prefix]['height'], VERSIONS[version_prefix]['opts'])
+        # create tmp file to store versions
+        from django.core.files.temp import TemporaryFile
+        tmpfile = TemporaryFile(suffix=version_path)
         try:
-            version.save(absolute_version_path, quality=90, optimize=1)
+            version.save(tmpfile, quality=90, optimize=1)
         except IOError:
-            version.save(absolute_version_path, quality=90)
+            version.save(tmpfile, quality=90)
+        # save file to storage engine
+        default_storage.save(absolute_version_path, tmpfile)
         return version_path
-    except:
+    except Exception as e:
+        print e
         return None
 
 

@@ -8,5 +8,6 @@
 <path>/oppian/apps</path>
 <path>/oppian/lib/django</path>
 <path>/oppian/lib/django-storages</path>
+<path>/oppian/lib/boto</path>
 </pydev_pathproperty>
 </pydev_project>

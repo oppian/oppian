@@ -19,7 +19,7 @@ from django.dispatch import Signal
 
 # filebrowser imports
 from filebrowser.fb_settings import *
-from filebrowser.functions import _url_to_path, _path_to_url, _sort_by_attr, _get_path, _get_file, _get_version_path, _get_breadcrumbs, _get_filterdate, _get_settings_var, _handle_file_upload, _get_file_type, _url_join, _convert_filename, _listdir
+from filebrowser.functions import _url_to_path, _path_to_url, _sort_by_attr, _get_path, _get_file, _get_version_path, _get_breadcrumbs, _get_filterdate, _get_settings_var, _handle_file_upload, _get_file_type, _url_join, _convert_filename, _listdir, _delete
 from filebrowser.templatetags.fb_tags import query_helper
 from filebrowser.base import FileObject
 from filebrowser.decorators import flash_login_required
@@ -301,7 +301,8 @@ def delete(request):
                     except:
                         pass
                 # DELETE FILE
-                os.unlink(os.path.join(abs_path, filename))
+                #os.unlink(os.path.join(abs_path, filename))
+                _delete(abs_path, filename)
                 # POST DELETE SIGNAL
                 filebrowser_post_delete.send(sender=request, path=path, filename=filename)
                 # MESSAGE & REDIRECT

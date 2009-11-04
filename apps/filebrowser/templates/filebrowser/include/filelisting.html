@@ -57,7 +57,7 @@
     {% if results_var.images_total %}
     <td class="fb_icon">
         {% ifequal file.filetype 'Image' %}
-        <a href="{{ file.url_full }}"><img src="{% version file.path settings_var.ADMIN_THUMBNAIL %}" title="{% trans 'View Image' %}" /></a>
+        <a href="{{ file.url_full }}"><img src="{% version file.path_relative settings_var.ADMIN_THUMBNAIL %}" title="{% trans 'View Image' %}" /></a>
         {% endifequal %}
     </td>
     {% endif %}

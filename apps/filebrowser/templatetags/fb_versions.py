@@ -8,7 +8,7 @@ from django.utils.encoding import force_unicode
 
 # filebrowser imports
 from filebrowser.fb_settings import MEDIA_ROOT, MEDIA_URL, VERSIONS
-from filebrowser.functions import _url_to_path, _path_to_url, _get_version_path, _version_generator
+from filebrowser.functions import _url_to_path, _path_to_url, _get_version_path, _version_generator, _get_file
 from filebrowser.base import FileObject
 
 register = Library()
@@ -21,7 +21,7 @@ class VersionNode(Node):
         else:
             self.version_prefix = None
             self.version_prefix_var = Variable(version_prefix)
-        
+
     def render(self, context):
         try:
             source = self.src.resolve(context)
@@ -35,17 +35,19 @@ class VersionNode(Node):
             except VariableDoesNotExist:
                 return None
         try:
-            version_path = _get_version_path(_url_to_path(str(source)), version_prefix)
-            if not os.path.isfile(os.path.join(MEDIA_ROOT, version_path)):
+            version_path = _get_version_path(str(source), version_prefix)
+            #if not os.path.isfile(os.path.join(MEDIA_ROOT, version_path)):
+            if not _get_file('', version_path):
                 # create version
                 version_path = _version_generator(_url_to_path(str(source)), version_prefix)
-            elif os.path.getmtime(os.path.join(MEDIA_ROOT, _url_to_path(str(source)))) > os.path.getmtime(os.path.join(MEDIA_ROOT, version_path)):
+            #elif os.path.getmtime(os.path.join(MEDIA_ROOT, _url_to_path(str(source)))) > os.path.getmtime(os.path.join(MEDIA_ROOT, version_path)):
                 # recreate version if original image was updated
-                version_path = _version_generator(_url_to_path(str(source)), version_prefix, force=True)
-            return _path_to_url(version_path)
+                #version_path = _version_generator(_url_to_path(str(source)), version_prefix, force=True)
+            fo = FileObject(version_path)
+            return fo.url_full
         except:
             return ""
-    
+
 
 def version(parser, token):
     """
@@ -57,7 +59,7 @@ def version(parser, token):
     
     version_prefix can be a string or a variable. if version_prefix is a string, use quotes.
     """
-    
+
     try:
         tag, src, version_prefix = token.split_contents()
     except:
@@ -65,7 +67,7 @@ def version(parser, token):
     if (version_prefix[0] == version_prefix[-1] and version_prefix[0] in ('"', "'")) and version_prefix.lower()[1:-1] not in VERSIONS:
         raise TemplateSyntaxError, "%s tag received bad version_prefix %s" % (tag, version_prefix)
     return VersionNode(src, version_prefix)
-    
+
 
 class VersionObjectNode(Node):
     def __init__(self, src, version_prefix, var_name):
@@ -76,7 +78,7 @@ class VersionObjectNode(Node):
         else:
             self.version_prefix = None
             self.version_prefix_var = Variable(version_prefix)
-    
+
     def render(self, context):
         try:
             source = self.src.resolve(context)
@@ -91,17 +93,19 @@ class VersionObjectNode(Node):
                 return None
         try:
             version_path = _get_version_path(_url_to_path(str(source)), version_prefix)
-            if not os.path.isfile(os.path.join(MEDIA_ROOT, version_path)):
+            #if not os.path.isfile(os.path.join(MEDIA_ROOT, version_path)):
+            if not _get_file('', version_path):
                 # create version
                 version_path = _version_generator(_url_to_path(str(source)), version_prefix)
-            elif os.path.getmtime(os.path.join(MEDIA_ROOT, _url_to_path(str(source)))) > os.path.getmtime(os.path.join(MEDIA_ROOT, version_path)):
+            #elif os.path.getmtime(os.path.join(MEDIA_ROOT, _url_to_path(str(source)))) > os.path.getmtime(os.path.join(MEDIA_ROOT, version_path)):
                 # recreate version if original image was updated
-                version_path = _version_generator(_url_to_path(str(source)), version_prefix, force=True)
+                #version_path = _version_generator(_url_to_path(str(source)), version_prefix, force=True)
+            #context[self.var_name] = FileObject(os.path.join(MEDIA_ROOT, version_path))
             context[self.var_name] = FileObject(version_path)
         except:
             context[self.var_name] = ""
         return ''
-        
+
 
 def version_object(parser, token):
     """
@@ -115,7 +119,7 @@ def version_object(parser, token):
     
     version_prefix can be a string or a variable. if version_prefix is a string, use quotes.
     """
-    
+
     try:
         #tag, src, version_prefix = token.split_contents()
         tag, arg = token.contents.split(None, 1)
@@ -128,7 +132,7 @@ def version_object(parser, token):
     if (version_prefix[0] == version_prefix[-1] and version_prefix[0] in ('"', "'")) and version_prefix.lower()[1:-1] not in VERSIONS:
         raise TemplateSyntaxError, "%s tag received bad version_prefix %s" % (tag, version_prefix)
     return VersionObjectNode(src, version_prefix, var_name)
-    
+
 
 class VersionSettingNode(Node):
     def __init__(self, version_prefix):
@@ -137,7 +141,7 @@ class VersionSettingNode(Node):
         else:
             self.version_prefix = None
             self.version_prefix_var = Variable(version_prefix)
-    
+
     def render(self, context):
         if self.version_prefix:
             version_prefix = self.version_prefix
@@ -148,13 +152,13 @@ class VersionSettingNode(Node):
                 return None
         context['version_setting'] = VERSIONS[version_prefix]
         return ''
-        
+
 
 def version_setting(parser, token):
     """
     Get Information about a version setting.
     """
-    
+
     try:
         tag, version_prefix = token.split_contents()
     except:
@@ -162,7 +166,7 @@ def version_setting(parser, token):
     if (version_prefix[0] == version_prefix[-1] and version_prefix[0] in ('"', "'")) and version_prefix.lower()[1:-1] not in VERSIONS:
         raise TemplateSyntaxError, "%s tag received bad version_prefix %s" % (tag, version_prefix)
     return VersionSettingNode(version_prefix)
-    
+
 
 register.tag(version)
 register.tag(version_object)

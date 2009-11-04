@@ -38,8 +38,7 @@ class FileObject(object):
         """
         Filesize.
         """
-        #path = os.path.join(MEDIA_ROOT, self.path)
-        return default_storage.size(self.path)
+        return default_storage.size(os.path.join(MEDIA_ROOT, self.path))
         #if os.path.isfile(os.path.join(MEDIA_ROOT, self.path)) or os.path.isdir(os.path.join(MEDIA_ROOT, self.path)):
         #    return os.path.getsize(os.path.join(MEDIA_ROOT, self.path))
         #return ""
@@ -108,7 +107,7 @@ class FileObject(object):
         Full URL including MEDIA_URL.
         """
         #return u"%s" % _url_join(MEDIA_URL, self.path)
-        return default_storage.url(self.path)
+        return default_storage.url(_url_join(MEDIA_URL, self.url_relative)[1:])
 
     url_full = property(_url_full)
 
@@ -127,7 +126,7 @@ class FileObject(object):
         Thumbnail URL.
         """
         if self.filetype == "Image":
-            return u"%s" % _url_join(MEDIA_URL, _get_version_path(self.path, 'fb_thumb'))
+            return u"%s" % default_storage.url(_url_join(MEDIA_URL, _get_version_path(self.path, 'fb_thumb'))[1:])
         else:
             return ""
     url_thumbnail = property(_url_thumbnail)
