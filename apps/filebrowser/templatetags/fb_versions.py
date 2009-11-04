@@ -36,10 +36,10 @@ class VersionNode(Node):
                 return None
         try:
             version_path = _get_version_path(str(source), version_prefix)
-            #if not os.path.isfile(os.path.join(MEDIA_ROOT, version_path)):
             if not _get_file('', version_path):
                 # create version
                 version_path = _version_generator(_url_to_path(str(source)), version_prefix)
+            # TODO: generate if modified time has changed
             #elif os.path.getmtime(os.path.join(MEDIA_ROOT, _url_to_path(str(source)))) > os.path.getmtime(os.path.join(MEDIA_ROOT, version_path)):
                 # recreate version if original image was updated
                 #version_path = _version_generator(_url_to_path(str(source)), version_prefix, force=True)
@@ -93,14 +93,13 @@ class VersionObjectNode(Node):
                 return None
         try:
             version_path = _get_version_path(_url_to_path(str(source)), version_prefix)
-            #if not os.path.isfile(os.path.join(MEDIA_ROOT, version_path)):
             if not _get_file('', version_path):
                 # create version
                 version_path = _version_generator(_url_to_path(str(source)), version_prefix)
+            # TODO: generate if modified time has changed
             #elif os.path.getmtime(os.path.join(MEDIA_ROOT, _url_to_path(str(source)))) > os.path.getmtime(os.path.join(MEDIA_ROOT, version_path)):
                 # recreate version if original image was updated
                 #version_path = _version_generator(_url_to_path(str(source)), version_prefix, force=True)
-            #context[self.var_name] = FileObject(os.path.join(MEDIA_ROOT, version_path))
             context[self.var_name] = FileObject(version_path)
         except:
             context[self.var_name] = ""

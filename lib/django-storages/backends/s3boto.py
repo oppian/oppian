@@ -5,6 +5,7 @@ from django.core.files.base import File
 from django.core.files.storage import Storage
 from django.utils.functional import curry
 from django.core.exceptions import ImproperlyConfigured
+from django.core.files.temp import NamedTemporaryFile
 
 try:
     from boto.s3.connection import S3Connection
@@ -27,6 +28,62 @@ DEFAULT_ACL = getattr(settings, DEFAULT_ACL, 'public-read')
 QUERYSTRING_AUTH = getattr(settings, QUERYSTRING_AUTH, True)
 QUERYSTRING_EXPIRE = getattr(settings, QUERYSTRING_EXPIRE, 3600)
 
+# TODO: add a prop to S3BotoStorage which says if os. functions work (like isdir, unlink etc)
+
+
+class S3BotoStorageFile(File):
+    def __init__(self, name, mode, storage):
+        self._storage = storage
+        self._name = name
+        self._mode = mode
+        self.key = storage.bucket.get_key(name)
+
+    def size(self):
+        return self.key.size
+
+    def read(self, *args, **kwargs):
+        return self.key.read(*args, **kwargs)
+
+    def write(self, content):
+        self.key.set_contents_from_string(content, headers=self._storage.headers, acl=self._storage.acl)
+
+    def close(self):
+        self.key.close()
+
+class S3BotoProxyStorageFile(S3BotoStorageFile):
+    def __init__(self, name, mode, storage):
+        super(S3BotoProxyStorageFile, self).__init__(name=name, mode=mode, storage=storage)
+        # create tmp file and write key to it
+        self.opentmp()
+
+    def opentmp(self):
+        tmpfile = NamedTemporaryFile(mode="w+b", suffix=os.path.splitext(self._name)[1])
+        self.key.open()
+        for chunk in self.key:
+            tmpfile.write(chunk)
+        tmpfile.seek(0)
+        self.tmpfile = tmpfile
+        self.file = tmpfile.file
+
+    def tell(self):
+        return self.tmpfile.file.tell()
+
+    def size(self):
+        return self.tmpfile.size
+
+    def read(self, *args, **kwargs):
+        return self.tmpfile.read(*args, **kwargs)
+
+    def write(self, content):
+        super(S3BotoProxyStorageFile, self).write(content=content)
+        self.opentmp()
+
+    def close(self):
+        super(S3BotoProxyStorageFile, self).close()
+        self.tmpfile.close()
+
+    def seek(self, pos):
+        return self.tmpfile.seek(pos)
 
 class S3BotoStorage(Storage):
     """Amazon Simple Storage Service using Boto"""
@@ -60,9 +117,9 @@ class S3BotoStorage(Storage):
         # Useful for windows' paths
         return os.path.normpath(name).replace('\\', '/')
 
-    def _open(self, name, mode='rb'):
+    def _open(self, name, mode='rb', klass=S3BotoProxyStorageFile):
         name = self._clean_name(name)
-        return S3BotoProxyStorageFile(name, mode, self)
+        return klass(name, mode, self)
 
     def _save(self, name, content):
         name = self._clean_name(name)
@@ -93,7 +150,6 @@ class S3BotoStorage(Storage):
             if not len(name) or l.name[:len(name)] == name:
                 ret_arr.append(tmpname)
         return ret_arr
-        #return [l.name[len(name) + 1:] for l in self.bucket.list() if not len(name) or l.name[:len(name)] == name]
 
     def size(self, name):
         name = self._clean_name(name)
@@ -111,6 +167,7 @@ class S3BotoStorage(Storage):
             last_modified_str = key.last_modified
             return datetime.datetime(*time.strptime(
                             last_modified_str, '%a, %d %b %Y %H:%M:%S %Z')[0:6])
+        # default to return now
         return datetime.datetime.now()
         
     def url(self, name):
@@ -121,68 +178,3 @@ class S3BotoStorage(Storage):
         """ Overwrite existing file with the same name. """
         name = self._clean_name(name)
         return name
-
-
-class S3BotoStorageFile(File):
-    def __init__(self, name, mode, storage):
-        self._storage = storage
-        self._name = name
-        self._mode = mode
-        self.key = storage.bucket.get_key(name)
-
-    def size(self):
-        return self.key.size
-
-    def read(self, *args, **kwargs):
-        return self.key.read(*args, **kwargs)
-
-    def write(self, content):
-        self.key.set_contents_from_string(content, headers=self._storage.headers, acl=self._storage.acl)
-
-    def close(self):
-        self.key.close()
-
-    def seek(self, pos):
-        if pos == 0:
-            self.close()
-            self.key = self._storage.bucket.get_key(self._name)
-        else:
-            raise NotImplemented
-
-from django.core.files.temp import NamedTemporaryFile
-
-class S3BotoProxyStorageFile(File):
-    def __init__(self, name, mode, storage):
-        self._storage = storage
-        self._name = name
-        self._mode = mode
-        self.key = storage.bucket.get_key(name)
-        # create tmp file and write key to it
-        tmpfile = NamedTemporaryFile(mode="w+b", suffix=os.path.splitext(name)[1])
-        self.key.open()
-        for chunk in self.key:
-            tmpfile.write(chunk)
-        tmpfile.seek(0)
-        self.tmpfile = tmpfile
-        self.file = tmpfile.file
-
-    def tell(self):
-        return self.tmpfile.file.tell()
-
-
-    def size(self):
-        return self.tmpfile.size
-
-    def read(self, *args, **kwargs):
-        return self.tmpfile.read(*args, **kwargs)
-
-    def write(self, content):
-        self.key.set_contents_from_string(content, headers=self._storage.headers, acl=self._storage.acl)
-        # TODO: fix delete of local file
-
-    def close(self):
-        self.tmpfile.close()
-
-    def seek(self, pos):
-        return self.tmpfile.seek(pos)
-

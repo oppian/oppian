@@ -128,6 +128,8 @@ def _delete(path, filename):
     """
     default_storage.delete(os.path.join(path, filename))
 
+# TODO: add an _exists
+# TODO: add an _isdir and _isfile
 def _get_path(path):
     """
     Get Path.
@@ -270,7 +272,6 @@ def _version_generator(value, version_prefix, force=None):
     ImageFile.MAXBLOCK = IMAGE_MAXBLOCK # default is 64k
 
     try:
-        #im = Image.open(os.path.join(MEDIA_ROOT, value))
         im = Image.open(default_storage.open(os.path.join(MEDIA_ROOT, value)))
         version_path = _get_version_path(value, version_prefix)
         absolute_version_path = os.path.join(MEDIA_ROOT, version_path)

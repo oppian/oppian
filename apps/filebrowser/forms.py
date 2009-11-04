@@ -52,7 +52,6 @@ class RenameForm(forms.Form):
             if not alnum_name_re.search(self.cleaned_data['name']):
                 raise forms.ValidationError(_(u'Only letters, numbers, underscores, spaces and hyphens are allowed.'))
             # file/directory must not already exist.
-            #if os.path.isdir(os.path.join(self.path, _convert_filename(self.cleaned_data['name']))) or os.path.isfile(os.path.join(self.path, _convert_filename(self.cleaned_data['name']) + self.file_extension)):
             if _get_file("", _convert_filename(self.cleaned_data['name']) + self.file_extension):
                 raise forms.ValidationError(_(u'The File/Folder already exists.'))
         return _convert_filename(self.cleaned_data['name'])

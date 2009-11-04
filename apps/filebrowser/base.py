@@ -39,9 +39,6 @@ class FileObject(object):
         Filesize.
         """
         return default_storage.size(os.path.join(MEDIA_ROOT, self.path))
-        #if os.path.isfile(os.path.join(MEDIA_ROOT, self.path)) or os.path.isdir(os.path.join(MEDIA_ROOT, self.path)):
-        #    return os.path.getsize(os.path.join(MEDIA_ROOT, self.path))
-        #return ""
     filesize = property(_filesize)
 
     def _date(self):
@@ -109,7 +106,6 @@ class FileObject(object):
         """
         Full URL including MEDIA_URL.
         """
-        #return u"%s" % _url_join(MEDIA_URL, self.path)
         return default_storage.url(_url_join(MEDIA_URL, self.url_relative)[1:])
 
     url_full = property(_url_full)

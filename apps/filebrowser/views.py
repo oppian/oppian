@@ -16,6 +16,7 @@ from django import forms
 from django.core.urlresolvers import reverse
 from django.core.exceptions import ImproperlyConfigured
 from django.dispatch import Signal
+from django.core.files.storage import default_storage
 
 # filebrowser imports
 from filebrowser.fb_settings import *
@@ -160,8 +161,8 @@ def mkdir(request):
                 request.user.message_set.create(message=msg)
                 # on redirect, sort by date desc to see the new directory on top of the list
                 # remove filter in order to actually _see_ the new folder
-                new_path=os.path.join(path, dirname)#.replace('\\','/')
-                
+                # TODO: urlecode path
+                new_path=os.path.join(path, dirname)
                 redirect_url = reverse("fb_browse") + query_helper(query, "ot=desc,o=date,dir=%s" %(new_path), "ot,o,filter_type,filter_date,q")
                 return HttpResponseRedirect(redirect_url)
             except OSError, (errno, strerror):
@@ -229,6 +230,7 @@ def _check_file(request):
         for k, v in request.POST.items():
             if k != "folder":
                 v = _convert_filename(v)
+                # TODO: change to _get_file
                 if os.path.isfile(os.path.join(MEDIA_ROOT, DIRECTORY, folder, v)):
                     fileArray[k] = v
 
@@ -352,7 +354,6 @@ delete = staff_member_required(never_cache(delete))
 filebrowser_pre_rename = Signal(providing_args=["path", "filename"])
 filebrowser_post_rename = Signal(providing_args=["path", "filename"])
 
-from django.core.files.storage import default_storage
 
 def rename(request):
     """
@@ -391,9 +392,9 @@ def rename(request):
                     except:
                         pass
                 # RENAME ORIGINAL
-                #os.rename(os.path.join(MEDIA_ROOT, relative_server_path), os.path.join(MEDIA_ROOT, new_relative_server_path))
                 newfile = os.path.join(MEDIA_ROOT, new_relative_server_path)
                 oldfile = os.path.join(MEDIA_ROOT, relative_server_path)
+                # opening and saving might not be efficient, but it works with all storages
                 default_storage.save(newfile, default_storage.open(oldfile))
                 default_storage.delete(oldfile)
                 
