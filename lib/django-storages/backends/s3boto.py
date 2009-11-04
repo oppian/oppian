@@ -92,7 +92,15 @@ class S3BotoStorage(Storage):
     def size(self, name):
         name = self._clean_name(name)
         return self.bucket.get_key(name).size
-
+    
+    def last_modified(self, name):
+        name = self._clean_name(name)
+        last_modified_str = self.bucket.get_key(name).last_modified
+        import time
+        import datetime
+        return datetime.datetime(*time.strptime(
+                        last_modified_str, '%a, %d %b %Y %H:%M:%S %Z')[0:6])
+        
     def url(self, name):
         name = self._clean_name(name)
         return self.bucket.get_key(name).generate_url(QUERYSTRING_EXPIRE, method='GET', query_auth=QUERYSTRING_AUTH)
