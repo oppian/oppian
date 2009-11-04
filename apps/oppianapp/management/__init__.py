@@ -124,7 +124,7 @@ if "basic.media" in settings.INSTALLED_APPS:
         if verbosity >= 2:
             print "creating initial media:"
             
-        images_dir = '%s/images' % settings.MEDIA_ROOT
+        images_dir = '%s/images' % settings.MEDIA_ROOT_LOCAL
         os.chdir(images_dir)
 
         # currently only get PNG and JPEG files
