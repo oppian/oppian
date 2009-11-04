@@ -280,8 +280,8 @@ def _version_generator(value, version_prefix, force=None):
             os.chmod(version_dir, 0775)
         version = scale_and_crop(im, VERSIONS[version_prefix]['width'], VERSIONS[version_prefix]['height'], VERSIONS[version_prefix]['opts'])
         # create tmp file to store versions
-        from django.core.files.temp import TemporaryFile
-        tmpfile = TemporaryFile(suffix=os.path.splitext(version_path)[1])
+        from django.core.files.temp import NamedTemporaryFile
+        tmpfile = NamedTemporaryFile(suffix=os.path.splitext(version_path)[1])
         try:
             version.save(tmpfile, quality=90, optimize=1)
         except IOError:
