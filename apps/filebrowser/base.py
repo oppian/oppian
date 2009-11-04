@@ -1,7 +1,7 @@
 # coding: utf-8
 
 import os, re, datetime
-from time import gmtime, strftime
+from time import gmtime, strftime, mktime
 from django.conf import settings
 
 # filebrowser imports
@@ -49,11 +49,14 @@ class FileObject(object):
         """
         Date.
         """
-        #if os.path.isfile(os.path.join(MEDIA_ROOT, self.path)) or os.path.isdir(os.path.join(MEDIA_ROOT, self.path)):
-        #    return os.path.getmtime(os.path.join(MEDIA_ROOT, self.path))
-        now = datetime.datetime.now()
-        import time
-        return time.mktime(now.timetuple())
+        lmf = getattr(default_storage._wrapped, "last_modified")
+        if lmf:
+            return mktime(lmf(self.path).timetuple())
+        else:
+            if os.path.isfile(os.path.join(MEDIA_ROOT, self.path)) or os.path.isdir(os.path.join(MEDIA_ROOT, self.path)):
+                return os.path.getmtime(os.path.join(MEDIA_ROOT, self.path))
+        return ""
+        
     date = property(_date)
 
     def _datetime(self):
