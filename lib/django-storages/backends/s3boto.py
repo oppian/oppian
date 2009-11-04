@@ -18,11 +18,13 @@ ACCESS_KEY_NAME = 'AWS_ACCESS_KEY_ID'
 SECRET_KEY_NAME = 'AWS_SECRET_ACCESS_KEY'
 HEADERS = 'AWS_HEADERS'
 BUCKET_NAME = 'AWS_STORAGE_BUCKET_NAME'
+BUCKET_PREFIX = 'AWS_STORAGE_BUCKET_PREFIX'
 DEFAULT_ACL = 'AWS_DEFAULT_ACL'
 QUERYSTRING_AUTH = 'AWS_QUERYSTRING_AUTH'
 QUERYSTRING_EXPIRE = 'AWS_QUERYSTRING_EXPIRE'
 
-BUCKET_PREFIX = getattr(settings, BUCKET_NAME, {})
+BUCKET_PREFIX = getattr(settings, BUCKET_PREFIX, "")
+BUCKET_NAME = getattr(settings, BUCKET_NAME, None)
 HEADERS = getattr(settings, HEADERS, {})
 DEFAULT_ACL = getattr(settings, DEFAULT_ACL, 'public-read')
 QUERYSTRING_AUTH = getattr(settings, QUERYSTRING_AUTH, True)
@@ -88,7 +90,7 @@ class S3BotoProxyStorageFile(S3BotoStorageFile):
 class S3BotoStorage(Storage):
     """Amazon Simple Storage Service using Boto"""
 
-    def __init__(self, bucket="root", bucketprefix=BUCKET_PREFIX,
+    def __init__(self, bucket=BUCKET_NAME, bucketprefix=BUCKET_PREFIX,
             access_key=None, secret_key=None, acl=DEFAULT_ACL, headers=HEADERS):
         self.acl = acl
         self.headers = headers
@@ -99,6 +101,7 @@ class S3BotoStorage(Storage):
         self.connection = S3Connection(access_key, secret_key)
         self.bucket = self.connection.create_bucket(bucketprefix + bucket)
         self.bucket.set_acl(self.acl)
+        self.supports_os = False
 
     def _get_access_keys(self):
         access_key = getattr(settings, ACCESS_KEY_NAME, None)
@@ -114,6 +117,8 @@ class S3BotoStorage(Storage):
         return None, None
 
     def _clean_name(self, name):
+        if not name:
+            return ''
         # Useful for windows' paths
         return os.path.normpath(name).replace('\\', '/')
 
@@ -144,11 +149,12 @@ class S3BotoStorage(Storage):
 
     def listdir(self, name):
         name = self._clean_name(name)
+        if name:
+            name = u"%s/" % name
         ret_arr = []
-        for l in self.bucket.list(prefix=name+'/', delimiter='/'):
-            tmpname = l.name[len(name) + 1:]
-            if not len(name) or l.name[:len(name)] == name:
-                ret_arr.append(tmpname)
+        for l in self.bucket.list(prefix=name, delimiter='/'):
+            filename = l.name[len(name):]
+            ret_arr.append(filename)
         return ret_arr
 
     def size(self, name):
@@ -167,13 +173,11 @@ class S3BotoStorage(Storage):
             last_modified_str = key.last_modified
             return datetime.datetime(*time.strptime(
                             last_modified_str, '%a, %d %b %Y %H:%M:%S %Z')[0:6])
-        # default to return now
-        return datetime.datetime.now()
         
     def url(self, name):
         name = self._clean_name(name)
         return self.bucket.get_key(name).generate_url(QUERYSTRING_EXPIRE, method='GET', query_auth=QUERYSTRING_AUTH)
-
+    
     def get_available_name(self, name):
         """ Overwrite existing file with the same name. """
         name = self._clean_name(name)

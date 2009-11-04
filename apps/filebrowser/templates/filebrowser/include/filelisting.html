@@ -64,7 +64,7 @@
     
     <!-- FILENAME/DIMENSIONS -->
     {% ifequal file.filetype 'Folder' %}
-    <td><b><a href="{% url fb_browse %}{% query_string "" "dir" %}&amp;dir={{ file.path_relative_directory|urlencode }}">{{ file.filename }}</a></b></td>
+    <td><b><a href="{% url fb_browse %}{% query_string "" "dir" %}&amp;dir={{ file.url_relative|urlencode }}">{{ file.filename }}</a></b></td>
     {% else %}
     <td><b><a href="{{ file.url_full }}">{{ file.filename }}</a></b>{% if file.dimensions %}<br /><span class="tiny">{{ file.dimensions.0 }} x {{ file.dimensions.1 }} px</span>{% endif %}</td>
     {% endifequal %}

@@ -58,7 +58,7 @@ USE_I18N = False
 # Absolute path to the directory that holds media.
 # Example: "/home/media/media.lawrence.com/"
 MEDIA_ROOT_LOCAL = os.path.join(PROJECT_ROOT, 'media/')
-MEDIA_ROOT = 'media/'
+MEDIA_ROOT = ''
 
 # if SHORTENER_REQUIRES_LOGIN is True, then only logged in users can submit new URLs
 SHORTENER_REQUIRES_LOGIN = True
@@ -85,7 +85,7 @@ TWITTER_TIMEOUT = 3600
 # URL that handles the media served from MEDIA_ROOT. Make sure to use a
 # trailing slash if there is a path component (optional in other cases).
 # Examples: "http://media.lawrence.com", "http://example.com/media/"
-MEDIA_URL = '/media/'
+MEDIA_URL = '/m/'
 
 # URL prefix for admin media -- CSS, JavaScript and images. Make sure to use a
 # trailing slash.
@@ -194,7 +194,7 @@ FILEBROWSER_DIRECTORY = ''
 
 # django storages: http://code.welldev.org/django-storages/wiki/S3Storage
 DEFAULT_FILE_STORAGE = 'backends.s3boto.S3BotoStorage'
-AWS_STORAGE_BUCKET_NAME = 'oppian-files'
+AWS_STORAGE_BUCKET_NAME = 'oppian-dev-files'
 from S3 import CallingFormat
 AWS_CALLING_FORMAT = CallingFormat.SUBDOMAIN
 

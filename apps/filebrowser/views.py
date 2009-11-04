@@ -20,7 +20,7 @@ from django.core.files.storage import default_storage
 
 # filebrowser imports
 from filebrowser.fb_settings import *
-from filebrowser.functions import _url_to_path, _path_to_url, _sort_by_attr, _get_path, _get_file, _get_version_path, _get_breadcrumbs, _get_filterdate, _get_settings_var, _handle_file_upload, _get_file_type, _url_join, _convert_filename, _listdir, _delete, _exists
+from filebrowser.functions import _url_to_path, _path_to_url, _sort_by_attr, _get_path, _get_file, _get_version_path, _get_breadcrumbs, _get_filterdate, _get_settings_var, _handle_file_upload, _get_file_type, _url_join, _convert_filename, _listdir, _delete, _exists, _supports_os, _normpath
 from filebrowser.templatetags.fb_tags import query_helper
 from filebrowser.base import FileObject
 from filebrowser.decorators import flash_login_required
@@ -60,7 +60,6 @@ def browse(request):
     for k, v in EXTENSIONS.iteritems():
         counter[k] = 0
 
-    #dir_list = os.listdir(abs_path)
     dir_list = _listdir(abs_path)
     files = []
     for file in dir_list:
@@ -110,7 +109,7 @@ def browse(request):
         files.reverse()
 
     return render_to_response('filebrowser/index.html', {
-        'dir': path,
+        'dir': _normpath(path),
         'files': files,
         'results_var': results_var,
         'counter': counter,
@@ -152,8 +151,9 @@ def mkdir(request):
                 filebrowser_pre_createdir.send(sender=request, path=path, dirname=dirname)
                 # CREATE FOLDER
                 # TODO: don't create folders
-                os.mkdir(server_path)
-                os.chmod(server_path, 0775)
+                if _supports_os():
+                    os.mkdir(server_path)
+                    os.chmod(server_path, 0775)
                 # POST CREATE SIGNAL
                 filebrowser_post_createdir.send(sender=request, path=path, dirname=dirname)
                 # MESSAGE & REDIRECT
@@ -162,7 +162,7 @@ def mkdir(request):
                 # on redirect, sort by date desc to see the new directory on top of the list
                 # remove filter in order to actually _see_ the new folder
                 # TODO: urlecode path
-                new_path=os.path.join(path, dirname)
+                new_path=_normpath(os.path.join(path, dirname))
                 redirect_url = reverse("fb_browse") + query_helper(query, "ot=desc,o=date,dir=%s" %(new_path), "ot,o,filter_type,filter_date,q")
                 return HttpResponseRedirect(redirect_url)
             except OSError, (errno, strerror):
@@ -261,7 +261,7 @@ def _upload_file(request):
             uploadedfile = _handle_file_upload(abs_path, filedata)
             # MOVE UPLOADED FILE
             # if file already exists
-            if os.path.isfile(os.path.join(MEDIA_ROOT, DIRECTORY, folder, filedata.name)):
+            if _supports_os() and os.path.isfile(os.path.join(MEDIA_ROOT, DIRECTORY, folder, filedata.name)):
                 old_file = os.path.join(abs_path, filedata.name)
                 new_file = os.path.join(abs_path, uploadedfile)
                 file_move_safe(new_file, old_file)
@@ -303,11 +303,9 @@ def delete(request):
                 for version in VERSIONS:
                     try:
                         _delete(MEDIA_ROOT, _get_version_path(relative_server_path, version))
-                        #os.unlink(os.path.join(MEDIA_ROOT, _get_version_path(relative_server_path, version)))
                     except:
                         pass
                 # DELETE FILE
-                #os.unlink(os.path.join(abs_path, filename))
                 _delete(abs_path, filename)
                 # POST DELETE SIGNAL
                 filebrowser_post_delete.send(sender=request, path=path, filename=filename)
@@ -324,7 +322,7 @@ def delete(request):
                 # PRE DELETE SIGNAL
                 filebrowser_pre_delete.send(sender=request, path=path, filename=filename)
                 # DELETE FOLDER
-                os.rmdir(os.path.join(abs_path, filename))
+                _delete(abs_path, filename)
                 # POST DELETE SIGNAL
                 filebrowser_post_delete.send(sender=request, path=path, filename=filename)
                 # MESSAGE & REDIRECT
@@ -340,7 +338,7 @@ def delete(request):
         request.user.message_set.create(message=msg)
 
     return render_to_response('filebrowser/index.html', {
-        'dir': dir_name,
+        'dir': _normpath(path),
         'file': request.GET.get('filename', ''),
         'query': query,
         'settings_var': _get_settings_var(),

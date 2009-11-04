@@ -8,7 +8,7 @@ from django.utils.translation import ugettext as _
 
 # filebrowser imports
 from filebrowser.fb_settings import MAX_UPLOAD_SIZE
-from filebrowser.functions import _get_file_type, _convert_filename, _exists
+from filebrowser.functions import _get_file_type, _convert_filename, _exists, _supports_os
 
 alnum_name_re = re.compile(r'^[\sa-zA-Z0-9._/-]+$')
 
@@ -29,7 +29,7 @@ class MakeDirForm(forms.Form):
             if not alnum_name_re.search(self.cleaned_data['dir_name']):
                 raise forms.ValidationError(_(u'Only letters, numbers, underscores, spaces and hyphens are allowed.'))
             # directory must not already exist.
-            if os.path.isdir(os.path.join(self.path, _convert_filename(self.cleaned_data['dir_name']))):
+            if _supports_os() and os.path.isdir(os.path.join(self.path, _convert_filename(self.cleaned_data['dir_name']))):
                 raise forms.ValidationError(_(u'The Folder already exists.'))
         return _convert_filename(self.cleaned_data['dir_name'])
 

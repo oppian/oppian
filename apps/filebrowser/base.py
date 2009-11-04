@@ -45,9 +45,12 @@ class FileObject(object):
         """
         Date.
         """
-        lmf = getattr(default_storage._wrapped, "last_modified")
+        lmf = getattr(default_storage._wrapped, "last_modified", None)
         if lmf:
-            return mktime(lmf(os.path.join(MEDIA_ROOT, self.path)).timetuple())
+            last_mod = lmf(os.path.join(MEDIA_ROOT, self.path))
+            if last_mod:
+                return mktime(last_mod.timetuple())
+            return ""
         else:
             if os.path.isfile(os.path.join(MEDIA_ROOT, self.path)) or os.path.isdir(os.path.join(MEDIA_ROOT, self.path)):
                 return os.path.getmtime(os.path.join(MEDIA_ROOT, self.path))
@@ -106,7 +109,7 @@ class FileObject(object):
         """
         Full URL including MEDIA_URL.
         """
-        return default_storage.url(_url_join(MEDIA_URL, self.url_relative)[1:])
+        return default_storage.url(self.url_relative)
 
     url_full = property(_url_full)
 
@@ -125,7 +128,7 @@ class FileObject(object):
         Thumbnail URL.
         """
         if self.filetype == "Image":
-            return u"%s" % default_storage.url(_url_join(MEDIA_URL, _get_version_path(self.path, 'fb_thumb'))[1:])
+            return default_storage.url(_get_version_path(self.path, 'fb_thumb'))
         else:
             return ""
     url_thumbnail = property(_url_thumbnail)
@@ -137,6 +140,20 @@ class FileObject(object):
             return u"%s" % value
         else:
             return u"%s" % _url_join(MEDIA_URL, self.path)
+        
+    def _image(self):
+        """
+        Returns the image associated. Caches it for speed.
+        """
+        if self.filetype == 'Image':
+            try:
+                im = getattr(self, '_image_cache', None)
+                if not im:
+                    im = Image.open(default_storage.open(os.path.join(MEDIA_ROOT, self.path)))
+                    setattr(self, '_image_cache', im)
+                return im
+            except:
+                pass
 
     def _dimensions(self):
         """
@@ -144,7 +161,7 @@ class FileObject(object):
         """
         if self.filetype == 'Image':
             try:
-                im = Image.open(os.path.join(MEDIA_ROOT, self.path))
+                im = self._image()
                 return im.size
             except:
                 pass

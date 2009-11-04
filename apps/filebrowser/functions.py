@@ -124,6 +124,19 @@ def _url_join(*args):
         url = url.rstrip("/")
     return url
 
+def _normpath(path):
+    """
+    Normalizes a path
+    """
+    return os.path.normpath(path).replace('\\', '/')
+
+def _supports_os():
+    """
+    Returns a boolean of os.* commands work
+    """
+    supports_os = getattr(default_storage, 'supports_os', True)
+    return supports_os
+
 def _listdir(path):
     """
     Return dirlist
@@ -164,7 +177,7 @@ def _get_breadcrumbs(query, path, title):
     dir_query = ""
     if path:
         for item in os.path.normpath(path).split(os.sep):
-            dir_query = os.path.join(dir_query, item)
+            dir_query = _normpath(os.path.join(dir_query, item))
             breadcrumbs.append([item, dir_query])
     if title:
         breadcrumbs.append([title, ''])
@@ -177,6 +190,8 @@ def _get_filterdate(filterDate, dateTime):
     """
 
     returnvalue = ''
+    if not dateTime:
+        return True
     dateYear = strftime("%Y", gmtime(dateTime))
     dateMonth = strftime("%m", gmtime(dateTime))
     dateDay = strftime("%d", gmtime(dateTime))
