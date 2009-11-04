@@ -8,7 +8,7 @@ from django.utils.translation import ugettext as _
 
 # filebrowser imports
 from filebrowser.fb_settings import MAX_UPLOAD_SIZE
-from filebrowser.functions import _get_file_type, _convert_filename
+from filebrowser.functions import _get_file_type, _convert_filename, _get_file
 
 alnum_name_re = re.compile(r'^[\sa-zA-Z0-9._/-]+$')
 
@@ -32,7 +32,7 @@ class MakeDirForm(forms.Form):
             if os.path.isdir(os.path.join(self.path, _convert_filename(self.cleaned_data['dir_name']))):
                 raise forms.ValidationError(_(u'The Folder already exists.'))
         return _convert_filename(self.cleaned_data['dir_name'])
-    
+
 
 class RenameForm(forms.Form):
     """
@@ -52,7 +52,8 @@ class RenameForm(forms.Form):
             if not alnum_name_re.search(self.cleaned_data['name']):
                 raise forms.ValidationError(_(u'Only letters, numbers, underscores, spaces and hyphens are allowed.'))
             # file/directory must not already exist.
-            if os.path.isdir(os.path.join(self.path, _convert_filename(self.cleaned_data['name']))) or os.path.isfile(os.path.join(self.path, _convert_filename(self.cleaned_data['name']) + self.file_extension)):
+            #if os.path.isdir(os.path.join(self.path, _convert_filename(self.cleaned_data['name']))) or os.path.isfile(os.path.join(self.path, _convert_filename(self.cleaned_data['name']) + self.file_extension)):
+            if _get_file("", _convert_filename(self.cleaned_data['name']) + self.file_extension):
                 raise forms.ValidationError(_(u'The File/Folder already exists.'))
         return _convert_filename(self.cleaned_data['name'])
     

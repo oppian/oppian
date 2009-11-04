@@ -152,6 +152,7 @@ class S3BotoProxyStorageFile(File):
             tmpfile.write(chunk)
         tmpfile.seek(0)
         self.tmpfile = tmpfile
+        self.file = tmpfile.file
 
     def tell(self):
         return self.tmpfile.file.tell()

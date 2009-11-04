@@ -297,7 +297,8 @@ def delete(request):
                 # DELETE IMAGE VERSIONS/THUMBNAILS
                 for version in VERSIONS:
                     try:
-                        os.unlink(os.path.join(MEDIA_ROOT, _get_version_path(relative_server_path, version)))
+                        _delete(MEDIA_ROOT, _get_version_path(relative_server_path, version))
+                        #os.unlink(os.path.join(MEDIA_ROOT, _get_version_path(relative_server_path, version)))
                     except:
                         pass
                 # DELETE FILE
@@ -347,6 +348,8 @@ delete = staff_member_required(never_cache(delete))
 filebrowser_pre_rename = Signal(providing_args=["path", "filename"])
 filebrowser_post_rename = Signal(providing_args=["path", "filename"])
 
+from django.core.files.storage import default_storage
+
 def rename(request):
     """
     Rename existing File/Directory.
@@ -379,11 +382,17 @@ def rename(request):
                 # regenerating versions/thumbs will be done automatically
                 for version in VERSIONS:
                     try:
-                        os.unlink(os.path.join(MEDIA_ROOT, _get_version_path(relative_server_path, version)))
+                        _delete(MEDIA_ROOT, _get_version_path(relative_server_path, version))
+                        #os.unlink(os.path.join(MEDIA_ROOT, _get_version_path(relative_server_path, version)))
                     except:
                         pass
                 # RENAME ORIGINAL
-                os.rename(os.path.join(MEDIA_ROOT, relative_server_path), os.path.join(MEDIA_ROOT, new_relative_server_path))
+                #os.rename(os.path.join(MEDIA_ROOT, relative_server_path), os.path.join(MEDIA_ROOT, new_relative_server_path))
+                newfile = os.path.join(MEDIA_ROOT, new_relative_server_path)
+                oldfile = os.path.join(MEDIA_ROOT, relative_server_path)
+                default_storage.save(newfile, default_storage.open(oldfile))
+                default_storage.delete(oldfile)
+                
                 # POST RENAME SIGNAL
                 filebrowser_post_delete.send(sender=request, path=path, filename=filename)
                 # MESSAGE & REDIRECT
