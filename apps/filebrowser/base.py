@@ -50,7 +50,7 @@ class FileObject(object):
         """
         lmf = getattr(default_storage._wrapped, "last_modified")
         if lmf:
-            return mktime(lmf(self.path).timetuple())
+            return mktime(lmf(os.path.join(MEDIA_ROOT, self.path)).timetuple())
         else:
             if os.path.isfile(os.path.join(MEDIA_ROOT, self.path)) or os.path.isdir(os.path.join(MEDIA_ROOT, self.path)):
                 return os.path.getmtime(os.path.join(MEDIA_ROOT, self.path))
