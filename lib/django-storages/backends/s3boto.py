@@ -149,7 +149,7 @@ class S3BotoStorageFile(File):
         else:
             raise NotImplemented
 
-from django.core.files.temp import TemporaryFile
+from django.core.files.temp import NamedTemporaryFile
 
 class S3BotoProxyStorageFile(File):
     def __init__(self, name, mode, storage):
@@ -158,7 +158,7 @@ class S3BotoProxyStorageFile(File):
         self._mode = mode
         self.key = storage.bucket.get_key(name)
         # create tmp file and write key to it
-        tmpfile = TemporaryFile(mode="w+b", suffix=os.path.splitext(name)[1])
+        tmpfile = NamedTemporaryFile(mode="w+b", suffix=os.path.splitext(name)[1])
         self.key.open()
         for chunk in self.key:
             tmpfile.write(chunk)
