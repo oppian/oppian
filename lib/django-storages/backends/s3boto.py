@@ -117,10 +117,10 @@ class S3BotoStorage(Storage):
         return None, None
 
     def _clean_name(self, name):
-        if not name:
-            return ''
         # Useful for windows' paths
-        return os.path.normpath(name).replace('\\', '/')
+        name = os.path.normpath(name).replace('\\', '/')
+        if name == '.': name = ""
+        return name
 
     def _open(self, name, mode='rb', klass=S3BotoProxyStorageFile):
         name = self._clean_name(name)
