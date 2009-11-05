@@ -295,7 +295,7 @@ def delete(request):
     msg = ""
     if request.GET:
         if request.GET.get('filetype') != "Folder":
-            relative_server_path = os.path.join(DIRECTORY, path, filename)
+            relative_server_path = os.path.join(DIRECTORY, filename)
             try:
                 # PRE DELETE SIGNAL
                 filebrowser_pre_delete.send(sender=request, path=path, filename=filename)
@@ -306,7 +306,7 @@ def delete(request):
                     except:
                         pass
                 # DELETE FILE
-                _delete(abs_path, filename)
+                _delete(MEDIA_ROOT, relative_server_path)
                 # POST DELETE SIGNAL
                 filebrowser_post_delete.send(sender=request, path=path, filename=filename)
                 # MESSAGE & REDIRECT
