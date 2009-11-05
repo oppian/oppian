@@ -8,7 +8,7 @@ from django.utils.encoding import force_unicode
 
 # filebrowser imports
 from filebrowser.fb_settings import MEDIA_ROOT, MEDIA_URL, VERSIONS
-from filebrowser.functions import _url_to_path, _path_to_url, _get_version_path, _version_generator, _exists
+from filebrowser.functions import _url_to_path, _path_to_url, _get_version_path, _version_generator, _exists, _last_mod
 from filebrowser.base import FileObject
 
 register = Library()
@@ -39,10 +39,9 @@ class VersionNode(Node):
             if not _exists(version_path):
                 # create version
                 version_path = _version_generator(_url_to_path(str(source)), version_prefix)
-            # TODO: generate if modified time has changed
-            #elif os.path.getmtime(os.path.join(MEDIA_ROOT, _url_to_path(str(source)))) > os.path.getmtime(os.path.join(MEDIA_ROOT, version_path)):
+            elif _last_mod(os.path.join(MEDIA_ROOT, _url_to_path(str(source)))) > _last_mod(os.path.join(MEDIA_ROOT, version_path)):
                 # recreate version if original image was updated
-                #version_path = _version_generator(_url_to_path(str(source)), version_prefix, force=True)
+                version_path = _version_generator(_url_to_path(str(source)), version_prefix, force=True)
             fo = FileObject(version_path)
             return fo.url_full
         except:
@@ -96,10 +95,9 @@ class VersionObjectNode(Node):
             if not _exists(version_path):
                 # create version
                 version_path = _version_generator(_url_to_path(str(source)), version_prefix)
-            # TODO: generate if modified time has changed
-            #elif os.path.getmtime(os.path.join(MEDIA_ROOT, _url_to_path(str(source)))) > os.path.getmtime(os.path.join(MEDIA_ROOT, version_path)):
+            elif _last_mod(os.path.join(MEDIA_ROOT, _url_to_path(str(source)))) > _last_mod(os.path.join(MEDIA_ROOT, version_path)):
                 # recreate version if original image was updated
-                #version_path = _version_generator(_url_to_path(str(source)), version_prefix, force=True)
+                version_path = _version_generator(_url_to_path(str(source)), version_prefix, force=True)
             context[self.var_name] = FileObject(version_path)
         except:
             context[self.var_name] = ""

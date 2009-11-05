@@ -137,6 +137,16 @@ def _supports_os():
     supports_os = getattr(default_storage, 'supports_os', True)
     return supports_os
 
+def _last_mod(filepath):
+    """
+    Returns the last modified of the filepath.
+    """
+    if _supports_os():
+        return os.path.getmtime(filepath)
+    else:
+        return default_storage.last_modified(filepath)
+    
+
 def _listdir(path):
     """
     Return dirlist
