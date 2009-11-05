@@ -159,14 +159,11 @@ def _delete(path, filename):
     """
     default_storage.delete(os.path.join(path, filename))
 
-# TODO: add an _isdir and _isfile
-
 def _get_path(path):
     """
     Get Path.
     """
-    #if os.path.isabs(path) or not os.path.isdir(os.path.join(MEDIA_ROOT, DIRECTORY, path)):
-    if os.path.isabs(path):# or not default_storage.exists(os.path.join(MEDIA_ROOT, DIRECTORY, path)):
+    if os.path.isabs(path):
         return None
     return path
 
