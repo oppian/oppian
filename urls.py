@@ -39,6 +39,9 @@ urlpatterns = patterns('',
 
     # feeds
     (r'^feeds/(?P<url>.*)/$', 'django.contrib.syndication.views.feed', {'feed_dict': feeds}),
+    
+    # tinymce
+    (r'^tinymce/', include('tinymce.urls')),
 
     # last, the about pages and home page etc
     (r'^', include('oppianapp.urls')),

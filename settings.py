@@ -154,6 +154,9 @@ INSTALLED_APPS = (
 
     # http://code.google.com/p/django-filebrowser/wiki/filebrowser_3
     'filebrowser',
+    
+    # http://django-tinymce.googlecode.com/svn/trunk/docs/.build/html/index.html
+    'tinymce',
 
     # oppian web-site specific code including static pages
     'oppianapp',
@@ -191,12 +194,36 @@ GOOGLE_ANALYTICS_MODEL = True
 # filebrowser
 FILEBROWSER_URL_FILEBROWSER_MEDIA = '%sfilebrowser/' % MEDIA_URL
 FILEBROWSER_DIRECTORY = ''
+FILEBROWSER_SAVE_FULL_URL = False       # if true, FileBrowserField errors because of s3 url
+FILEBROWSER_VERSIONS = {
+    'fb_thumb': {'verbose_name': 'Admin Thumbnail', 'width': 104, 'height': 104, 'opts': 'crop upscale'},
+    'thumbnail': {'verbose_name': 'Thumbnail (140px)', 'width': 140, 'height': '', 'opts': ''},
+    'small': {'verbose_name': 'Small (300px)', 'width': 300, 'height': '', 'opts': ''},
+    'medium': {'verbose_name': 'Medium (460px)', 'width': 460, 'height': '', 'opts': ''},
+    'big': {'verbose_name': 'Big (620px)', 'width': 620, 'height': '', 'opts': ''},
+    'cropped': {'verbose_name': 'Cropped (60x60px)', 'width': 60, 'height': 60, 'opts': 'crop'},
+    'croppedthumbnail': {'verbose_name': 'Cropped Thumbnail (140x140px)', 'width': 140, 'height': 140, 'opts': 'crop'},
+}
 
 # django storages: http://code.welldev.org/django-storages/wiki/S3Storage
 DEFAULT_FILE_STORAGE = 'backends.s3boto.S3BotoStorage'
 AWS_STORAGE_BUCKET_NAME = 'oppian-dev-files'
 from S3 import CallingFormat
 AWS_CALLING_FORMAT = CallingFormat.SUBDOMAIN
+AWS_QUERYSTRING_AUTH = False
+
+# tinymce: http://django-tinymce.googlecode.com/svn/trunk/docs/.build/html/installation.html
+TINYMCE_JS_URL = '%stinymce/tiny_mce_src.js' % MEDIA_URL
+TINYMCE_JS_ROOT = '%s/tinymce' % MEDIA_ROOT_LOCAL
+TINYMCE_FILEBROWSER = True
+TINYMCE_DEFAULT_CONFIG = {
+    'theme': "advanced", 
+    'relative_urls': False,
+    'skin' : "o2k7",
+    'height': "480",
+    'theme_advanced_resizing' : True,
+    'theme_advanced_statusbar_location' : "bottom"
+}
 
 # local_settings.py can be used to override environment-specific settings
 # like database and email that differ between development and production.

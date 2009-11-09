@@ -89,7 +89,9 @@ class FileBrowseField(Field):
     def to_python(self, value):
         if not value or isinstance(value, FileObject):
             return value
-        return FileObject(_url_to_path(value))
+        if SAVE_FULL_URL:
+            value = _url_to_path(value)
+        return FileObject(value)
     
     def get_db_prep_value(self, value):
         if value is None:
