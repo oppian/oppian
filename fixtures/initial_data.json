@@ -66,5 +66,21 @@
             "email": "mal@oppian.com", 
             "date_joined": "2009-08-18 12:34:53"
         }
+    },
+    {
+        "pk": 1, 
+        "model": "blog.category", 
+        "fields": {
+            "slug": "blog", 
+            "title": "Blog"
+        }
+    }, 
+    {
+        "pk": 2, 
+        "model": "blog.category", 
+        "fields": {
+            "slug": "lab", 
+            "title": "Lab"
+        }
     }
 ]

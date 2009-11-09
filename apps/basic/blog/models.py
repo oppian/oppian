@@ -1,12 +1,14 @@
-from django.db import models
-from django.utils.translation import ugettext_lazy as _
-from django.db.models import permalink
-from django.contrib.auth.models import User
-from tagging.fields import TagField
 from basic.blog.managers import PublicManager
 from basic.media.models import Photo
-
+from django.contrib.auth.models import User
+from django.db import models
+from django.db.models import permalink
+from django.utils.translation import ugettext_lazy as _
+from tagging.fields import TagField
+from tinymce import models as tinymce
 import tagging
+from filebrowser import fields as filebrowser
+import datetime
 
 
 class Category(models.Model):
@@ -40,15 +42,15 @@ class Post(models.Model):
     title           = models.CharField(_('title'), max_length=200)
     slug            = models.SlugField(_('slug'), unique_for_date='publish')
     author          = models.ForeignKey(User, blank=True, null=True)
-    thumb           = models.ForeignKey(Photo, blank=True, null=True)
-    body            = models.TextField(_('body'))
+    thumb           = filebrowser.FileBrowseField(format='Image', max_length=200, blank=True, null=True)
+    body            = tinymce.HTMLField(_('body'))
     tease           = models.TextField(_('tease'), blank=True)
     status          = models.IntegerField(_('status'), choices=STATUS_CHOICES, default=2)
     allow_comments  = models.BooleanField(_('allow comments'), default=True)
-    publish         = models.DateTimeField(_('publish'))
+    publish         = models.DateTimeField(_('publish'), default=datetime.datetime.now())
     created         = models.DateTimeField(_('created'), auto_now_add=True)
     modified        = models.DateTimeField(_('modified'), auto_now=True)
-    categories      = models.ManyToManyField(Category, blank=True)
+    categories      = models.ForeignKey(Category, default=1)
     tags            = TagField()
     objects         = PublicManager()
 
