@@ -1,9 +1,10 @@
 #!/bin/bash -e
 #
-# Parameters to retrieve the tarball with the source
+# Downloads and unpacks the app
 #
 # $APPLICATION_CODE_BUCKET  -- Bucket where the tarball resides
 # $APPLICATION_CODE_PACKAGE -- S3 Key of the tarball  (gzipped)
+# $DEPLOY_DIR				-- The dir to deploy into
 #
 # Ensure the S3 credentials are passed in the environment for the backup script to access the disk
 # $AWS_SECRET_ACCESS_KEY -- Amazon WS credential: secret access key
@@ -26,7 +27,7 @@ if [ -z "$APPLICATION_CODE_BUCKET" -a -z "$APPLICATION_CODE_PACKAGE" ]; then
 fi
 
 ## Find out about the old deploy directory
-if [ -e $DEPLOY_DIR]; then
+if [ -e $DEPLOY_DIR ]; then
   echo "Removing existing deploy directory..."
   rm -rf $DEPLOY_DIR
 fi

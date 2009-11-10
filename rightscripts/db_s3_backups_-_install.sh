@@ -1,6 +1,6 @@
 #!/bin/bash -e
 #
-# Copies the file for the cron job to the postgres dumps to s3 backups
+# Copies the file for the cron job that postgres dumps to s3 for a backup
 #
 # DB_NAME -- Database name
 # DB_BACKUP_BUCKET -- Bucket to save backup into

@@ -2,10 +2,10 @@
 #
 # Installs and configures PostgreSQL
 #
-# DB_ADMIN_PASS -- The pass for the database administrator
-# DB_NAME -- The name of the database
-# DB_USER -- The username for the database
-# DB_PASS -- The password for the user for the database
+# $DB_ADMIN_PASS -- The pass for the database administrator
+# $DB_NAME -- The name of the database
+# $DB_USER -- The username for the database
+# $DB_PASS -- The password for the user for the database
 #
 # pkgs: postgresql postgresql-client postgresql-contrib
 
