@@ -1,5 +1,6 @@
 {% extends "blog/base_blog.html" %}
 
+{% load fb_versions %}
 
 {% block title %}Blog{% endblock %}
 {% block body_title %}OppianBlog{% endblock %}
@@ -37,19 +38,10 @@
                 {% get_comment_count for post as comment_count %}
                 <div class="post_summary">
                     {% if post.thumb %}
-                            <img src="{{ post.thumb.url_thumbnail }}" alt="Blog image - {{ post.title }}" style="float:right;" height="104" />
-                        {% else %}
-                            <img src="{{ MEDIA_URL }}images/oppian.png" alt="Blog image - Oppian" style="float:right;" height="104" />
-                    {% endif %}
-                        
-                    {% comment %}
-                        // as this isn't working properly on all browsers, I'm disabling for now
-                        {% if post.thumb %}
-                            <img src="{{ post.thumb.url_thumbnail }}" class="thumb" alt="Blog image - {{ post.title }}" style="float:right;" height="104" />
+                            <img src="{% version post.thumb.path 'blog' %}" class="thumb" alt="{{ post.title }}" style="float:right;" height="110" width="196" />
                         {% else %}
                             <img src="{{ MEDIA_URL }}images/oppian.png" class="thumb" alt="Blog image - Oppian" style="float:right;" height="104" />
-                        {% endif %}
-                    {% endcomment %}
+                    {% endif %}
                     
                     <h3><a href="{{ post.get_absolute_url }}">{{ post.title }}</a></h3>
                     <p class="paragraphText">{{ post.tease }}</p>

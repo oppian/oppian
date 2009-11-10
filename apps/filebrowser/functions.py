@@ -316,8 +316,7 @@ def _version_generator(value, version_prefix, force=None):
         # save file to storage engine
         default_storage.save(absolute_version_path, tmpfile)
         return version_path
-    except Exception as e:
-        print e
+    except:
         return None
 
 

@@ -203,6 +203,7 @@ FILEBROWSER_VERSIONS = {
     'big': {'verbose_name': 'Big (620px)', 'width': 620, 'height': '', 'opts': ''},
     'cropped': {'verbose_name': 'Cropped (60x60px)', 'width': 60, 'height': 60, 'opts': 'crop'},
     'croppedthumbnail': {'verbose_name': 'Cropped Thumbnail (140x140px)', 'width': 140, 'height': 140, 'opts': 'crop'},
+    'blog': {'verbose_name': 'Blog Thumbnail (210x143)', 'width': 196, 'height': 110, 'opts': 'upscale crop'},
 }
 
 # django storages: http://code.welldev.org/django-storages/wiki/S3Storage
