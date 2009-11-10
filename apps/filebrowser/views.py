@@ -160,8 +160,8 @@ def mkdir(request):
                 request.user.message_set.create(message=msg)
                 # on redirect, sort by date desc to see the new directory on top of the list
                 # remove filter in order to actually _see_ the new folder
-                from urllib import urlencode
-                new_path=urlencode(_normpath(os.path.join(path, dirname)))
+                from urllib import quote
+                new_path=quote(_normpath(os.path.join(path, dirname)))
                 redirect_url = reverse("fb_browse") + query_helper(query, "ot=desc,o=date,dir=%s" %(new_path), "ot,o,filter_type,filter_date,q")
                 return HttpResponseRedirect(redirect_url)
             except OSError, (errno, strerror):
