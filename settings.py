@@ -170,6 +170,11 @@ AWS_SECRET_ACCESS_KEY = 'ZXslmLM93TYrGA33GFyzIozSSN4VH1wrNXzyjXIt'
 AWS_BUILD_BUCKET_NAME = 'oppian-website-releases'
 BUILD_VERSION = ('0', '2')
 BUILD_APPNAME = 'oppian'
+BUILD_IGNORE = (
+    os.path.normpath(os.path.join(PROJECT_ROOT, 'ec2')),
+    os.path.normpath(os.path.join(PROJECT_ROOT, 'rightscripts')),
+    os.path.normpath(os.path.join(PROJECT_ROOT, 'support_files')),
+)
 
 # email
 EMAIL_HOST = 'smtp.gmail.com'
