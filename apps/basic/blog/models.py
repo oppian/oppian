@@ -45,7 +45,7 @@ class Post(models.Model):
     thumb           = filebrowser.FileBrowseField(format='Image', max_length=200, blank=True, null=True)
     body            = tinymce.HTMLField(_('body'))
     tease           = models.TextField(_('tease'), blank=True)
-    status          = models.IntegerField(_('status'), choices=STATUS_CHOICES, default=2)
+    status          = models.IntegerField(_('status'), choices=STATUS_CHOICES, default=1)
     allow_comments  = models.BooleanField(_('allow comments'), default=True)
     publish         = models.DateTimeField(_('publish'), default=datetime.datetime.now())
     created         = models.DateTimeField(_('created'), auto_now_add=True)
