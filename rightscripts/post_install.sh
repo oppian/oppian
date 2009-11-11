@@ -5,6 +5,7 @@
 # $DEPLOY_DIR  -- Installed directory
 # $HOSTNAME    -- Hostname of server
 # $APP_OWNER   -- User to chmod the files in deploy dir
+# $DJANGO_SETTINGS	-- Which settings_*.py file to use
 #
 # pkgs: flip
 
@@ -24,7 +25,11 @@ hostname $HOSTNAME
 cd $DEPLOY_DIR
 
 ## move settings_production.py to settings_local.py
-mv -f settings_production.py settings_local.py
+settingsfile=settings_$DJANGO_SETTINGS.py 
+if [ -f $settingsfile ]
+then
+	mv -f $settingsfile settings_local.py
+fi
 
 ## fix newlines
 flip -u manage.py
