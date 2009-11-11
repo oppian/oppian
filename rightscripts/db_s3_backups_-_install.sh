@@ -9,6 +9,8 @@
 # Ensure the S3 credentials are passed in the environment for the backup script to access the disk
 # $AWS_SECRET_ACCESS_KEY -- Amazon WS credential: secret access key
 # $AWS_ACCESS_KEY_ID     -- Amazon WS credential: access key
+#
+# pkgs: flip
 
 
 #
@@ -34,5 +36,11 @@ sed -i "s/%AWS_ACCESS_KEY_ID%/$AWS_ACCESS_KEY_ID/g" $cronfile
 
 ## set exec
 chmod +x $cronfile
+
+# fix newlines
+flip $cronfile
+
+# restart cron
+/etc/init.d/cron restart
 
 exit 0
