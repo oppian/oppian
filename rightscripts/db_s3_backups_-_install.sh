@@ -38,7 +38,7 @@ sed -i "s/%AWS_ACCESS_KEY_ID%/$AWS_ACCESS_KEY_ID/g" $cronfile
 chmod +x $cronfile
 
 # fix newlines
-flip $cronfile
+flip -u $cronfile
 
 # restart cron
 /etc/init.d/cron restart
