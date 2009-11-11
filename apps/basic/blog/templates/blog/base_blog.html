@@ -3,3 +3,31 @@
 {% block tab_id %}blog{% endblock %}
 
 {% block body_class %}blog{% endblock %}
+
+{% block head_extra %}
+	<script type="text/javascript" src="{{ MEDIA_URL }}/syntax/scripts/shCore.js"></script>
+	<script type="text/javascript" src="{{ MEDIA_URL }}/syntax/scripts/shBrushBash.js"></script>
+	<script type="text/javascript" src="{{ MEDIA_URL }}/syntax/scripts/shBrushCpp.js"></script>
+	<script type="text/javascript" src="{{ MEDIA_URL }}/syntax/scripts/shBrushCSharp.js"></script>
+	<script type="text/javascript" src="{{ MEDIA_URL }}/syntax/scripts/shBrushCss.js"></script>
+	<script type="text/javascript" src="{{ MEDIA_URL }}/syntax/scripts/shBrushDelphi.js"></script>
+	<script type="text/javascript" src="{{ MEDIA_URL }}/syntax/scripts/shBrushDiff.js"></script>
+	<script type="text/javascript" src="{{ MEDIA_URL }}/syntax/scripts/shBrushGroovy.js"></script>
+	<script type="text/javascript" src="{{ MEDIA_URL }}/syntax/scripts/shBrushJava.js"></script>
+	<script type="text/javascript" src="{{ MEDIA_URL }}/syntax/scripts/shBrushJScript.js"></script>
+	<script type="text/javascript" src="{{ MEDIA_URL }}/syntax/scripts/shBrushObjC.js"></script>
+	<script type="text/javascript" src="{{ MEDIA_URL }}/syntax/scripts/shBrushPhp.js"></script>
+	<script type="text/javascript" src="{{ MEDIA_URL }}/syntax/scripts/shBrushPlain.js"></script>
+	<script type="text/javascript" src="{{ MEDIA_URL }}/syntax/scripts/shBrushPython.js"></script>
+	<script type="text/javascript" src="{{ MEDIA_URL }}/syntax/scripts/shBrushRuby.js"></script>
+	<script type="text/javascript" src="{{ MEDIA_URL }}/syntax/scripts/shBrushScala.js"></script>
+	<script type="text/javascript" src="{{ MEDIA_URL }}/syntax/scripts/shBrushSql.js"></script>
+	<script type="text/javascript" src="{{ MEDIA_URL }}/syntax/scripts/shBrushVb.js"></script>
+	<script type="text/javascript" src="{{ MEDIA_URL }}/syntax/scripts/shBrushXml.js"></script>
+	<link type="text/css" rel="stylesheet" href="{{ MEDIA_URL }}/syntax/styles/shCore.css"/>
+	<link type="text/css" rel="stylesheet" href="{{ MEDIA_URL }}/syntax/styles/shThemeDefault.css"/>
+	<script type="text/javascript">
+		SyntaxHighlighter.config.clipboardSwf = '{{ MEDIA_URL }}/syntax/scripts/clipboard.swf';
+		SyntaxHighlighter.all();
+	</script>
+{% endblock %}

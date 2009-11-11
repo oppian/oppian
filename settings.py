@@ -224,11 +224,14 @@ TINYMCE_JS_ROOT = '%s/tinymce' % MEDIA_ROOT_LOCAL
 TINYMCE_FILEBROWSER = True
 TINYMCE_DEFAULT_CONFIG = {
     'theme': "advanced", 
+    'plugins' : 'syntaxhl', 
     'relative_urls': False,
     'skin' : "o2k7",
     'height': "480",
     'theme_advanced_resizing' : True,
-    'theme_advanced_statusbar_location' : "bottom"
+    'theme_advanced_statusbar_location' : "bottom",
+    'theme_advanced_buttons3_add' : 'syntaxhl',
+    'extended_valid_elements' : "textarea[cols|rows|disabled|name|readonly|class]" 
 }
 
 # local_settings.py can be used to override environment-specific settings
