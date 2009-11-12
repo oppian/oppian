@@ -201,7 +201,7 @@ FILEBROWSER_URL_FILEBROWSER_MEDIA = '%sfilebrowser/' % MEDIA_URL
 FILEBROWSER_DIRECTORY = ''
 FILEBROWSER_SAVE_FULL_URL = False       # if true, FileBrowserField errors because of s3 url
 FILEBROWSER_VERSIONS = {
-    'fb_thumb': {'verbose_name': 'Admin Thumbnail', 'width': 104, 'height': 104, 'opts': 'crop upscale'},
+    'fb_thumb': {'verbose_name': 'Admin Thumbnail', 'width': 104, 'height': 104, 'opts': 'upscale'},
     'thumbnail': {'verbose_name': 'Thumbnail (140px)', 'width': 140, 'height': '', 'opts': ''},
     'small': {'verbose_name': 'Small (300px)', 'width': 300, 'height': '', 'opts': ''},
     'medium': {'verbose_name': 'Medium (460px)', 'width': 460, 'height': '', 'opts': ''},
