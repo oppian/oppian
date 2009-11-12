@@ -1,10 +1,6 @@
 """
-Sync Media to S3
-================
-
 Django command that creates a tar.gz of all the files in the project dir 
 and then uploads that to s3.
-
 """
 
 from django.core.management.base import BaseCommand

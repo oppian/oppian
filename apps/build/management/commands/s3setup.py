@@ -1,7 +1,4 @@
 '''
-Created on Jun 22, 2009
-
-@author: neild
 Command to setup required bucket(s) in S3 for storage
 '''
 
