@@ -25,19 +25,21 @@
         {% for post in object_list %}
             <div class="hr"><hr /></div>
             {% get_comment_count for post as comment_count %}
-            <div class="post_summary">
+            <div class="post">
+            	<a href="{{ post.get_absolute_url }}">
                 {% if post.thumb %}
                         <img src="{% version post.thumb.path 'blog' %}" class="thumb" alt="{{ post.title }}" style="float:right;" height="110" width="196" />
                     {% else %}
                         <img src="{{ MEDIA_URL }}images/oppian.png" class="thumb" alt="Blog image - Oppian" style="float:right;" height="104" />
                 {% endif %}
+                </a>
                 
-                <h3><a href="{{ post.get_absolute_url }}">{{ post.title }}</a></h3>
-                <p class="paragraphText">{{ post.tease }}</p>
-                <ul class="paragraphSmallText">
-                    <li>Posted by {{ post.author }} on {{ post.publish|date|naturalday }}</li>
-                    <li>{{ comment_count }} comment{{ comment_count|pluralize:',s' }}</li>
+                <a href="{{ post.get_absolute_url }}"><h3>{{ post.title }}</h3></a>
+                <ul class="post_info">
+                    <li class="date">Posted by {{ post.author }} on {{ post.publish|naturalday }}</li>
+                    <li class="comments">{{ comment_count }} comment{{ comment_count|pluralize:',s' }}</li>
                 </ul>
+                <p class="paragraphText">{{ post.tease }}</p>
             </div>
         {% empty %}
             <br/>
