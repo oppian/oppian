@@ -9,6 +9,7 @@ from tinymce import models as tinymce
 import tagging
 from filebrowser import fields as filebrowser
 import datetime
+from django_extensions.db.fields import AutoSlugField
 
 
 class Category(models.Model):
@@ -40,7 +41,7 @@ class Post(models.Model):
         (2, _('Public')),
     )
     title           = models.CharField(_('title'), max_length=200)
-    slug            = models.SlugField(_('slug'), unique_for_date='publish')
+    slug            = AutoSlugField(_('slug'), editable=True, blank=False, populate_from='title')
     author          = models.ForeignKey(User, blank=True, null=True)
     thumb           = filebrowser.FileBrowseField(format='Image', max_length=200, blank=True, null=True)
     body            = tinymce.HTMLField(_('body'))

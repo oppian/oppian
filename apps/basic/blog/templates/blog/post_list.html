@@ -1,59 +1,49 @@
 {% extends "blog/base_blog.html" %}
 
-{% load fb_versions %}
+{% load comments humanize fb_versions %}
 
 {% block title %}Blog{% endblock %}
 {% block body_title %}OppianBlog{% endblock %}
 
 {% block body_class %}{{ block.super }} post_list{% endblock %}
 
+{% block sub_menu %}
+	{% load set_vars_from_json %}
+	{% set_vars_from_json_block %}
+	{ "menu":
+	    [{"name":"Oppian Blog",  "url":"{% url blog %}"}
+	    ]
+	}
+	{% end_set_vars_from_json_block %}
+	{% include "sub_menu.html" %}
+{% endblock %}
+
 {% block body %}
-    
-    {% load set_vars_from_json %}
-    {% set_vars_from_json_block %}
-    { "menu":
-        [{"name":"Oppian Blog",  "url":"{% url blog %}"}
-        ]
-    }
-    {% end_set_vars_from_json_block %}
-    {% include "sub_menu.html" %}
-        
     <div class="contentMainPanel">
-        <a href="/feeds/latest/blog/"><img src="{{ MEDIA_URL }}images/RSS_feed_icon_by_carrotmadman6.gif" width=24 border=0 style="float:left;padding-top:4px;"></a><h1>Oppian Blog</h1>
+        <a href="/feeds/latest/blog/"><img src="{{ MEDIA_URL }}images/RSS_feed_icon_by_carrotmadman6.gif" width=24 border=0 style="float:left;padding-top:4px;"></a><h1>{% block blog_title %}Oppian Blog{% endblock %}</h1>
         
-        {% load comments %}
-        {% load humanize %}
-        {% load smart_if %}
-        
-        {% if object_list|length == 0 %}
-        
+        {% for post in object_list %}
+            <div class="hr"><hr /></div>
+            {% get_comment_count for post as comment_count %}
+            <div class="post_summary">
+                {% if post.thumb %}
+                        <img src="{% version post.thumb.path 'blog' %}" class="thumb" alt="{{ post.title }}" style="float:right;" height="110" width="196" />
+                    {% else %}
+                        <img src="{{ MEDIA_URL }}images/oppian.png" class="thumb" alt="Blog image - Oppian" style="float:right;" height="104" />
+                {% endif %}
+                
+                <h3><a href="{{ post.get_absolute_url }}">{{ post.title }}</a></h3>
+                <p class="paragraphText">{{ post.tease }}</p>
+                <ul class="paragraphSmallText">
+                    <li>Posted by {{ post.author }} on {{ post.publish|date|naturalday }}</li>
+                    <li>{{ comment_count }} comment{{ comment_count|pluralize:',s' }}</li>
+                </ul>
+            </div>
+        {% empty %}
             <br/>
             <h2>Coming soon...</h2>
             <br/><br/><br/><br/><br/><br/>
-            
-        {% else %}
-        
-            {% for post in object_list %}
-                <div class="hr"><hr /></div>
-                {% get_comment_count for post as comment_count %}
-                <div class="post_summary">
-                    {% if post.thumb %}
-                            <img src="{% version post.thumb.path 'blog' %}" class="thumb" alt="{{ post.title }}" style="float:right;" height="110" width="196" />
-                        {% else %}
-                            <img src="{{ MEDIA_URL }}images/oppian.png" class="thumb" alt="Blog image - Oppian" style="float:right;" height="104" />
-                    {% endif %}
-                    
-                    <h3><a href="{{ post.get_absolute_url }}">{{ post.title }}</a></h3>
-                    <p class="paragraphText">{{ post.tease }}</p>
-                    <ul class="paragraphSmallText">
-                        <li>Posted by {{ post.author }} on {{ post.publish|date|naturalday }}</li>
-                        <li>{{ comment_count }} comment{{ comment_count|pluralize:',s' }}</li>
-                    </ul>
-                </div>
-            {% endfor %}
-        
-        {% endif %}
-    
+        {% endfor %}
     </div>
   
     {% if is_paginated %}

@@ -1,1 +1,99 @@
-@charset "UTF-8";/* CORE CSS Document */h1, h2, h3, h4, h5 {	padding: 0;	margin: 0;	text-decoration: none;	font-weight: inherit;	font-size: inherit;}/* Page titles */ h1 {	font-size: 1.7em;	font-weight: bold;	color: #212121;}/* Primary Nav */ h2 {	color: #212121;}/* Page Subtitles */ h3 {	font-size: 1.3em;	font-weight: bold;	color: #212121;}/* Secondary Nav */ h4 {	font-size: 1.2em;	font-weight: bold;	color: #212121;}h5 {	color: #212121;}/* --- TYPOGRAPHY --- */.paragraphText {	font-family: Tahoma, Arial, Helvetica, sans-serif;	color: #5f5f5f;	/*font-size: 1.1em;	line-height: 1.3em;*/	font-size: 1.1em;	line-height: 1.4em;	font-weight: normal;}.paragraphSmallText {	font-family: Tahoma, Arial, Helvetica, sans-serif;	color: #5f5f5f;	/*font-size: 1.1em;	line-height: 1.3em;*/	font-size: 0.9em;	line-height: 1.4em;	font-weight: normal;}.paragraphLink {	font-family: Tahoma, Arial, Helvetica, sans-serif;	color: #e41822;	/*font-size: 1.1em;	line-height: 1.3em;*/	font-size: 1.1em;	line-height: 1.3em;	font-weight: bold;}.bloglabText {	font-family: Tahoma, Arial, Helvetica, sans-serif;	color: #5f5f5f;	/*font-size: 1.1em;	line-height: 1.3em;*/	font-size: 0.95em;	line-height: 1.4em;	font-weight: normal;}.imageRightAlign {	padding-left: 15px;	/*padding-bottom: 10px;*/	float: right;}.imageLeftAlign {	padding-right: 15px;	/*padding-bottom: 10px;*/	float: left;}.hidden {    color: #ffffff;    font-size: 0.1em;    line-height: 0.1em;}.tagline {	font-style:italic;	font-weight:bold;	text-align:center;}.oppian_name {	font-weight:bold;}.bio_company {	font-weight: bold;}.bio_technology {	font-weight: bold;}.bio_technology_line {	color: #5f5f7f;	font-size: 0.725em;	line-height: 1.15em;	font-weight: bold;}
+@charset "UTF-8";
+/* CORE CSS Document */
+
+h1, h2, h3, h4, h5 {
+	padding: 0;
+	margin: 0;
+	text-decoration: none;
+	font-size: inherit;
+	color: #212121;
+	font-weight: bold;	
+}
+
+h1 {
+	font-size: 1.7em;
+}
+
+h2 {
+	font-size: 1.5em;
+}
+h3 {
+	font-size: 1.3em;
+}
+h4 {
+	font-size: 1.2em;
+}
+h5 {
+	font-size: 1.1em;
+}
+
+/* --- TYPOGRAPHY --- */
+
+.paragraphText {
+	font-family: Tahoma, Arial, Helvetica, sans-serif;
+	color: #5f5f5f;
+	font-size: 1.1em;
+	line-height: 1.4em;
+	font-weight: normal;
+}
+.paragraphSmallText {
+	font-family: Tahoma, Arial, Helvetica, sans-serif;
+	color: #5f5f5f;
+	font-size: 0.9em;
+	line-height: 1.4em;
+	font-weight: normal;
+}
+.paragraphLink {
+	font-family: Tahoma, Arial, Helvetica, sans-serif;
+	color: #e41822;
+	font-size: 1.1em;
+	line-height: 1.3em;
+	font-weight: bold;
+}
+.bloglabText {
+	font-family: Tahoma, Arial, Helvetica, sans-serif;
+	color: #5f5f5f;
+	font-size: 0.95em;
+	line-height: 1.4em;
+	font-weight: normal;
+}
+
+
+.imageRightAlign {
+	padding-left: 15px;
+	float: right;
+}
+.imageLeftAlign {
+	padding-right: 15px;
+	float: left;
+}
+
+.hidden {
+    color: #ffffff;
+    font-size: 0.1em;
+    line-height: 0.1em;
+}
+
+.tagline {
+	font-style:italic;
+	font-weight:bold;
+	text-align:center;
+}
+
+.oppian_name {
+	font-weight:bold;
+}
+
+.bio_company {
+	font-weight: bold;
+}
+
+.bio_technology {
+	font-weight: bold;
+}
+.bio_technology_line {
+	color: #5f5f7f;
+	font-size: 0.725em;
+	line-height: 1.15em;
+	font-weight: bold;
+}
