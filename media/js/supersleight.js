@@ -4,7 +4,7 @@ var supersleight	= function() {
 	var applyPositioning = true;
 	
 	// Path to a transparent GIF image
-	var shim			= '/m/images/x.gif';
+	var shim			= 'x.gif';
 	
 	// RegExp to match above GIF image name
 	var shim_pattern	= /x\.gif$/i;
@@ -67,7 +67,8 @@ var supersleight	= function() {
 	};
 	
 	return {
-		init: function() { 
+		init: function(transGif) {
+			shim = transGif;
 			addLoadEvent(fnLoadPngs);
 		},
 		
@@ -84,4 +85,4 @@ var supersleight	= function() {
 // limit to part of the page ... pass an ID to limitTo:
 // supersleight.limitTo('header');
 
-supersleight.init();
+//supersleight.init();
