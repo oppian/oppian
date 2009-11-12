@@ -38,7 +38,7 @@ class VersionNode(Node):
             version_path = _get_version_path(str(source), version_prefix)
             if not _exists(version_path):
                 # create version
-                version_path = _version_generator(_url_to_path(str(source)), version_prefix)
+                version_path = _version_generator(str(source), version_prefix)
             elif _last_mod(os.path.join(MEDIA_ROOT, _url_to_path(str(source)))) > _last_mod(os.path.join(MEDIA_ROOT, version_path)):
                 # recreate version if original image was updated
                 version_path = _version_generator(_url_to_path(str(source)), version_prefix, force=True)

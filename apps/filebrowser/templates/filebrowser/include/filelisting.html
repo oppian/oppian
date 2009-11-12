@@ -7,7 +7,7 @@
     <td class="fb_icon">
         {% selectable file.filetype query.type %}
         {% if selectable %}
-        <a href="javascript://" onclick="FileSubmit('{{ file.url_save }}', '{{ file.url_thumbnail }}', '{{ file.filetype }}');" class="fb_selectlink" title="{% trans 'Select' %}"></a>
+        <a href="javascript://" onclick="FileSubmit('{{ file.url_save|escapejs }}', '{{ file.url_thumbnail|escapejs }}', '{{ file.filetype|escapejs }}');" class="fb_selectlink" title="{% trans 'Select' %}"></a>
         {% else %}
         <img src="{{ settings_var.URL_FILEBROWSER_MEDIA }}img/filebrowser_icon_select_disabled.gif" width="23" height="17" />
         {% endif %}
@@ -21,7 +21,7 @@
     <td class="fb_icon">
         {% selectable file.filetype query.type %}
         {% if selectable %}
-        <a href="javascript:FileBrowserDialogue.fileSubmit('{{ file.url_full }}');" class="fb_selectlink" title="{% trans 'Select File' %}"></a>
+        <a href="javascript:FileBrowserDialogue.fileSubmit('{{ file.url_full|escapejs }}');" class="fb_selectlink" title="{% trans 'Select File' %}"></a>
         {% else %}
         <img src="{{ settings_var.URL_FILEBROWSER_MEDIA }}img/filebrowser_icon_select_disabled.gif" width="23" height="17" />
         {% endif %}
@@ -35,7 +35,7 @@
     <td class="fb_icon">
         {% selectable file.filetype query.type %}
         {% if selectable %}
-        <a href="#" onclick="OpenFile(ProtectPath('{{ file.url_save }}'));return false;" class="fb_selectlink" title="{% trans 'Select File' %}"></a>
+        <a href="#" onclick="OpenFile(ProtectPath('{{ file.url_save|escapejs }}'));return false;" class="fb_selectlink" title="{% trans 'Select File' %}"></a>
         {% else %}
         <img src="{{ settings_var.URL_FILEBROWSER_MEDIA }}img/filebrowser_icon_select_disabled.gif" width="23" height="17" />
         {% endif %}
