@@ -211,6 +211,7 @@ FILEBROWSER_VERSIONS = {
     'blog': {'verbose_name': 'Blog Thumbnail (210x143)', 'width': 196, 'height': 110, 'opts': 'upscale crop'},
 }
 
+# TODO: move s3 default storage into prod and dev settings
 # django storages: http://code.welldev.org/django-storages/wiki/S3Storage
 DEFAULT_FILE_STORAGE = 'backends.s3boto.S3BotoStorage'
 AWS_STORAGE_BUCKET_NAME = 'oppian-dev-files'
