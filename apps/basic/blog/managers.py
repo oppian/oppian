@@ -7,6 +7,6 @@ class PublicManager(Manager):
     
     def published(self, user=None):
         query = self.get_query_set().filter(publish__lte=datetime.datetime.now())
-        if user and not user.is_staff:
+        if not user or (user and not user.is_staff):
             query = query.filter(status__gte=2)
         return query
