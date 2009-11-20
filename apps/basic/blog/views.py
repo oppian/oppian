@@ -12,7 +12,7 @@ import re
 def post_list(request, template_name = 'blog/post_list.html', page=0, **kwargs):
     return list_detail.object_list(
         request,
-        queryset = Post.objects.published().filter(categories__slug='blog'),
+        queryset = Post.objects.published(request.user).filter(categories__slug='blog'),
         template_name = template_name,
         paginate_by = 20,
         page = page,
