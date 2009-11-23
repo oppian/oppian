@@ -1,10 +1,6 @@
 """
-Sync Media to S3
-================
-
 Django command that creates a tar.gz of all the files in the project dir 
 and then uploads that to s3.
-
 """
 
 from django.core.management.base import BaseCommand
@@ -28,6 +24,7 @@ def get_base_dir():
 
 def list_files(dir, file_list):
     """Loops through all files ignore dot and pyc files."""
+    filecount = 0
     for filename in os.listdir(dir):
         if filename.startswith('.'):
             continue
@@ -37,14 +34,17 @@ def list_files(dir, file_list):
             continue
         if filename.startswith('settings_local'):
             continue
-        if filename.startswith('settings_aws'):
-            continue
         fullname = os.path.join(dir, filename)
+        # test if in ignore
+        if fullname in settings.BUILD_IGNORE:
+            continue
         if os.path.isdir(fullname):
-            list_files(fullname, file_list)
+            filecount = filecount + list_files(fullname, file_list)
             continue
         file_list.append(fullname)
         print " + %s" % fullname
+        filecount = filecount + 1
+    return filecount
         
 def create_tmp(suffix=None):
     """Creates a tmp file with a particular prefix and suffix."""
@@ -99,7 +99,8 @@ class Command(BaseCommand):
         # create a list of files to archive
         file_list = []
         print "Creating list of files..."
-        list_files(get_base_dir(), file_list)
+        filecount = list_files(get_base_dir(), file_list)
+        print "%d Files added" % filecount
         
         # tar and gzip list
         file_targz = targz_files(file_list)

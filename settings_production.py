@@ -17,4 +17,6 @@ TWITTER_PASSWORD = "deteenee52" # oppian
 # the name of the agent making the requests
 TWITTER_AGENT_STR = "oppian.com"
 # how often to check the tweet status
-TWITTER_TIMEOUT = 3600
+
+# s3 storage
+AWS_STORAGE_BUCKET_NAME = 'oppian-prod-files'

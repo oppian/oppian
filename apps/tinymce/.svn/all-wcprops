@@ -1,0 +1,47 @@
+K 25
+svn:wc:ra_dav:version-url
+V 30
+/svn/!svn/ver/88/trunk/tinymce
+END
+compressor.py
+K 25
+svn:wc:ra_dav:version-url
+V 44
+/svn/!svn/ver/68/trunk/tinymce/compressor.py
+END
+views.py
+K 25
+svn:wc:ra_dav:version-url
+V 39
+/svn/!svn/ver/88/trunk/tinymce/views.py
+END
+__init__.py
+K 25
+svn:wc:ra_dav:version-url
+V 42
+/svn/!svn/ver/30/trunk/tinymce/__init__.py
+END
+settings.py
+K 25
+svn:wc:ra_dav:version-url
+V 42
+/svn/!svn/ver/77/trunk/tinymce/settings.py
+END
+models.py
+K 25
+svn:wc:ra_dav:version-url
+V 40
+/svn/!svn/ver/39/trunk/tinymce/models.py
+END
+urls.py
+K 25
+svn:wc:ra_dav:version-url
+V 38
+/svn/!svn/ver/76/trunk/tinymce/urls.py
+END
+widgets.py
+K 25
+svn:wc:ra_dav:version-url
+V 41
+/svn/!svn/ver/75/trunk/tinymce/widgets.py
+END

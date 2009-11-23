@@ -5,5 +5,8 @@ import datetime
 class PublicManager(Manager):
     """Returns published posts that are not in the future."""
     
-    def published(self):
-        return self.get_query_set().filter(status__gte=2, publish__lte=datetime.datetime.now())
+    def published(self, user=None):
+        query = self.get_query_set().filter(publish__lte=datetime.datetime.now())
+        if user and not user.is_staff:
+            query = query.filter(status__gte=2)
+        return query

@@ -1,0 +1,47 @@
+K 25
+svn:wc:ra_dav:version-url
+V 82
+/svn/!svn/ver/463/branches/filebrowser_3/filebrowser/templates/filebrowser/include
+END
+_response.html
+K 25
+svn:wc:ra_dav:version-url
+V 97
+/svn/!svn/ver/403/branches/filebrowser_3/filebrowser/templates/filebrowser/include/_response.html
+END
+tableheader.html
+K 25
+svn:wc:ra_dav:version-url
+V 99
+/svn/!svn/ver/424/branches/filebrowser_3/filebrowser/templates/filebrowser/include/tableheader.html
+END
+toolbar.html
+K 25
+svn:wc:ra_dav:version-url
+V 95
+/svn/!svn/ver/460/branches/filebrowser_3/filebrowser/templates/filebrowser/include/toolbar.html
+END
+paginator.html
+K 25
+svn:wc:ra_dav:version-url
+V 97
+/svn/!svn/ver/403/branches/filebrowser_3/filebrowser/templates/filebrowser/include/paginator.html
+END
+filter.html
+K 25
+svn:wc:ra_dav:version-url
+V 94
+/svn/!svn/ver/460/branches/filebrowser_3/filebrowser/templates/filebrowser/include/filter.html
+END
+filelisting.html
+K 25
+svn:wc:ra_dav:version-url
+V 99
+/svn/!svn/ver/424/branches/filebrowser_3/filebrowser/templates/filebrowser/include/filelisting.html
+END
+breadcrumbs.html
+K 25
+svn:wc:ra_dav:version-url
+V 99
+/svn/!svn/ver/403/branches/filebrowser_3/filebrowser/templates/filebrowser/include/breadcrumbs.html
+END

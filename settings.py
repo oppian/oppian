@@ -10,8 +10,11 @@ TEMPLATE_DEBUG = DEBUG
 SEND_BROKEN_LINK_EMAILS = True
 
 ADMINS = (
-    ('Web Admins Oppian', 'web-admins@oppian.com'),   
+    ('Web Admins Oppian', 'web-admins@oppian.com'),
 )
+
+# admin password
+# besket78
 
 MANAGERS = ADMINS
 
@@ -50,11 +53,12 @@ SITE_DOMAIN = socket.gethostname()
 
 # If you set this to False, Django will make some optimizations so as not
 # to load the internationalization machinery.
-USE_I18N = True
+USE_I18N = False
 
 # Absolute path to the directory that holds media.
 # Example: "/home/media/media.lawrence.com/"
-MEDIA_ROOT = os.path.join(PROJECT_ROOT, 'media/')
+MEDIA_ROOT_LOCAL = os.path.join(PROJECT_ROOT, 'media/')
+MEDIA_ROOT = ''
 
 # if SHORTENER_REQUIRES_LOGIN is True, then only logged in users can submit new URLs
 SHORTENER_REQUIRES_LOGIN = True
@@ -68,7 +72,7 @@ TEMPLATE_CONTEXT_PROCESSORS = TEMPLATE_CONTEXT_PROCESSORS + (
 
 # the twitter email account of the site 
 TWITTER_EMAIL = "twitter-test@oppian.com"
-TWITTER_USER  = "oppian"
+TWITTER_USER = "oppian"
 #TWITTER_EMAIL = "twitter@oppian.com"
 # the password for the account referenced by the twitter email address above
 TWITTER_PASSWORD = "metef62" # oppian-test
@@ -86,7 +90,7 @@ MEDIA_URL = '/m/'
 # URL prefix for admin media -- CSS, JavaScript and images. Make sure to use a
 # trailing slash.
 # Examples: "http://foo.com/media/", "/media/".
-ADMIN_MEDIA_PREFIX = '/media/'
+ADMIN_MEDIA_PREFIX = '/amedia/'
 
 # Make this unique, and don't share it with anybody.
 SECRET_KEY = '4tt(s*od&lp(6wrd#iwq=vmot%#9nfl%00k=q5$eplz3lkgr0z'
@@ -111,7 +115,7 @@ TEMPLATE_DIRS = (
     # Put strings here, like "/home/html/django_templates" or "C:/www/django/templates".
     # Always use forward slashes, even on Windows.
     # Don't forget to use absolute paths, not relative paths.
-    os.path.join(PROJECT_ROOT, "templates").replace('\\','/'),
+    os.path.join(PROJECT_ROOT, "templates").replace('\\', '/'),
 )
 
 INSTALLED_APPS = (
@@ -124,30 +128,36 @@ INSTALLED_APPS = (
     'django.contrib.comments',
     'django.contrib.markup',
     'django.contrib.humanize',
-    
+
     # basic apps http://github.com/nathanborror/django-basic-apps/tree/master
     'basic.*',
-    
+
     # url shortener git://github.com/nileshk/url-shortener.git 
     'url_shortener',
-    
+
     # web-crawler robot control hg clone http://bitbucket.org/jezdez/django-robots/ 
     'robots',
 
     # tagging http://code.google.com/p/django-tagging/
     'tagging',
-    
+
     'contact_form',
-    
+
     # django command extensions http://github.com/django-extensions
     'django_extensions',
-    
+
     # build tools
     'build',
-    
+
     # google analytics - from http://github.com/montylounge/django-google-analytics
     'google_analytics',
+
+    # http://code.google.com/p/django-filebrowser/wiki/filebrowser_3
+    'filebrowser',
     
+    # http://django-tinymce.googlecode.com/svn/trunk/docs/.build/html/index.html
+    'tinymce',
+
     # oppian web-site specific code including static pages
     'oppianapp',
 )
@@ -160,6 +170,11 @@ AWS_SECRET_ACCESS_KEY = 'ZXslmLM93TYrGA33GFyzIozSSN4VH1wrNXzyjXIt'
 AWS_BUILD_BUCKET_NAME = 'oppian-website-releases'
 BUILD_VERSION = ('0', '2')
 BUILD_APPNAME = 'oppian'
+BUILD_IGNORE = (
+    os.path.normpath(os.path.join(PROJECT_ROOT, 'ec2')),
+    os.path.normpath(os.path.join(PROJECT_ROOT, 'rightscripts')),
+    os.path.normpath(os.path.join(PROJECT_ROOT, 'support_files')),
+)
 
 # email
 EMAIL_HOST = 'smtp.gmail.com'
@@ -180,6 +195,44 @@ FIXTURE_DIRS = (
 
 # Google Analytics
 GOOGLE_ANALYTICS_MODEL = True
+
+# filebrowser
+FILEBROWSER_URL_FILEBROWSER_MEDIA = '%sfilebrowser/' % MEDIA_URL
+FILEBROWSER_DIRECTORY = ''
+FILEBROWSER_SAVE_FULL_URL = False       # if true, FileBrowserField errors because of s3 url
+FILEBROWSER_VERSIONS = {
+    'fb_thumb': {'verbose_name': 'Admin Thumbnail', 'width': 104, 'height': 104, 'opts': 'upscale'},
+    'thumbnail': {'verbose_name': 'Thumbnail (140px)', 'width': 140, 'height': '', 'opts': ''},
+    'small': {'verbose_name': 'Small (300px)', 'width': 300, 'height': '', 'opts': ''},
+    'medium': {'verbose_name': 'Medium (460px)', 'width': 460, 'height': '', 'opts': ''},
+    'big': {'verbose_name': 'Big (620px)', 'width': 620, 'height': '', 'opts': ''},
+    'cropped': {'verbose_name': 'Cropped (60x60px)', 'width': 60, 'height': 60, 'opts': 'crop'},
+    'croppedthumbnail': {'verbose_name': 'Cropped Thumbnail (140x140px)', 'width': 140, 'height': 140, 'opts': 'crop'},
+    'blog': {'verbose_name': 'Blog Thumbnail (210x143)', 'width': 196, 'height': 110, 'opts': 'upscale crop'},
+}
+
+# django storages: http://code.welldev.org/django-storages/wiki/S3Storage
+DEFAULT_FILE_STORAGE = 'backends.s3boto.S3BotoStorage'
+AWS_STORAGE_BUCKET_NAME = 'oppian-dev-files'
+from S3 import CallingFormat
+AWS_CALLING_FORMAT = CallingFormat.SUBDOMAIN
+AWS_QUERYSTRING_AUTH = False
+
+# tinymce: http://django-tinymce.googlecode.com/svn/trunk/docs/.build/html/installation.html
+TINYMCE_JS_URL = '%stinymce/tiny_mce_src.js' % MEDIA_URL
+TINYMCE_JS_ROOT = '%s/tinymce' % MEDIA_ROOT_LOCAL
+TINYMCE_FILEBROWSER = True
+TINYMCE_DEFAULT_CONFIG = {
+    'theme': "advanced", 
+    'plugins' : 'syntaxhl', 
+    'relative_urls': False,
+    'skin' : "o2k7",
+    'height': "480",
+    'theme_advanced_resizing' : True,
+    'theme_advanced_statusbar_location' : "bottom",
+    'theme_advanced_buttons3_add' : 'syntaxhl',
+    'extended_valid_elements' : "textarea[cols|rows|disabled|name|readonly|class]" 
+}
 
 # local_settings.py can be used to override environment-specific settings
 # like database and email that differ between development and production.

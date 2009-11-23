@@ -7,6 +7,7 @@ sys.path.insert(0, join(cwd, 'lib/django'))
 sys.path.insert(0, join(cwd, 'apps'))
 sys.path.insert(0, join(cwd, 'apps/oppianapp/utils'))
 sys.path.insert(0, join(cwd, 'lib/boto'))
+sys.path.insert(0, join(cwd, 'lib/django-storages'))
 
 from django.core.management import execute_manager
 try:

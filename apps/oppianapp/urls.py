@@ -1,12 +1,7 @@
-'''
-Created on 13 Aug 2009
-
-@author: dalore
-'''
-
 from django.conf.urls.defaults import *
 from django.views.generic.simple import direct_to_template
 from basic.blog import views as blog_views
+from views import *
 
 urlpatterns = patterns('',
     # home page
@@ -18,8 +13,11 @@ urlpatterns = patterns('',
     url(r'^recommended/$', direct_to_template, {'template':'recommended.html'}, name='recommended'),
     url(r'^clients/$', direct_to_template, {'template':'clients.html'}, name='clients'),
     url(r'^partners/$', direct_to_template, {'template':'partners.html'}, name='partners'),
-    url(r'^labs/$', blog_views.labs_list, {'template_name':'blog/labs_list.html'}, name='labs'),
     url(r'^blog/$', direct_to_template, {'template':'blog/'}, name='blog'),
     url(r'^map/$', direct_to_template, {'template':'map.html'}, name='map'),
     url(r'^robots.txt$', direct_to_template, {'template':'robots.txt', 'mimetype':'text/plain'}, name='robotstxt'),
+    
+    # labs post
+    url(r'^labs/$', labs_list, name='labs'),
+    url(r'^labs/(?P<slug>[\w-]+)/$', labs_detail, name='labs-detail'),
 )
