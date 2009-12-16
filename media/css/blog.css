@@ -30,3 +30,7 @@
 	background-image:url('../images/comments.gif');
 	margin-left:1.1em;
 }
+
+div.post {
+	min-height:131px;
+}

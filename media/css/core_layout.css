@@ -21,18 +21,17 @@ body {
 	text-align: left;
 }
 
-div.hr {display: none}
-a{}
 div.hr {
   display: block;
   height: 1px;
-  /*width: 960px;*/
   width: 100%;
   border-bottom: 1px dotted #999999; 
   margin: 2em 0 2em 0;
-  float: left;
 }
-hr {display:none}
+
+hr {
+	display:none
+}
 
 
 /* --- HEADER --- */
