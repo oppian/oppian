@@ -305,6 +305,7 @@ a.secondarynav_link_off:hover {
 	text-align: left;
 	background-image: url(../images/core/contentPanel.png);
 	background-position: top;
+	background-repeat: no-repeat;
 }
 
 
