@@ -1,13 +1,17 @@
-.post h3 {
+.post_list h3 
+{
 	font-weight:normal;
 	letter-spacing:-1px;
 }
 
-.post a:hover h3 {
+.post_list a:hover h3 
+{
 	text-decoration:underline;
 }
 
-.post ul.post_info {
+.post ul.post_info,
+.post_list ul.post_info
+{
 	font-size:0.8em;
 	list-style-image:none;
 	list-style-position:outside;
@@ -15,22 +19,28 @@
 	padding-left:0;
 }
 
-.post ul.post_info li {
+.post ul.post_info li,
+.post_list ul.post_info li 
+{
 	background-position:0 0.2em;
 	background-repeat:no-repeat;
 	display:inline;
 	padding-left:18px;
 }
 
-.post ul.post_info li.date {
+.post ul.post_info li.date 
+.post_list ul.post_info li.date,
+{
 	background-image:url('../images/post.gif');
 }
 
-.post ul.post_info li.comments {
+.post ul.post_info li.comments, 
+.post_list ul.post_info li.comments 
+{
 	background-image:url('../images/comments.gif');
 	margin-left:1.1em;
 }
 
-div.post {
+div.post_list {
 	min-height:131px;
 }

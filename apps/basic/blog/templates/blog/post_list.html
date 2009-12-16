@@ -25,7 +25,7 @@
         {% for post in object_list %}
             <div class="hr"><hr /></div>
             {% get_comment_count for post as comment_count %}
-            <div class="post">
+            <div class="post_list">
             	<a href="{{ post.get_absolute_url }}">
                 {% if post.thumb %}
                         <img src="{% version post.thumb.path 'blog' %}" class="thumb" alt="{{ post.title }}" style="float:right;" height="110" width="196" />
