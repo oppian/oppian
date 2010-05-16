@@ -5,6 +5,7 @@ KeepAlive Off
 <VirtualHost *:80>
 
     ServerName $SITE_DOMAIN
+    ServerAlias www.$SITE_DOMAIN
 
 	ServerAdmin admin@oppian.com
 
@@ -13,8 +14,8 @@ KeepAlive Off
     LogLevel warn
 
 	RewriteEngine On
-	RewriteCond %{HTTP_HOST} ^www.oppian.com$ [NC]
-	RewriteRule ^(.*)$ http://oppian.com$1 [R=301,L]
+	RewriteCond %{HTTP_HOST} ^www.$SITE_DOMAIN$ [NC]
+	RewriteRule ^(.*)$ http://$SITE_DOMAIN$1 [R=301,L]
 
 	<Location "/">
 		SetHandler python-program
