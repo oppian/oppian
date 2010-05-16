@@ -3,3 +3,4 @@ twitter
 markdown
 beautifulsoup
 pygments
+south
