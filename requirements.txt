@@ -7,4 +7,3 @@ south
 boto
 simplejson
 python-dateutil
-twitter
