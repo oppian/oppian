@@ -15,7 +15,7 @@ KeepAlive Off
 
 	RewriteEngine On
 	RewriteCond %{HTTP_HOST} ^www.$SITE_DOMAIN$$ [NC]
-	RewriteRule ^(.*)$$ http://$$SITE_DOMAIN$$1 [R=301,L]
+	RewriteRule ^(.*)$$ http://$SITE_DOMAIN$$1 [R=301,L]
 
     WSGIScriptAlias / $DEPLOY_DIR/deploy/django.wsgi
 	
