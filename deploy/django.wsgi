@@ -13,9 +13,13 @@ sys.path.append(root_dir)
 sys.path.append(os.path.join(root_dir, 'oppian-env/lib/python2.5/site-packages'))
 sys.path.append(os.path.join(root_dir, '..'))
 sys.path.append(os.path.join(root_dir, 'lib/django'))
- 
+sys.path.append(os.path.join(root_dir, 'apps'))
+sys.path.append(os.path.join(root_dir, 'apps/oppianapp/utils'))
+sys.path.append(os.path.join(root_dir, 'lib/django-storages'))
+
 os.environ['DJANGO_SETTINGS_MODULE'] = 'settings'
- 
+
+
 import django.core.handlers.wsgi
  
 application = django.core.handlers.wsgi.WSGIHandler()
