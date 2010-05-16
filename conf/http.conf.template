@@ -18,14 +18,11 @@ KeepAlive Off
 	RewriteRule ^(.*)$$ http://$$SITE_DOMAIN$$1 [R=301,L]
 
 	<Location "/">
-		SetHandler python-program
-		PythonHandler deploy.modpython
-		SetEnv DJANGO_SETTINGS_MODULE settings
-	
-		PythonDebug On
-		PythonAutoReload On
-	
-		PythonPath "['$DEPLOY_DIR'] + sys.path"
+        SetHandler python-program
+        PythonHandler deploy.modpython
+        SetEnv DJANGO_SETTINGS_MODULE settings
+        PythonDebug On
+        PythonPath "['$DEPLOY_DIR'] + sys.path"
 	</Location>
 	
 	Alias /m $DEPLOY_DIR/media
