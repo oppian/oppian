@@ -4,3 +4,4 @@ markdown
 beautifulsoup
 pygments
 south
+boto

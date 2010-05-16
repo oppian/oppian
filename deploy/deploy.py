@@ -282,6 +282,13 @@ def do_apache(deploy_dir):
               os.path.join(deploy_dir, 'conf/http.conf.template'),
               apache_conf,
               )
+    
+    # rewrite config
+    print "Writing out modpython"
+    _template(
+              os.path.join(deploy_dir, 'deploy/modpython.py.template'),
+              os.path.join(deploy_dir, 'deploy/modpython.py'),
+              )
 
     # enable if needed
     _pcall(['a2ensite', _getenv('APACHE_CONF')])

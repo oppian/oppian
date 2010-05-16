@@ -19,14 +19,13 @@ KeepAlive Off
 
 	<Location "/">
 		SetHandler python-program
-		PythonHandler django.core.handlers.modpython
+		PythonHandler deploy.modpython
 		SetEnv DJANGO_SETTINGS_MODULE settings
 	
 		PythonDebug On
 		PythonAutoReload On
 	
-		PythonPath "['$DEPLOY_DIR', '$DEPLOY_DIR/lib/django', '$DEPLOY_DIR/apps', '$DEPLOY_DIR/apps/oppianapp/utils','$DEPLOY_DIR/lib/boto', '$DEPLOY_DIR/lib/django-storages' ] + sys.path"
-	
+		PythonPath "['$DEPLOY_DIR'] + sys.path"
 	</Location>
 	
 	Alias /m $DEPLOY_DIR/media
