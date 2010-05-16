@@ -10,3 +10,14 @@ DATABASE_HOST = '$DB_HOST'             # Set to empty string for localhost. Not 
 DATABASE_PORT = ''             # Set to empty string for default. Not used with sqlite3.
 
 SITE_DOMAIN = "$SITE_DOMAIN"
+
+# the twitter email account of the site 
+TWITTER_EMAIL = "twitter@oppian.com"
+TWITTER_USER  = "oppian"
+# the password for the account referenced by the twitter email address above
+TWITTER_PASSWORD = "deteenee52" # oppian
+# the name of the agent making the requests
+TWITTER_AGENT_STR = "oppian.com"
+
+# s3 storage
+AWS_STORAGE_BUCKET_NAME = 'oppian-prod-files'
