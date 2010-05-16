@@ -215,8 +215,6 @@ def do_django(deploy_dir):
     This runs the various django commands to setup the media, database, etc
     """
     print "Running django commands"
-    # media: python manage.py build_static --noinput
-    _pcall(['python', 'manage.py', 'build_static', '--noinput', ])
 
     # syncdb: python manage.py syncdb --noinput
     _pcall(['python', 'manage.py', 'syncdb', '--noinput', ])
