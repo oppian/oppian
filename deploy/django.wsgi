@@ -6,11 +6,13 @@ import site
 root_dir = os.path.abspath(os.path.join(os.path.dirname(__file__), '..'))
  
 # with mod_wsgi >= 2.4, this line will add this path in front of the python path
-site.addsitedir(os.path.join(root_dir, 'lib/python2.5/site-packages'))
+site.addsitedir(os.path.join(root_dir, 'oppian-env/lib/python2.5/site-packages'))
  
 # add this django project
 sys.path.append(root_dir)
-sys.path.append('lib/django')
+sys.path.append(os.path.join(root_dir, 'oppian-env/lib/python2.5/site-packages'))
+sys.path.append(os.path.join(root_dir, '..'))
+sys.path.append(sys.path.join(root_dir, 'lib/django'))
  
 os.environ['DJANGO_SETTINGS_MODULE'] = 'settings'
  
