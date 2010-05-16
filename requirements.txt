@@ -5,3 +5,4 @@ beautifulsoup
 pygments
 south
 boto
+simplejson
