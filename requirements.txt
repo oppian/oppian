@@ -1,0 +1,9 @@
+django-defaultsite
+twitter
+markdown
+beautifulsoup
+pygments
+south
+boto
+simplejson
+python-dateutil

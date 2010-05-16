@@ -1,0 +1,43 @@
+KeepAlive Off
+
+# macro where installed to
+
+<VirtualHost *:80>
+
+    ServerName $SITE_DOMAIN
+    ServerAlias www.$SITE_DOMAIN
+
+	ServerAdmin admin@oppian.com
+
+    CustomLog ${DEPLOY_DIR}/access.log combined
+    ErrorLog ${DEPLOY_DIR}/error.log
+    LogLevel warn
+
+	RewriteEngine On
+	RewriteCond %{HTTP_HOST} ^www.$SITE_DOMAIN$$ [NC]
+	RewriteRule ^(.*)$$ http://$$SITE_DOMAIN$$1 [R=301,L]
+
+    WSGIScriptAlias / $DEPLOY_DIR/deploy/django.wsgi
+	
+	Alias /m $DEPLOY_DIR/media
+    <Location /m>
+        SetHandler None
+        Order allow,deny
+        Allow from all
+    </Location>
+			
+	Alias /amedia $DEPLOY_DIR/lib/django/django/contrib/admin/media
+    <Location /amedia>
+        SetHandler None
+        Order allow,deny
+        Allow from all
+    </Location>
+	
+	Alias /favicon.ico $DEPLOY_DIR/media/images/favicon.ico
+    <Location /favicon.ico>
+        SetHandler None
+        Order allow,deny
+        Allow from all
+    </Location>
+
+</VirtualHost>

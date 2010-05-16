@@ -106,7 +106,6 @@ MIDDLEWARE_CLASSES = (
     'django.middleware.common.CommonMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
-    'build.middleware.BuildMiddleware', # insert build version into headers
 )
 
 ROOT_URLCONF = 'urls'
@@ -146,9 +145,6 @@ INSTALLED_APPS = (
     # django command extensions http://github.com/django-extensions
     'django_extensions',
 
-    # build tools
-    'build',
-
     # google analytics - from http://github.com/montylounge/django-google-analytics
     'google_analytics',
 
@@ -160,6 +156,9 @@ INSTALLED_APPS = (
 
     # oppian web-site specific code including static pages
     'oppianapp',
+    
+    # south dbmigration
+    'south',
 )
 
 # AWS
