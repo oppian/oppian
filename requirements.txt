@@ -6,3 +6,4 @@ pygments
 south
 boto
 simplejson
+dateutil
