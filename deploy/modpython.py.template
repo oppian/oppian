@@ -12,9 +12,8 @@ if not VIRTUALENV_BASE:
 activate_this = join(VIRTUALENV_BASE, "bin/activate_this.py")
 execfile(activate_this, dict(__file__=activate_this))
 
+sys.path.insert(0, join(settings.PROJECT_ROOT, 'lib/django'))
 from django.core.handlers.modpython import ModPythonHandler
-
-
 
 class PinaxModPythonHandler(ModPythonHandler):
     def __call__(self, req):
@@ -26,7 +25,6 @@ class PinaxModPythonHandler(ModPythonHandler):
         
         sys.path.insert(0, abspath(join(dirname(__file__), "../../")))
 
-        sys.path.insert(0, join(settings.PROJECT_ROOT, 'lib/django'))
         sys.path.insert(0, join(settings.PROJECT_ROOT, 'apps'))
         sys.path.insert(0, join(settings.PROJECT_ROOT, 'apps/oppianapp/utils'))
         sys.path.insert(0, join(settings.PROJECT_ROOT, 'lib/django-storages'))
