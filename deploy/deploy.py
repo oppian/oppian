@@ -200,13 +200,13 @@ def do_virtualenv(deploy_dir):
     """
     Set up the virtual environment.
     """
-    print "Setting up virtual environment"
-    # python lib/pinax/scripts/pinax-boot.py --development --source=lib/pinax pinax-env  --django-version=$DJANGO_VERSION
-    _pcall(['python', 'lib/pinax/scripts/pinax-boot.py', '--development', '--source=lib/pinax', '--django-version=%s' % _getenv('DJANGO_VERSION'), 'pinax-env'])
+    VIRTUAL_ENV = _getenv("VIRTUAL_ENV")
+    print "Setting up virtual environment: %s" % VIRTUAL_ENV
+    _pcall(['python', 'boot.py', VIRTUAL_ENV])
     # activate it
-    activate_this = os.path.join(deploy_dir, "pinax-env/bin/activate_this.py")
+    activate_this = os.path.join(deploy_dir, VIRTUAL_ENV, "bin/activate_this.py")
     execfile(activate_this, dict(__file__=activate_this))
-    os.environ['PATH'] = '%s:%s' % (os.path.join(deploy_dir, 'pinax-env/bin'), _getenv('PATH'))
+    os.environ['PATH'] = '%s:%s' % (os.path.join(deploy_dir, VIRTUAL_ENV, 'bin'), _getenv('PATH'))
     # install requirements: pip install --no-deps --requirement requirements.txt
     _pcall(['pip', 'install', '--no-deps', '--requirement', 'requirements.txt'])
 
@@ -245,9 +245,13 @@ def do_cron(deploy_dir):
     """
     Setup the cron template
     """
-    print "Creating cron file"
-    # get vars
-    cron_filename = _getenv('CRON_FILE')
+    cron_filename = os.environ.get('CRON_FILE')
+    if not cron_filename:
+        return
+    
+    print "Creating cron file: %s" % cron_filename
+    
+    # setup destination
     cronfile = os.path.join('/etc/cron.d/', cron_filename)
 
     # write out the cron template
