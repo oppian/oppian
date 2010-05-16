@@ -4,3 +4,4 @@
 .DS_Store
 templates/VERSION.txt
 settings_local.py
+oppian-env

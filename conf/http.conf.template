@@ -1,0 +1,52 @@
+KeepAlive Off
+
+# macro where installed to
+
+<VirtualHost *:80>
+
+    ServerName $SITE_DOMAIN
+
+	ServerAdmin admin@oppian.com
+
+    CustomLog ${DEPLOY_DIR}/access.log combined
+    ErrorLog ${DEPLOY_DIR}/error.log
+    LogLevel warn
+
+	RewriteEngine On
+	RewriteCond %{HTTP_HOST} ^www.oppian.com$ [NC]
+	RewriteRule ^(.*)$ http://oppian.com$1 [R=301,L]
+
+	<Location "/">
+		SetHandler python-program
+		PythonHandler django.core.handlers.modpython
+		SetEnv DJANGO_SETTINGS_MODULE settings
+	
+		PythonDebug On
+		PythonAutoReload On
+	
+		PythonPath "['$DEPLOY_DIR', '$DEPLOY_DIR/lib/django', '$DEPLOY_DIR/apps', '$DEPLOY_DIR/apps/oppianapp/utils','$DEPLOY_DIR/lib/boto', '$DEPLOY_DIR/lib/django-storages' ] + sys.path"
+	
+	</Location>
+	
+	Alias /m $DEPLOY_DIR/media
+    <Location /m>
+        SetHandler None
+        Order allow,deny
+        Allow from all
+    </Location>
+			
+	Alias /amedia $DEPLOY_DIR/lib/django/django/contrib/admin/media
+    <Location /amedia>
+        SetHandler None
+        Order allow,deny
+        Allow from all
+    </Location>
+	
+	Alias /favicon.ico $DEPLOY_DIR/media/images/favicon.ico
+    <Location /favicon.ico>
+        SetHandler None
+        Order allow,deny
+        Allow from all
+    </Location>
+
+</VirtualHost>
