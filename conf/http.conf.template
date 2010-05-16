@@ -17,8 +17,6 @@ KeepAlive Off
 	RewriteCond %{HTTP_HOST} ^www.$SITE_DOMAIN$$ [NC]
 	RewriteRule ^(.*)$$ http://$$SITE_DOMAIN$$1 [R=301,L]
 
-    WSGIDaemonProcess $SITE_DOMAIN display-name=%{GROUP}
-    WSGIProcessGroup $SITE_DOMAIN
     WSGIScriptAlias / $DEPLOY_DIR/deploy/django.wsgi
 	
 	Alias /m $DEPLOY_DIR/media
