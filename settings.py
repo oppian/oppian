@@ -160,6 +160,9 @@ INSTALLED_APPS = (
 
     # oppian web-site specific code including static pages
     'oppianapp',
+    
+    # south dbmigration
+    'south',
 )
 
 # AWS
