@@ -6,4 +6,5 @@ pygments
 south
 boto
 simplejson
-dateutil
+python-dateutil
+twitter
