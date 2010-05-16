@@ -106,7 +106,6 @@ MIDDLEWARE_CLASSES = (
     'django.middleware.common.CommonMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
-    'build.middleware.BuildMiddleware', # insert build version into headers
 )
 
 ROOT_URLCONF = 'urls'
