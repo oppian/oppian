@@ -42,9 +42,6 @@ urlpatterns = patterns('',
     
     # tinymce
     (r'^tinymce/', include('tinymce.urls')),
-    
-    # build
-    (r'^build/', include('build.urls')),
 
     # last, the about pages and home page etc
     (r'^', include('oppianapp.urls')),

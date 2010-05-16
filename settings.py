@@ -145,9 +145,6 @@ INSTALLED_APPS = (
     # django command extensions http://github.com/django-extensions
     'django_extensions',
 
-    # build tools
-    'build',
-
     # google analytics - from http://github.com/montylounge/django-google-analytics
     'google_analytics',
 
