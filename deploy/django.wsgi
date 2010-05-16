@@ -12,7 +12,7 @@ site.addsitedir(os.path.join(root_dir, 'oppian-env/lib/python2.5/site-packages')
 sys.path.append(root_dir)
 sys.path.append(os.path.join(root_dir, 'oppian-env/lib/python2.5/site-packages'))
 sys.path.append(os.path.join(root_dir, '..'))
-sys.path.append(sys.path.join(root_dir, 'lib/django'))
+sys.path.append(os.path.join(root_dir, 'lib/django'))
  
 os.environ['DJANGO_SETTINGS_MODULE'] = 'settings'
  
