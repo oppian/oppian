@@ -5,7 +5,7 @@ from os.path import abspath, dirname, join
 from site import addsitedir
 
 # activate virtualenv
-VIRTUALENV_BASE = "@DEPLOY_DIR@/pinax-env"
+VIRTUALENV_BASE = "$DEPLOY_DIR/$VIRTUAL_ENV"
 if not VIRTUALENV_BASE:
     raise Exception("VIRTUALENV_BASE is not set correctly.")
 
@@ -25,10 +25,11 @@ class PinaxModPythonHandler(ModPythonHandler):
         from django.conf import settings
         
         sys.path.insert(0, abspath(join(dirname(__file__), "../../")))
-        
-        sys.path.insert(0, join(settings.PINAX_ROOT, "apps"))
-        sys.path.insert(0, join(settings.PROJECT_ROOT, "apps"))
-        sys.path.insert(0, join(settings.LIB_ROOT, "pyfacebook"))
+
+        sys.path.insert(0, join(settings.PROJECT_ROOT, 'lib/django'))
+        sys.path.insert(0, join(settings.PROJECT_ROOT, 'apps'))
+        sys.path.insert(0, join(settings.PROJECT_ROOT, 'apps/oppianapp/utils'))
+        sys.path.insert(0, join(settings.PROJECT_ROOT, 'lib/django-storages'))
         
         return super(PinaxModPythonHandler, self).__call__(req)
 
