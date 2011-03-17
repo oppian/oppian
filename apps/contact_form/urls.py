@@ -19,7 +19,7 @@ from contact_form.views import contact_form
 
 urlpatterns = patterns('',
                        # replace contact form
-                       url(r'^$', direct_to_template, {'template':'contact/contanct_form.html'}, name='contact'),
+                       url(r'^$', direct_to_template, {'template':'contact/contact_form.html'}, name='contact'),
                        # disable contact form
                        #url(r'^$', contact_form, name='contact'),
                        url(r'^sent/$',
