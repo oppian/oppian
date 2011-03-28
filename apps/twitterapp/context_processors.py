@@ -1,7 +1,7 @@
 from datetime import datetime
 from django.conf import settings
 from django.core.cache import cache
-from twitter.api import Twitter, TwitterError
+from twitter.api import Twitter
 import sys
 
 def latest_tweet(request):
