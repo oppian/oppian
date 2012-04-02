@@ -1,0 +1,23 @@
+
+DEBUG = <%= debug_django %>
+TEMPLATE_DEBUG = DEBUG
+
+DATABASE_ENGINE = 'mysql'        
+DATABASE_NAME = '<%= cfn_database %>'
+DATABASE_USER = '<%= cfn_user %>'
+DATABASE_PASSWORD = '<%= cfn_password %>'
+DATABASE_HOST = '<%= cfn_host %>'
+DATABASE_PORT = ''           
+
+SITE_DOMAIN = "oppian.com"
+
+# the twitter email account of the site 
+TWITTER_EMAIL = "twitter@oppian.com"
+TWITTER_USER  = "oppian"
+# the password for the account referenced by the twitter email address above
+TWITTER_PASSWORD = "deteenee52" # oppian
+# the name of the agent making the requests
+TWITTER_AGENT_STR = "oppian.com"
+
+# s3 storage
+AWS_STORAGE_BUCKET_NAME = 'oppian-prod-files'
