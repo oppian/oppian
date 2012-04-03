@@ -15,7 +15,9 @@ urlpatterns = patterns('',
     url(r'^partners/$', direct_to_template, {'template':'partners.html'}, name='partners'),
     url(r'^blog/$', direct_to_template, {'template':'blog/'}, name='blog'),
     url(r'^map/$', direct_to_template, {'template':'map.html'}, name='map'),
+    
     url(r'^robots.txt$', direct_to_template, {'template':'robots.txt', 'mimetype':'text/plain'}, name='robotstxt'),
+    url(r'^mu-eb1fb975-6fa67f08-d4888dcd-0461d515/$', direct_to_template, {'template':'blitzio.txt', 'mimetype':'text/plain'}, name='blitzio'),
     
     # labs post
     url(r'^labs/$', labs_list, name='labs'),
