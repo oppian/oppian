@@ -1,0 +1,16 @@
+{
+  "name": "matt-oppian",
+  "author": "",
+  "description": "",
+  "license": "",
+  "project_page": "",
+  "source": "",
+  "summary": "",
+  "version": "",
+  "checksums": {
+    "Modulefile": "6947de2ad2c278e7a06841a311b474b9",
+    "manifests/init.pp": "a589a9dec52118ca0f46053e117517ee",
+    "templates/settings.py.erb": "3f525442e305f7f115c33241525964a2"
+  },
+  "dependencies": []
+}
