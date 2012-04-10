@@ -1,5 +1,5 @@
 
-DEBUG = <%= debug_django %>
+DEBUG = <%= cfn_debug %>
 TEMPLATE_DEBUG = DEBUG
 
 DATABASE_ENGINE = 'mysql'        
@@ -9,7 +9,7 @@ DATABASE_PASSWORD = '<%= cfn_password %>'
 DATABASE_HOST = '<%= cfn_host %>'
 DATABASE_PORT = ''           
 
-SITE_DOMAIN = "oppian.com"
+SITE_DOMAIN = "<%= cfn_hostname %>"
 
 # the twitter email account of the site 
 TWITTER_EMAIL = "twitter@oppian.com"
