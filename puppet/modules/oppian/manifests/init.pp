@@ -25,9 +25,10 @@ class oppian {
     django => true,
     requirements => true,
     django_syncdb => true,
-    mediaroot => "/deploy/$project/media",
-    mediaprefix => "/m",
+    mediaroot => "/deploy/$project/media/",
+    mediaprefix => "/m/",
     pythonpath => ["lib/django", "apps", "apps/oppianapp/utils", "lib/django-storages"],
+    default_vhost => true,
   }
 
   file { "/deploy/$project/settings_local.py":
