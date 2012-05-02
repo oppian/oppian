@@ -34,6 +34,7 @@ class oppian {
   file { "/deploy/$project/settings_local.py":
     ensure => file,
     content => template('oppian/settings.py.erb'),
+    before => Exec["python::syncdb $project"],
   }
   
   file { "/deploy/$project/media/admin":
