@@ -65,22 +65,9 @@ SHORTENER_REQUIRES_LOGIN = True
 
 # add the template context processor for the latest tweet
 TEMPLATE_CONTEXT_PROCESSORS = TEMPLATE_CONTEXT_PROCESSORS + (
-    "twitterapp.context_processors.latest_tweet",
     "oppianapp.context_processors.settings",
     'django.core.context_processors.request',
 )
-
-# the twitter email account of the site 
-TWITTER_EMAIL = "twitter-test@oppian.com"
-TWITTER_USER = "oppian"
-#TWITTER_EMAIL = "twitter@oppian.com"
-# the password for the account referenced by the twitter email address above
-TWITTER_PASSWORD = "metef62" # oppian-test
-#TWITTER_PASSWORD = "deteenee52" # oppian
-# the name of the agent making the requests
-TWITTER_AGENT_STR = "www.oppian.com"
-# how often to check the tweet status
-TWITTER_TIMEOUT = 3600
 
 # URL that handles the media served from MEDIA_ROOT. Make sure to use a
 # trailing slash if there is a path component (optional in other cases).
@@ -93,7 +80,7 @@ MEDIA_URL = '/m/'
 ADMIN_MEDIA_PREFIX = MEDIA_URL + 'admin/'
 
 # Make this unique, and don't share it with anybody.
-SECRET_KEY = '4tt(s*od&lp(6wrd#iwq=vmot%#9nfl%00k=q5$eplz3lkgr0z'
+# SECRET_KEY = '' # provided by puppet 
 
 # List of callables that know how to import templates from various sources.
 TEMPLATE_LOADERS = (
@@ -160,10 +147,6 @@ INSTALLED_APPS = (
     # south dbmigration
     'south',
 )
-
-# AWS
-AWS_ACCESS_KEY_ID = '1EZPW78HVZMFXZXJXAR2'
-AWS_SECRET_ACCESS_KEY = 'ZXslmLM93TYrGA33GFyzIozSSN4VH1wrNXzyjXIt'
 
 # build
 AWS_BUILD_BUCKET_NAME = 'oppian-website-releases'

@@ -11,13 +11,9 @@ DATABASE_PORT = ''
 
 SITE_DOMAIN = "<%= cfn_hostname %>"
 
-# the twitter email account of the site 
-TWITTER_EMAIL = "twitter@oppian.com"
-TWITTER_USER  = "oppian"
-# the password for the account referenced by the twitter email address above
-TWITTER_PASSWORD = "deteenee52" # oppian
-# the name of the agent making the requests
-TWITTER_AGENT_STR = "oppian.com"
-
 # s3 storage
-AWS_STORAGE_BUCKET_NAME = 'oppian-prod-files'
+AWS_STORAGE_BUCKET_NAME = '<%= cfn_s3_bucket %>'
+
+SECRET_KEY = '<%= cfn_secret_key %>'
+AWS_ACCESS_KEY_ID = '<%= cfn_aws_key %>'
+AWS_SECRET_ACCESS_KEY = '<%= cfn_aws_secret_key %>'
