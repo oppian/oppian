@@ -34,40 +34,6 @@
         }
     }, 
     {
-        "pk": 3, 
-        "model": "auth.user", 
-        "fields": {
-            "username": "neil", 
-            "first_name": "Neil", 
-            "last_name": "Davis", 
-            "is_active": true, 
-            "is_superuser": true, 
-            "is_staff": true,  
-            "groups": [], 
-            "user_permissions": [], 
-            "password": "sha1$5ebf2$f4ab7b4819fa7ecb8b599a713f6f9ea362128639", 
-            "email": "neil@oppian.com", 
-            "date_joined": "2009-08-18 12:34:53"
-        }
-    }, 
-    {
-        "pk": 4, 
-        "model": "auth.user", 
-        "fields": {
-            "username": "mal", 
-            "first_name": "Mal", 
-            "last_name": "Minhas", 
-            "is_active": true, 
-            "is_superuser": true, 
-            "is_staff": true,  
-            "groups": [], 
-            "user_permissions": [], 
-            "password": "sha1$46612$0cf241076a8a7f7ccb45fb1d3f787361ecc089de", 
-            "email": "mal@oppian.com", 
-            "date_joined": "2009-08-18 12:34:53"
-        }
-    },
-    {
         "pk": 1, 
         "model": "blog.category", 
         "fields": {
