@@ -9,6 +9,7 @@ Features
  * has a blogging backend in /admin that uses tinymce (a wyswig html editor)
  * modified django-filebrowser which uploads (and browsers) files on a s3 bucket instead
    of the local filesystem
+ * Has a url shortner
    
 Setup
 -----
