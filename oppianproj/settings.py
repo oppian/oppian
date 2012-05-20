@@ -13,9 +13,6 @@ ADMINS = (
     ('Web Admins Oppian', 'web-admins@oppian.com'),
 )
 
-# admin password
-# besket78
-
 MANAGERS = ADMINS
 
 CONTACT_RECIPIENTS = (
