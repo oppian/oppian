@@ -1,0 +1,36 @@
+Oppian Website
+==============
+
+This is the oppian.com website which is a django based website.
+
+Features
+---------
+
+ * has a blogging backend in /admin that uses tinymce (a wyswig html editor)
+ * modified django-filebrowser which uploads (and browsers) files on a s3 bucket instead
+   of the local filesystem
+   
+Setup
+-----
+
+Private settings have been removed and are added on deployment by puppet.
+
+In addition to the database settings the following settings will need to be supplied:
+
+SECRET_KEY: This will need to be provided, standard django setting
+
+AWS_STORAGE_BUCKET_NAME: name for the s3 bucket that will be used to store files
+
+AWS_ACCESS_KEY_ID: The AWS access key to access the bucket
+
+AWS_SECRET_ACCESS_KEY: The AWS secret access key to access the bucket
+
+License
+-------
+
+This code is released for example and learning only (except for third party modules 
+under their own licenses)
+
+All artwork is copyright Oppian Systems Ltd and may not be used
+
+For any questions or clarifications contact info@oppian.com
